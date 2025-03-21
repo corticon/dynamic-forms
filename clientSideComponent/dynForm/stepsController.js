@@ -171,7 +171,9 @@ export class StepsController {
         if (prevStageNbr === 0) {
             raiseEvent(customEvents.BACK_AT_FORM_BEGINNING);
         }
-    } async processNextStep(baseDynamicUIEl, decisionServiceEngine, language, saveInputToFormData = true) {
+    }
+
+    async processNextStep(baseDynamicUIEl, decisionServiceEngine, language, saveInputToFormData = true) {
         if (saveInputToFormData) {
             const containers = baseDynamicUIEl.find('.inputContainer');
             let isValid = true;
@@ -180,7 +182,7 @@ export class StepsController {
                 requiredInputs.each(function (index, item) {
                     const inputEl = $(item);
                     if (inputEl.val() === '') {
-                        const errorMessage = $('<span class class="error-message">This field is required</span>');
+                        const errorMessage = $('<span class="error-message">This field is required</span>');
                         inputEl.after(errorMessage);
                         isValid = false;
                         return false;
@@ -419,7 +421,9 @@ export class StepsController {
     _saveArrayTypeInputsToFormData(baseEl) {
         this._processAllSimpleArrayControls(baseEl);
         this._processAllComplexArrayControls(baseEl, this.itsPathToData);
-    } _processAllComplexArrayControls(baseEl, itsPathToData) {
+    }
+
+    _processAllComplexArrayControls(baseEl, itsPathToData) {
         let outerArray = [];
         let formDataFieldName;
         let uiControlType;
@@ -430,13 +434,13 @@ export class StepsController {
             return;
         }
 
-        allArrayEls.each(function (index, item) {
+        allArrayEls.each((index, item) => { // Use arrow function to preserve 'this' context
             const oneArrayEl = $(item);
-            uiControlType = $(this).parent().data("uicontroltype");
+            uiControlType = $(oneArrayEl).parent().data("uicontroltype"); // Use oneArrayEl
             let allFormEls = oneArrayEl.find(":input").not(":checkbox");
 
             let innerArray = [];
-            for (var i = 0; i < allFormEls.length; i++) {
+            for (let i = 0; i < allFormEls.length; i++) {
                 const oneFormEl = allFormEls[i];
                 const oneInputEl = $(oneFormEl);
                 formDataFieldName = oneInputEl.data("fieldName");
@@ -451,203 +455,192 @@ export class StepsController {
             if (uiControlType === "MultiExpenses") {
                 const expenseFieldArray = ["expenseCode", "amount", "currency"];
                 const convertedArray = this._createEachExpenseEntity(outerArray, expenseFieldArray);
-                this._saveArrayElFormData(formDataFieldName, convertedArray, itsPathToData);
+                this._saveArrayElFormData(formDataFieldName, convertedArray, itsPathToData); // Use itsPathToData
             } else if (uiControlType === "MultiText") {
                 const textFieldArray = ["textInput"];
                 const convertedArray = this._createEachTextEntity(outerArray, textFieldArray);
-                this._saveArrayElFormData(formDataFieldName, convertedArray, itsPathToData);
+                this._saveArrayElFormData(formDataFieldName, convertedArray, itsPathToData); // Use itsPathToData
             } else {
                 alert("This complex array type is not yet supported " + uiControlType);
             }
         }
+    }
+    _processAllSimpleArrayControls(baseEl) {
+        const allSimpleUiControlsOfArrayType = this._getAllSimpleArrayTypeInputsToFormData(baseEl);
 
-
-        function _processAllSimpleArrayControls(baseEl) {
-            const allSimpleUiControlsOfArrayType = _getAllSimpleArrayTypeInputsToFormData(baseEl);
-
-            for (let j = 0; j < allSimpleUiControlsOfArrayType.length; j++) {
-                const oneControlData = allSimpleUiControlsOfArrayType[j];
-                const uiControlType = oneControlData['type'];
-                const formDataFieldName = oneControlData['fieldName'];
-                const valuesForOneControl = oneControlData['values'];
-                if (uiControlType === 'Text' || uiControlType === 'Number' || uiControlType === 'DateTime') {
-                    const convertedArray = _createEachItemEntity(valuesForOneControl, uiControlType);
-                    _saveArrayElFormData(formDataFieldName, convertedArray);
-                } else
-                    alert('This simple array type is not yet supported ' + uiControlType);
-            }
+        for (let j = 0; j < allSimpleUiControlsOfArrayType.length; j++) {
+            const oneControlData = allSimpleUiControlsOfArrayType[j];
+            const uiControlType = oneControlData['type'];
+            const formDataFieldName = oneControlData['fieldName'];
+            const valuesForOneControl = oneControlData['values'];
+            if (uiControlType === 'Text' || uiControlType === 'Number' || uiControlType === 'DateTime') {
+                const convertedArray = this._createEachItemEntity(valuesForOneControl, uiControlType);
+                this._saveArrayElFormData(formDataFieldName, convertedArray);
+            } else
+                alert('This simple array type is not yet supported ' + uiControlType);
         }
+    }
 
-        function _getAllSimpleArrayTypeInputsToFormData(baseEl) {
-            // there can be more than one set of multi inputs per container -> we need to group them per field name
-            let allUiControlsOfArrayType = [];
+    _getAllSimpleArrayTypeInputsToFormData(baseEl) {
+        // there can be more than one set of multi inputs per container -> we need to group them per field name
+        let allUiControlsOfArrayType = [];
 
-            let allArrayEls = baseEl.find('.simpleArrayTypeControl');
-            allArrayEls.each(function (index, item) {
-                let formDataFieldName;
-                const oneArrayEl = $(item);
-                const uiControlType = oneArrayEl.data("uicontroltype");
-                const allFormEls = oneArrayEl.find(':input').not(':checkbox');
+        let allArrayEls = baseEl.find('.simpleArrayTypeControl');
+        allArrayEls.each(function (index, item) {
+            let formDataFieldName;
+            const oneArrayEl = $(item);
+            const uiControlType = oneArrayEl.data("uicontroltype");
+            const allFormEls = oneArrayEl.find(':input').not(':checkbox');
 
-                let allValuesForOneControl = [];
-                for (let i = 0; i < allFormEls.length; i++) {
-                    const oneFormEl = allFormEls[i];
-                    const oneInputEl = $(oneFormEl);
-                    formDataFieldName = oneInputEl.data("fieldName");
-                    const val = oneInputEl.val();
-                    allValuesForOneControl.push(val);
-                }
-
-                const allDataForOneControl = {};
-                allDataForOneControl['fieldName'] = formDataFieldName;
-                allDataForOneControl['type'] = uiControlType;
-                allDataForOneControl['values'] = allValuesForOneControl;
-
-                allUiControlsOfArrayType.push(allDataForOneControl);
-            });
-
-            return allUiControlsOfArrayType;
-        }
-
-        function _createEachItemEntity(valuesForOneControl, uiControlType) {
-            const convertedArray = [];
-            let fieldName;
-            if (uiControlType === 'Text')
-                fieldName = 'itemText';
-            else if (uiControlType === 'Number')
-                fieldName = 'itemNumber';
-            else if (uiControlType === 'DateTime')
-                fieldName = 'itemDateTime';
-            else {
-                alert('This uicontrol type for simple array type is not yet supported ' + uiControlType);
-                return convertedArray;
+            let allValuesForOneControl = [];
+            for (let i = 0; i < allFormEls.length; i++) {
+                const oneFormEl = allFormEls[i];
+                const oneInputEl = $(oneFormEl);
+                formDataFieldName = oneInputEl.data("fieldName");
+                const val = oneInputEl.val();
+                allValuesForOneControl.push(val);
             }
 
-            for (let i = 0; i < valuesForOneControl.length; i++) {
-                const val = valuesForOneControl[i];
-                if (val !== undefined && val !== null && val !== "") {
-                    const oneItemAsObjLit = {};
-                    oneItemAsObjLit[fieldName] = val;
-                    convertedArray.push(oneItemAsObjLit);
-                }
-            }
+            const allDataForOneControl = {};
+            allDataForOneControl['fieldName'] = formDataFieldName;
+            allDataForOneControl['type'] = uiControlType;
+            allDataForOneControl['values'] = allValuesForOneControl;
+
+            allUiControlsOfArrayType.push(allDataForOneControl);
+        });
+
+        return allUiControlsOfArrayType;
+    }
+    _createEachItemEntity(valuesForOneControl, uiControlType) {
+        const convertedArray = []; // Corrected initialization
+        let fieldName;
+        if (uiControlType === 'Text')
+            fieldName = 'itemText';
+        else if (uiControlType === 'Number')
+            fieldName = 'itemNumber';
+        else if (uiControlType === 'DateTime')
+            fieldName = 'itemDateTime';
+        else {
+            alert('This uicontrol type for simple array type is not yet supported ' + uiControlType);
             return convertedArray;
         }
 
-        function _createEachExpenseEntity(outerArray, expenseFieldArray) {
-            const convertedArray = [];
-            for (let i = 0; i < outerArray.length; i++) {
-                const oneItemAsAnArray = outerArray[i];
+        for (let i = 0; i < valuesForOneControl.length; i++) {
+            const val = valuesForOneControl[i];
+            if (val !== undefined && val !== null && val !== "") {
                 const oneItemAsObjLit = {};
-                for (let j = 0; j < oneItemAsAnArray.length; j++) {
-                    oneItemAsObjLit[expenseFieldArray[j]] = oneItemAsAnArray[j];
-                }
-                const converted = Number(oneItemAsObjLit['amount']);
-                if ($.isNumeric(converted))
-                    oneItemAsObjLit['amount'] = converted;
-                else
-                    oneItemAsObjLit['amount'] = 0;
-
-                oneItemAsObjLit['id'] = '' + i;  // add a unique id that can be used in other steps where we need to add data to an expense item (like a file upload doc)
-
+                oneItemAsObjLit[fieldName] = val;
                 convertedArray.push(oneItemAsObjLit);
             }
-            return convertedArray;
         }
+        return convertedArray;
+    }
 
-        function _saveArrayElFormData(formDataFieldName, outerArray) {
-            if (outerArray === undefined)
-                return;
-
-            if (itsPathToData === undefined || itsPathToData === null)
-                itsFormData[formDataFieldName] = outerArray;
-            else {
-                if (itsFormData[itsPathToData] === undefined)
-                    itsFormData[itsPathToData] = {};
-
-                itsFormData[itsPathToData][formDataFieldName] = outerArray;
+    _createEachExpenseEntity(outerArray, expenseFieldArray) {
+        const convertedArray = []; // Corrected initialization
+        for (let i = 0; i < outerArray.length; i++) {
+            const oneItemAsAnArray = outerArray[i];
+            const oneItemAsObjLit = {};
+            for (let j = 0; j < oneItemAsAnArray.length; j++) {
+                oneItemAsObjLit[expenseFieldArray[j]] = oneItemAsAnArray[j];
             }
+            const converted = Number(oneItemAsObjLit['amount']);
+            if ($.isNumeric(converted))
+                oneItemAsObjLit['amount'] = converted;
+            else
+                oneItemAsObjLit['amount'] = 0;
+
+            oneItemAsObjLit['id'] = '' + i;
+
+            convertedArray.push(oneItemAsObjLit);
         }
+        return convertedArray;
+    }
+    _saveArrayElFormData(formDataFieldName, outerArray) {
+        if (outerArray === undefined)
+            return;
 
-        async function _runDecisionService(decisionServiceEngine, payload) {
-            try {
-                const event = { "input": payload, "stage": payload[0].currentStageNumber };
-                corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.BEFORE_DS_EXECUTION, event);
+        if (this.itsPathToData === undefined || this.itsPathToData === null)
+            this.itsFormData[formDataFieldName] = outerArray;
+        else {
+            if (this.itsFormData[this.itsPathToData] === undefined)
+                this.itsFormData[this.itsPathToData] = {};
 
-                const configuration = { logLevel: 0 };
-                // const configuration = { logLevel: 1 };
-                const t1 = performance.now();
-                // console.log("** About to call decision service");
-                const result = await decisionServiceEngine.execute(payload, configuration);
-                // console.log("** Done with call decision service");
-                const t2 = performance.now();
-                const event2 = {
-                    "output": result,
-                    "execTimeMs": t2 - t1,
-                    "stage": payload[0].currentStageNumber
-                };
+            this.itsFormData[this.itsPathToData][formDataFieldName] = outerArray;
+        }
+    }
 
-                if (result.corticon !== undefined) {
-                    if (result.corticon.status === 'success') {
-                        const newStepUI = result.payload[0];
-                        if (newStepUI.currentStageDescription !== undefined && newStepUI.currentStageDescription !== null)
-                            event2["stageDescription"] = newStepUI.currentStageDescription;
-                    }
-                    else
-                        alert('There was an error executing the rules.\n' + JSON.stringify(result, null, 2));
+    async _runDecisionService(decisionServiceEngine, payload) {
+        try {
+            const event = { "input": payload, "stage": payload[0].currentStageNumber };
+            raiseEvent(customEvents.BEFORE_DS_EXECUTION, event);
 
-                    corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.NEW_DS_EXECUTION, event2);
-                    return result;
+            const configuration = { logLevel: 0 };
+            const t1 = performance.now();
+            const result = await decisionServiceEngine.execute(payload, configuration);
+            const t2 = performance.now();
+            const event2 = {
+                "output": result,
+                "execTimeMs": t2 - t1,
+                "stage": payload[0].currentStageNumber
+            };
+
+            if (result.corticon !== undefined) {
+                if (result.corticon.status === 'success') {
+                    const newStepUI = result.payload[0];
+                    if (newStepUI.currentStageDescription !== undefined && newStepUI.currentStageDescription !== null)
+                        event2["stageDescription"] = newStepUI.currentStageDescription;
                 }
                 else
                     alert('There was an error executing the rules.\n' + JSON.stringify(result, null, 2));
+
+                raiseEvent(customEvents.NEW_DS_EXECUTION, event2);
+                return result;
             }
-            catch (e) {
-                alert('There was an exception executing the rules ' + e);
-            }
+            else
+                alert('There was an error executing the rules.\n' + JSON.stringify(result, null, 2));
         }
-
-        // Public interface
-        return {
-            startDynUI: startDynUI,
-            processNextStep: processNextStep,
-            processPrevStep: processPrevStep
+        catch (e) {
+            alert('There was an exception executing the rules ' + e);
         }
-        function _saveEnteredInputsToFormData(baseEl) {
-            _saveNonArrayInputsToFormData(baseEl);
-            _saveArrayTypeInputsToFormData(baseEl);
-            corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.NEW_FORM_DATA_SAVED, itsFormData);
-
-            // Handle 'MultiText' controls
-            let multiTextEls = baseEl.find('.multiTextInputContainer');
-
-            multiTextEls.each(function (index, item) {
-                const oneArrayEl = $(item);
-                let allFormEls = oneArrayEl.find(':input').not(':checkbox');
-                let formDataFieldName;
-                let outerArray = [];
-                let innerArray = [];
-                for (let i = 0; i < allFormEls.length; i++) {
-                    const oneFormEl = allFormEls[i];
-                    const oneInputEl = $(oneFormEl);
-                    formDataFieldName = oneInputEl.data("fieldName");
-                    const val = oneInputEl.val();
-                    innerArray.push(val);
-                }
-                outerArray.push(innerArray);
-
-                if (outerArray.length !== 0) {
-                    let uiControlType = $(this).find('input').data("uicontroltype"); if (uiControlType === 'MultiText') {
-                        const textFieldArray = ['textInput'];
-                        const convertedArray = _createEachTextEntity(outerArray, textFieldArray);
-                        _saveArrayElFormData(formDataFieldName, convertedArray, itsPathToData); // Pass itsPathToData
-                    }
-                    //  else
-                    //        alert('This complex array type is not yet supported ' + uiControlType);
-                }
-            });
-
-        }
-
     }
+
+    _saveEnteredInputsToFormData(baseEl) {
+        this._saveNonArrayInputsToFormData(baseEl);
+        this._saveArrayTypeInputsToFormData(baseEl);
+        raiseEvent(customEvents.NEW_FORM_DATA_SAVED, this.itsFormData);
+
+        // Handle 'MultiText' controls
+        let multiTextEls = baseEl.find('.multiTextInputContainer');
+
+        multiTextEls.each(function (index, item) {
+            const oneArrayEl = $(item);
+            let allFormEls = oneArrayEl.find(':input').not(':checkbox');
+            let formDataFieldName; // Declaration is fine here
+            let outerArray = []; // Corrected initialization
+            let innerArray = []; // Corrected initialization
+
+            for (let i = 0; i < allFormEls.length; i++) {
+                const oneFormEl = allFormEls[i];
+                const oneInputEl = $(oneFormEl);
+                formDataFieldName = oneInputEl.data("fieldName");
+                const val = oneInputEl.val();
+                innerArray.push(val);
+            }
+
+            outerArray.push(innerArray);
+
+            if (outerArray.length !== 0) {
+                let uiControlType = oneArrayEl.find('input').data("uicontroltype"); // Corrected to use oneArrayEl
+                if (uiControlType === 'MultiText') {
+                    const textFieldArray = ['textInput'];
+                    const convertedArray = this._createEachTextEntity(outerArray, textFieldArray);
+                    this._saveArrayElFormData(formDataFieldName, convertedArray, this.itsPathToData); // Pass itsPathToData
+                }
+                // else
+                //    alert('This complex array type is not yet supported ' + uiControlType);
+            }
+        }.bind(this));
+    }
+
 }
