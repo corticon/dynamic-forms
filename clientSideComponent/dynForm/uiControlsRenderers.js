@@ -10,9 +10,6 @@ import { renderExpenseInput } from './controls/renderExpenseInput.js';
 import { renderFileUploadInput } from './controls/renderFileUploadInput.js';
 import { renderFileUploadExpenseInput } from './controls/renderFileUploadExpenseInput.js';
 import { renderMultiTextInput } from './controls/renderMultiTextInput.js';
-// Assuming you have a renderLocationControl.js file
-import { renderLocationControl } from './controls/renderLocationControl.js';
-
 export default class UIControlsRenderer {
     render(uiControls, baseEl, labelPositionAtUILevel, language, completionFct) {
         uiControls.forEach(oneUIControl => {
