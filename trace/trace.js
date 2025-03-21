@@ -1,38 +1,39 @@
 import { customEvents, raiseEvent } from './customEvents.js'; // Adjust path if needed
 
-export function Tracer() {
-    // private section
-    let itsStagesTrace = [];
-
-    function setupTracing() {
-        raiseEvent(customEvents.BEFORE_START, _clearTraceData);
-        raiseEvent(customEvents.NEW_FORM_DATA_SAVED, _traceFormData);
-        raiseEvent(customEvents.BEFORE_DS_EXECUTION, _traceDecisionServiceInputs);
-        raiseEvent(customEvents.NEW_DS_EXECUTION, _traceDecisionServiceResults);
-        raiseEvent(Tracer.tracerCustomEvents.SWITCH_TO_SAVED_STAGE, _switchToSavedStage);
+export class Tracer {
+    constructor() {
+        this.itsStagesTrace = [];
     }
 
-    function _clearTraceData() {
+    setupTracing() {
+        raiseEvent(customEvents.BEFORE_START, this._clearTraceData.bind(this));
+        raiseEvent(customEvents.NEW_FORM_DATA_SAVED, this._traceFormData.bind(this));
+        raiseEvent(customEvents.BEFORE_DS_EXECUTION, this._traceDecisionServiceInputs.bind(this));
+        raiseEvent(customEvents.NEW_DS_EXECUTION, this._traceDecisionServiceResults.bind(this));
+        raiseEvent(Tracer.tracerCustomEvents.SWITCH_TO_SAVED_STAGE, this._switchToSavedStage.bind(this));
+    }
+
+    _clearTraceData() {
         document.getElementById("decisionServiceInputId").value = "";
         document.getElementById("decisionServiceResultId").value = "";
         document.getElementById("formDataId").value = "";
 
-        itsStagesTrace = [];
+        this.itsStagesTrace = [];
         $("#traceHistoryId").empty();
     }
 
-    function _traceDecisionServiceInputs(event) {
+    _traceDecisionServiceInputs(event) {
         const theData = event.theData;
         const input = theData.input;
         const stage = theData.stage;
-        const index = itsStagesTrace.length;
+        const index = this.itsStagesTrace.length;
         const x = JSON.stringify(input, null, 2);
-        itsStagesTrace[index] = { "input": x, "result": null, "formData": null };
-        _showDecisionServiceInputs(x);
-        _addStageInHistory(stage, index);
+        this.itsStagesTrace[index] = { "input": x, "result": null, "formData": null };
+        this._showDecisionServiceInputs(x);
+        this._addStageInHistory(stage, index);
     }
 
-    function _traceDecisionServiceResults(event) {
+    _traceDecisionServiceResults(event) {
         const theData = event.theData;
         const result = theData.output;
         const execTimeMs = theData.execTimeMs;
@@ -44,27 +45,27 @@ export function Tracer() {
             stageDescription = "no description provided";
 
         // we assume there was a call to trace the input and thus a new element in history
-        const index = itsStagesTrace.length - 1;
-        itsStagesTrace[index].result = JSON.stringify(result, null, 2);
-        itsStagesTrace[index].timing = Math.round(execTimeMs);
+        const index = this.itsStagesTrace.length - 1;
+        this.itsStagesTrace[index].result = JSON.stringify(result, null, 2);
+        this.itsStagesTrace[index].timing = Math.round(execTimeMs);
 
         // add tooltip to the existing node created before we made call to DS
         const el = $("#traceNodeId_" + index);
         el.prop("title", stageDescription);
 
-        _showDecisionServiceResults(itsStagesTrace[index].result, itsStagesTrace[index].timing);
+        this._showDecisionServiceResults(this.itsStagesTrace[index].result, this.itsStagesTrace[index].timing);
     }
 
-    function _showDecisionServiceInputs(newValue) {
+    _showDecisionServiceInputs(newValue) {
         document.getElementById("decisionServiceInputId").value = newValue;
     }
 
-    function _removeHighlightedStage() {
+    _removeHighlightedStage() {
         $(".stageInTrace").removeClass("activeStageInTrace");
     }
 
-    function _addStageInHistory(stage, index) {
-        _removeHighlightedStage();
+    _addStageInHistory(stage, index) {
+        this._removeHighlightedStage();
 
         let html = `<span>`;
         if (index !== 0)
@@ -75,51 +76,46 @@ href="#" onclick="Tracer.tracerClickStage(${index}, this)">&nbsp;${stage}&nbsp;<
 
         $("#traceHistoryId").append(html);
 
-        const newTitle = "Stages History: " + itsStagesTrace.length + " stages";
+        const newTitle = "Stages History: " + this.itsStagesTrace.length + " stages";
         $("#traceHistorySummaryId").prop("title", newTitle);
     }
 
-    function _traceFormData(event) {
+    _traceFormData(event) {
         const theData = event.theData;
-        const index = itsStagesTrace.length - 1;
+        const index = this.itsStagesTrace.length - 1;
         const x = JSON.stringify(theData, null, 2);
-        itsStagesTrace[index].formData = x;
-        _showSavedFormData(x);
+        this.itsStagesTrace[index].formData = x;
+        this._showSavedFormData(x);
     }
 
-    function _switchToSavedStage(event) {
+    _switchToSavedStage(event) {
         const index = event.theData.index;
         const theEl = event.theData.el;
-        _removeHighlightedStage();
+        this._removeHighlightedStage();
         $(theEl).addClass("activeStageInTrace");
-        const oneTrace = itsStagesTrace[index];
-        _showDecisionServiceInputs(oneTrace.input);
-        _showDecisionServiceResults(oneTrace.result, oneTrace.timing);
-        _showSavedFormData(oneTrace.formData);
+        const oneTrace = this.itsStagesTrace[index];
+        this._showDecisionServiceInputs(oneTrace.input);
+        this._showDecisionServiceResults(oneTrace.result, oneTrace.timing);
+        this._showSavedFormData(oneTrace.formData);
     }
 
-    function _showDecisionServiceResults(newValue, execTimeMs) {
+    _showDecisionServiceResults(newValue, execTimeMs) {
         document.getElementById("decisionServiceResultId").value = newValue;
         $("#execTimeId").html("(" + execTimeMs + "ms)");
     }
 
-    function _showSavedFormData(newValue) {
+    _showSavedFormData(newValue) {
         if (newValue === null || newValue.length === 0)
             newValue = "Form Data was not saved at that step";
 
         document.getElementById("formDataId").value = newValue;
     }
 
-    return {
-        setupTracing: setupTracing,
-        switchToSavedStage: _switchToSavedStage
+    static tracerCustomEvents = {
+        "SWITCH_TO_SAVED_STAGE": "switchToSavedStage",
     };
+
+    static tracerClickStage(index, theEl) {
+        raiseEvent(Tracer.tracerCustomEvents.SWITCH_TO_SAVED_STAGE, { "index": index, "el": theEl });
+    }
 }
-
-Tracer.tracerCustomEvents = {
-    "SWITCH_TO_SAVED_STAGE": "switchToSavedStage",
-};
-
-Tracer.tracerClickStage = function (index, theEl) {
-    raiseEvent(Tracer.tracerCustomEvents.SWITCH_TO_SAVED_STAGE, { "index": index, "el": theEl });
-};
