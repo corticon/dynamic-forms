@@ -1,0 +1,122 @@
+/* Shared with Kendo UI mode */
+.dynUIContainer {
+    margin: 1rem;
+    padding: 1rem;
+    border: 0.3rem solid #000000;
+    border-radius: 1rem;
+}
+
+/* Not shared with Kendo UI mode */
+.dynUIContainerColors {
+    background-color: ghostwhite;
+    color: black;
+}
+
+.inputContainer {
+    margin: 1em;
+}
+
+.inputLabelSide {
+    margin-left: .3em;
+    margin-right: .3em;
+}
+
+
+.readOnlyText {
+    margin-left: .3em;
+    margin-right: .3em;
+}
+
+.fieldValidationLabel {
+    margin-left: .3em;
+    margin-right: .3em;
+}
+
+.containerValidationMessage {
+    color: firebrick;
+}
+
+.controlValidationMessage {
+    color: firebrick;
+}
+
+.textAreaControl {
+    vertical-align: middle
+}
+
+.addTextContainer {
+    text-align: center;
+    border: black 1px solid;
+    border-radius: 0.5rem;
+    margin-left: 2rem;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: blue;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    display: table;
+}
+
+.expenseAmount {
+    width: 5rem;
+    margin-left: 0.8rem;
+}
+
+.addExpenseContainer {
+    text-align: center;
+    border: black 1px solid;
+    border-radius: 0.5rem;
+    margin-left: 2rem;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: blue;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    display: table;
+}
+
+.currencySelector {
+    margin-left: 0.8rem;
+}
+
+/* Override some of the kendo ui style*/
+.k-input {
+    width: auto;
+}
+
+.k-input,
+.k-picker {
+    width: auto;
+}
+
+.hint {
+    display: inline-block;
+}
+
+.hint p {
+    visibility: hidden;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+.hint:hover p,
+.hint:focus p {
+    visibility: visible;
+}
+
+.hint>span {
+    cursor: pointer;
+}
+
+.fa-info::before {
+    content: "\\f129";
+    font-family: FontAwesome;
+}
