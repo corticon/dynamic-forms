@@ -13,6 +13,18 @@ let itsFlagRenderWithKui = false;
 const itsTracer = new Tracer();
 const itsStepsController = new StepsController();
 
+window.processSwitchSample = processSwitchSample;
+window.setDataForCurrentSample = setDataForCurrentSample;
+window.processSwitchLanguage = processSwitchLanguage;
+window.processClickStart = processClickStart;
+window.processClickNext = processClickNext;
+window.processClickPrev = processClickPrev;
+window.saveStateToLocalStorage = saveStateToLocalStorage;
+window.processShowTrace = processShowTrace;
+window.processHideTrace = processHideTrace;
+window.processUseHtml = processUseHtml;
+window.processUseKui = processUseKui;
+
 function processSwitchSample(selectObject) {
     const index = selectObject.value;
     setDataForCurrentSample(index);
