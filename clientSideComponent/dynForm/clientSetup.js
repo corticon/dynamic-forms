@@ -1,7 +1,7 @@
 import UIControlsRenderer from './uiControlsRenderers.js';
 import { StepsController } from './stepsController.js';
 import { Tracer } from '/trace/trace.js'; // Corrected path
-// import { customEvents, addCustomEventHandler } from './customEvents.js';
+import { customEvents, addCustomEventHandler } from './customEvents.js';
 let currentDecisionServiceEngine;
 let allInputData = [];
 let inputData;

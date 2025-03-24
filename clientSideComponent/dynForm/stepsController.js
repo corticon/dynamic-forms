@@ -310,8 +310,7 @@ export class StepsController {
             console.error('Error: missing container');
             return nextUI;
         }
-
-        this.itsUIControlsRenderer.renderUI(containers, baseEl, this.itsLabelPositionAtUILevel, nextUI.language, this.itsFlagRenderWithKui);
+        console.log("Containers data:", containers); this.itsUIControlsRenderer.render(containers, baseEl, this.itsLabelPositionAtUILevel, nextUI.language, this.itsFlagRenderWithKui);
 
         const event = { "input": payload, "stage": payload[0].currentStageNumber };
         raiseEvent(customEvents.AFTER_UI_STEP_RENDERED, event);

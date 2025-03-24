@@ -52,9 +52,7 @@ export default class UIControlsRenderer {
                 case 'MultiText':
                     renderMultiTextInput(oneUIControl, containerBaseEl, labelPositionAtUILevel);
                     break;
-                case 'Location':
-                    renderLocationControl(oneUIControl, containerBaseEl, labelPositionAtUILevel);
-                    break;
+
                 default:
                     console.error('Unknown UI control type:', oneUIControl.type);
                     break;
