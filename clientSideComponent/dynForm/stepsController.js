@@ -218,4 +218,431 @@ export class StepsController {
 
             if (nextUI.done) {
                 this.itsFlagAllDone = nextUI.done;
-                raiseEvent(customEvents.FORM
+                raiseEvent(customEvents.FORM_DONE);
+            }
+        }
+    }
+
+    clearRestartData(decisionServiceName) {
+        window.localStorage.removeItem('CorticonRestartPayload_' + decisionServiceName);
+        window.localStorage.removeItem('CorticonRestartPathToData_' + decisionServiceName);
+        window.localStorage.removeItem('CorticonRestartHistory_' + decisionServiceName);
+    }
+
+    saveRestartData(decisionServiceName, payload) {
+        try {
+            window.localStorage.setItem('CorticonRestartPayload_' + decisionServiceName, payload);
+            window.localStorage.setItem('CorticonRestartPathToData_' + decisionServiceName, this.itsPathToData);
+            window.localStorage.setItem('CorticonRestartHistory_' + decisionServiceName, this.itsHistory.getRestartHistory());
+        } catch (e) {
+            console.error('Error saving restart data:', e);
+        }
+    }
+
+    getRestartData(decisionServiceName) {
+        const payload = window.localStorage.getItem('CorticonRestartPayload_' + decisionServiceName);
+        if (payload !== null)
+            return JSON.parse(payload);
+        else
+            return null;
+    }
+
+    getPathToData(decisionServiceName) {
+        return window.localStorage.getItem('CorticonRestartPathToData_' + decisionServiceName);
+    }
+
+    _resetDecisionServiceInput(language) {
+        this._preparePayloadForNextStage(0, language);
+
+        for (const property in this.itsDecisionServiceInput[1])
+            delete this.itsDecisionServiceInput[1][property];
+    }
+
+    _preparePayloadForNextStage(nextStage, language) {
+        const nextPayload = {};
+        const stateProperties = ['stageOnExit', 'language', 'labelPosition', 'pathToData'];
+        for (let i = 0; i < stateProperties.length; i++) {
+            const prop = stateProperties[i];
+            if (this.itsDecisionServiceInput[0][prop] !== undefined)
+                nextPayload[prop] = this.itsDecisionServiceInput[0][prop];
+        }
+
+        nextPayload.currentStageNumber = nextStage;
+
+        if (language !== undefined) {
+            nextPayload['language'] = language;
+        }
+
+        this.itsDecisionServiceInput[0] = nextPayload;
+    }
+
+    _processLabelPositionSetting(newLabelPosition) {
+        if (newLabelPosition !== undefined && newLabelPosition !== null)
+            this.itsLabelPositionAtUILevel = newLabelPosition;
+    }
+
+    async _askDecisionServiceForNextUIElementsAndRender(decisionServiceEngine, payload, baseEl) {
+        const result = await this._runDecisionService(decisionServiceEngine, payload);
+        if (result.corticon.status !== 'success')
+            return;
+
+        const nextUI = result.payload[0];
+
+        if (nextUI.pathToData !== undefined && nextUI.pathToData !== null && nextUI.pathToData.length !== 0)
+            this.itsPathToData = nextUI.pathToData;
+
+        this._processLabelPositionSetting(nextUI.labelPosition);
+
+        this.itsFormData = this.itsDecisionServiceInput[1];
+
+        const backgroundDataArray = nextUI.backgroundData;
+        if (backgroundDataArray) {
+            for (const backgroundData of backgroundDataArray) {
+                await this._processBackgroundData(backgroundData);
+            }
+        }
+
+        if (nextUI.noUiToRenderContinue !== undefined && nextUI.noUiToRenderContinue)
+            return nextUI;
+
+        const containers = nextUI.containers;
+        if (containers === undefined) {
+            console.error('Error: missing container');
+            return nextUI;
+        }
+
+        this.itsUIControlsRenderer.renderUI(containers, baseEl, this.itsLabelPositionAtUILevel, nextUI.language, this.itsFlagRenderWithKui);
+
+        const event = { "input": payload, "stage": payload[0].currentStageNumber };
+        raiseEvent(customEvents.AFTER_UI_STEP_RENDERED, event);
+
+        return nextUI;
+    }
+
+    _saveOneFormData(formDataFieldName, val) {
+        if (val === undefined)
+            return;
+
+        if (this.itsPathToData === undefined || this.itsPathToData === null)
+            this.itsFormData[formDataFieldName] = val;
+        else {
+            if (this.itsFormData[this.itsPathToData] === undefined)
+                this.itsFormData[this.itsPathToData] = {};
+
+            this.itsFormData[this.itsPathToData][formDataFieldName] = val;
+        }
+    }
+
+    _saveNonArrayInputsToFormData(baseEl) {
+        let allFormEls = baseEl.find('.nonarrayTypeControl :input').not(':checkbox').not('.markerFileUploadExpense');
+        allFormEls.each((index, item) => {
+            const oneInputEl = $(item);
+            const formDataFieldName = oneInputEl.data("fieldName");
+            const val = oneInputEl.val();
+            const type = oneInputEl.data("type");
+            if (type !== undefined && type !== null && type === "decimal") {
+                const converted = Number(val);
+                if (isNaN(converted))
+                    console.error("you didn't enter a number in the field");
+                else
+                    this._saveOneFormData(formDataFieldName, converted);
+            }
+            else if (type !== undefined && type !== null && type === "datetimetag" || type === "datetag") {
+                if (val !== undefined && val !== null && val !== "") {
+                    const theDate = new Date(val);
+                    let theDateISOString;
+                    let theDateAsMsSinceEpoch;
+                    if (type === "datetag") {
+                        const tzOffsetMns = theDate.getTimezoneOffset();
+                        const utcMs = theDate.getTime() + tzOffsetMns * 60 * 1000;
+                        const utcDate = new Date(utcMs);
+                        theDateISOString = utcDate.toISOString();
+                        theDateAsMsSinceEpoch = utcDate.getTime();
+                    }
+                    else {
+                        theDateISOString = theDate.toISOString();
+                        theDateAsMsSinceEpoch = theDate.getTime();
+                    }
+                    this._saveOneFormData(formDataFieldName, theDateISOString);
+                }
+            }
+            else {
+                if (val !== undefined && val !== null && val !== "")
+                    this._saveOneFormData(formDataFieldName, val);
+            }
+        });
+
+        allFormEls = baseEl.find('.nonarrayTypeControl :checkbox');
+        allFormEls.each((index, item) => {
+            const oneInputEl = $(item);
+            const formDataFieldName = oneInputEl.data("fieldName");
+            const val = oneInputEl.is(':checked');
+            this._saveOneFormData(formDataFieldName, val);
+        });
+
+        this._saveFileUploadExpenses(baseEl);
+    }
+
+    _saveFileUploadExpenses(baseEl) {
+        let allFormEls = baseEl.find('.nonarrayTypeControl .markerFileUploadExpense');
+
+        allFormEls.each((index, item) => {
+            const oneInputEl = $(item);
+            const formDataFieldName = oneInputEl.data("fieldName");
+            const id = oneInputEl.attr('id')
+            const val = oneInputEl.val();
+            this._saveOneFileUploadExpenseData(formDataFieldName, val, id);
+        });
+    }
+
+    _saveOneFileUploadExpenseData(formDataFieldName, val, id) {
+        if (val === undefined)
+            return;
+
+        let theExpenses;
+        if (this.itsPathToData === undefined || this.itsPathToData === null)
+            theExpenses = this.itsFormData[formDataFieldName];
+        else {
+            if (this.itsFormData[this.itsPathToData] === undefined) {
+                console.error('Error: There should already be form data');
+                return;
+            }
+            else
+                theExpenses = this.itsFormData[this.itsPathToData][formDataFieldName];
+        }
+
+        for (let i = 0; i < theExpenses.length; i++) {
+            const oneExpense = theExpenses[i];
+            if (oneExpense.id === id)
+                oneExpense['fileUpload'] = val;
+        }
+    }
+
+    _saveArrayTypeInputsToFormData(baseEl) {
+        this._processAllSimpleArrayControls(baseEl);
+        this._processAllComplexArrayControls(baseEl, this.itsPathToData);
+    }
+
+    _processAllComplexArrayControls(baseEl, itsPathToData) {
+        let outerArray = [];
+        let formDataFieldName;
+        let uiControlType;
+
+        let allArrayEls = baseEl.find(".complexArrayTypeControl");
+
+        if (allArrayEls.length === 0) {
+            return;
+        }
+
+        allArrayEls.each((index, item) => { // Use arrow function to preserve 'this' context
+            const oneArrayEl = $(item);
+            uiControlType = $(oneArrayEl).parent().data("uicontroltype"); // Use oneArrayEl
+            let allFormEls = oneArrayEl.find(":input").not(":checkbox");
+
+            let innerArray = [];
+            for (let i = 0; i < allFormEls.length; i++) {
+                const oneFormEl = allFormEls[i];
+                const oneInputEl = $(oneFormEl);
+                formDataFieldName = oneInputEl.data("fieldName");
+                const val = oneInputEl.val();
+                innerArray.push(val);
+            }
+
+            outerArray.push(innerArray);
+        });
+
+        if (outerArray.length !== 0) {
+            if (uiControlType === "MultiExpenses") {
+                const expenseFieldArray = ["expenseCode", "amount", "currency"];
+                const convertedArray = this._createEachExpenseEntity(outerArray, expenseFieldArray);
+                this._saveArrayElFormData(formDataFieldName, convertedArray, itsPathToData); // Use itsPathToData
+            } else if (uiControlType === "MultiText") {
+                const textFieldArray = ["textInput"];
+                const convertedArray = this._createEachTextEntity(outerArray, textFieldArray);
+                this._saveArrayElFormData(formDataFieldName, convertedArray, itsPathToData); // Use itsPathToData
+            } else {
+                alert("This complex array type is not yet supported " + uiControlType);
+            }
+        }
+    }
+
+    _processAllSimpleArrayControls(baseEl) {
+        const allSimpleUiControlsOfArrayType = this._getAllSimpleArrayTypeInputsToFormData(baseEl);
+
+        for (let j = 0; j < allSimpleUiControlsOfArrayType.length; j++) {
+            const oneControlData = allSimpleUiControlsOfArrayType[j];
+            const uiControlType = oneControlData['type'];
+            const formDataFieldName = oneControlData['fieldName'];
+            const valuesForOneControl = oneControlData['values'];
+            if (uiControlType === 'Text' || uiControlType === 'Number' || uiControlType === 'DateTime') {
+                const convertedArray = this._createEachItemEntity(valuesForOneControl, uiControlType);
+                this._saveArrayElFormData(formDataFieldName, convertedArray);
+            } else
+                alert('This simple array type is not yet supported ' + uiControlType);
+        }
+    }
+
+    _getAllSimpleArrayTypeInputsToFormData(baseEl) {
+        // there can be more than one set of multi inputs per container -> we need to group them per field name
+        let allUiControlsOfArrayType = [];
+
+        let allArrayEls = baseEl.find('.simpleArrayTypeControl');
+        allArrayEls.each(function (index, item) {
+            let formDataFieldName;
+            const oneArrayEl = $(item);
+            const uiControlType = oneArrayEl.data("uicontroltype");
+            const allFormEls = oneArrayEl.find(':input').not(':checkbox');
+
+            let allValuesForOneControl = [];
+            for (let i = 0; i < allFormEls.length; i++) {
+                const oneFormEl = allFormEls[i];
+                const oneInputEl = $(oneFormEl);
+                formDataFieldName = oneInputEl.data("fieldName");
+                const val = oneInputEl.val();
+                allValuesForOneControl.push(val);
+            }
+
+            const allDataForOneControl = {};
+            allDataForOneControl['fieldName'] = formDataFieldName;
+            allDataForOneControl['type'] = uiControlType;
+            allDataForOneControl['values'] = allValuesForOneControl;
+
+            allUiControlsOfArrayType.push(allDataForOneControl);
+        });
+
+        return allUiControlsOfArrayType;
+    }
+
+    _createEachItemEntity(valuesForOneControl, uiControlType) {
+        const convertedArray = [];
+        let fieldName;
+        if (uiControlType === 'Text')
+            fieldName = 'itemText';
+        else if (uiControlType === 'Number')
+            fieldName = 'itemNumber';
+        else if (uiControlType === 'DateTime')
+            fieldName = 'itemDateTime';
+        else {
+            alert('This uicontrol type for simple array type is not yet supported ' + uiControlType);
+            return convertedArray;
+        }
+
+        for (let i = 0; i < valuesForOneControl.length; i++) {
+            const val = valuesForOneControl[i];
+            if (val !== undefined && val !== null && val !== "") {
+                const oneItemAsObjLit = {};
+                oneItemAsObjLit[fieldName] = val;
+                convertedArray.push(oneItemAsObjLit);
+            }
+        }
+        return convertedArray;
+    }
+
+    _createEachExpenseEntity(outerArray, expenseFieldArray) {
+        const convertedArray = [];
+        for (let i = 0; i < outerArray.length; i++) {
+            const oneItemAsAnArray = outerArray[i];
+            const oneItemAsObjLit = {};
+            for (let j = 0; j < oneItemAsAnArray.length; j++) {
+                oneItemAsObjLit[expenseFieldArray[j]] = oneItemAsAnArray[j];
+            }
+            const converted = Number(oneItemAsObjLit['amount']);
+            if ($.isNumeric(converted))
+                oneItemAsObjLit['amount'] = converted;
+            else
+                oneItemAsObjLit['amount'] = 0;
+
+            oneItemAsObjLit['id'] = '' + i;
+
+            convertedArray.push(oneItemAsObjLit);
+        }
+        return convertedArray;
+    }
+
+    _saveArrayElFormData(formDataFieldName, outerArray) {
+        if (outerArray === undefined)
+            return;
+
+        if (this.itsPathToData === undefined || this.itsPathToData === null)
+            this.itsFormData[formDataFieldName] = outerArray;
+        else {
+            if (this.itsFormData[this.itsPathToData] === undefined)
+                this.itsFormData[this.itsPathToData] = {};
+
+            this.itsFormData[this.itsPathToData][formDataFieldName] = outerArray;
+        }
+    }
+
+    async _runDecisionService(decisionServiceEngine, payload) {
+        try {
+            const event = { "input": payload, "stage": payload[0].currentStageNumber };
+            raiseEvent(customEvents.BEFORE_DS_EXECUTION, event);
+
+            const configuration = { logLevel: 0 };
+            const t1 = performance.now();
+            const result = await decisionServiceEngine.execute(payload, configuration);
+            const t2 = performance.now();
+            const event2 = {
+                "output": result,
+                "execTimeMs": t2 - t1,
+                "stage": payload[0].currentStageNumber
+            };
+
+            if (result.corticon !== undefined) {
+                if (result.corticon.status === 'success') {
+                    const newStepUI = result.payload[0];
+                    if (newStepUI.currentStageDescription !== undefined && newStepUI.currentStageDescription !== null)
+                        event2["stageDescription"] = newStepUI.currentStageDescription;
+                }
+                else
+                    alert('There was an error executing the rules.\n' + JSON.stringify(result, null, 2));
+
+                raiseEvent(customEvents.NEW_DS_EXECUTION, event2);
+                return result;
+            }
+            else
+                alert('There was an error executing the rules.\n' + JSON.stringify(result, null, 2));
+        }
+        catch (e) {
+            alert('There was an exception executing the rules ' + e);
+        }
+    }
+
+    _saveEnteredInputsToFormData(baseEl) {
+        this._saveNonArrayInputsToFormData(baseEl);
+        this._saveArrayTypeInputsToFormData(baseEl);
+        raiseEvent(customEvents.NEW_FORM_DATA_SAVED, this.itsFormData);
+
+        // Handle 'MultiText' controls
+        let multiTextEls = baseEl.find('.multiTextInputContainer');
+
+        multiTextEls.each((index, item) => {
+            const oneArrayEl = $(item);
+            let allFormEls = oneArrayEl.find(':input').not(':checkbox');
+            let formDataFieldName; // Declaration is fine here
+            let outerArray = []; // Corrected initialization
+            let innerArray = []; // Corrected initialization
+
+            for (let i = 0; i < allFormEls.length; i++) {
+                const oneFormEl = allFormEls[i];
+                const oneInputEl = $(oneFormEl);
+                formDataFieldName = oneInputEl.data("fieldName");
+                const val = oneInputEl.val();
+                innerArray.push(val);
+            }
+            outerArray.push(innerArray);
+
+            if (outerArray.length !== 0) {
+                let uiControlType = oneArrayEl.find('input').data("uicontroltype"); // Corrected to use oneArrayEl
+                if (uiControlType === 'MultiText') {
+                    const textFieldArray = ['textInput'];
+                    const convertedArray = this._createEachTextEntity(outerArray, textFieldArray);
+                    this._saveArrayElFormData(formDataFieldName, convertedArray, this.itsPathToData); // Pass itsPathToData
+                }
+                // else
+                //    alert('This complex array type is not yet supported ' + uiControlType);
+            }
+        });
+    }
+
+}
