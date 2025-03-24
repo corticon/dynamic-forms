@@ -1,7 +1,7 @@
 import { History } from './history.js';
 import UIControlsRenderer from './uiControlsRenderers.js';
 import { customEvents, raiseEvent } from './customEvents.js';
-const JSONPath = jsonpath;
+const JSONPath = window.jsonpathPlus; // Access the library through window.jsonpathPlus
 
 function _createEachTextEntity(outerArray, textFieldArray) {
     const convertedArray = [];
