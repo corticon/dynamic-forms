@@ -363,19 +363,18 @@ corticon.dynForm.StepsController = function () {
         return nextUI;
     }
     function _saveOneFormData(formDataFieldName, val) {
-        console.log("Saving to:", itsFormData, formDataFieldName, val);
+        console.log("Saving to:", itsFormData, "path:", itsPathToData, "field:", formDataFieldName, "value:", val);
         if (val === undefined)
             return;
-
-        if (itsPathToData === undefined || itsPathToData === null)
-            itsFormData[formDataFieldName] = val;
-        else {
-            if (itsFormData[itsPathToData] === undefined)
+        if (itsPathToData !== undefined && itsPathToData !== null && itsPathToData !== "") {
+            if (itsFormData[itsPathToData] === undefined) {
                 itsFormData[itsPathToData] = {};
-
+            }
             itsFormData[itsPathToData][formDataFieldName] = val;
-            console.log("Saved:", itsFormData); //
+        } else {
+            itsFormData[formDataFieldName] = val;
         }
+        console.log("Saved:", itsFormData);
     }
 
     function _saveNonArrayInputsToFormData(baseEl) {
