@@ -37,19 +37,15 @@ corticon.dynForm.StepsController = function () {
         const restartData = getRestartData(questionnaireName);
         if (restartData === null) {
             setStateForStartFromBeginning(language, externalData);
-        }
-        else {
+        } else {
             const dialog = confirm("Do you want to start from where you left last time?");
             if (dialog) {
                 setStateFromRestartData(questionnaireName, restartData);
-            }
-            else {
+            } else {
                 clearRestartData(questionnaireName);
                 setStateForStartFromBeginning(language, externalData);
             }
         }
-
-
 
         corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.BEFORE_START);
 
@@ -65,11 +61,18 @@ corticon.dynForm.StepsController = function () {
         itsFlagAllDone = false;
         itsPathToData = null;
         itsLabelPositionAtUILevel = "Above"; // Default
+
+        // Log the externalData to inspect its value
         console.log("External Data:", externalData);
 
-        // We do a deep Copy of externalData.  We need to do that to be able to start more than once
-        // (if we don't copy, _resetDecisionServiceInput will erase the original externalData)
-        itsDecisionServiceInput[1] = JSON.parse(JSON.stringify(externalData));
+        try {
+            // We do a deep Copy of externalData.  We need to do that to be able to start more than once
+            // (if we don't copy, _resetDecisionServiceInput will erase the original externalData)
+            itsDecisionServiceInput[1] = JSON.parse(JSON.stringify(externalData));
+        } catch (error) {
+            console.error("Error parsing externalData:", error);
+            console.error("Invalid JSON data:", externalData);
+        }
     }
     async function _processBackgroundData(backgroundData) {
         const url = backgroundData.url;
