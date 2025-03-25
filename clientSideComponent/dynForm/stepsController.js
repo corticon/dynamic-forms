@@ -383,6 +383,8 @@ corticon.dynForm.StepsController = function () {
         // let allFormEls = $('#dynUIContainerId :input').not('#dynUIContainerId :checkbox');
         let allFormEls = baseEl.find('.nonarrayTypeControl :input').not(':checkbox').not('.markerFileUploadExpense');
         allFormEls.each(function (index, item) {
+            console.log("Saving non-array data:", formDataFieldName, val);
+            _saveOneFormData(formDataFieldName, val);
             const oneInputEl = $(item);
             const formDataFieldName = oneInputEl.data("fieldName");
             const val = oneInputEl.val();
@@ -532,6 +534,7 @@ corticon.dynForm.StepsController = function () {
             const valuesForOneControl = oneControlData['values'];
             if (uiControlType === 'Text' || uiControlType === 'Number' || uiControlType === 'DateTime') {
                 const convertedArray = _createEachItemEntity(valuesForOneControl, uiControlType);
+                console.log("Saving array data:", formDataFieldName, convertedArray);
                 _saveArrayElFormData(formDataFieldName, convertedArray);
             } else
                 alert('This simple array type is not yet supported ' + uiControlType);
