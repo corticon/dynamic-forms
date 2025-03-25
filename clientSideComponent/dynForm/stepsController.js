@@ -244,6 +244,7 @@ corticon.dynForm.StepsController = function () {
             _preparePayloadForNextStage(nextUI.nextStageNumber);
             nextUI = await _askDecisionServiceForNextUIElementsAndRender(decisionServiceEngine, itsDecisionServiceInput, baseDynamicUIEl);
             corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.NEW_FORM_DATA_SAVED, itsFormData);
+            console.log("Raising NEW_FORM_DATA_SAVED with:", itsFormData);
             if (nextUI.done) break;
         }
         saveRestartData(itsQuestionnaireName, restartData);
@@ -692,6 +693,7 @@ corticon.dynForm.StepsController = function () {
     function _saveEnteredInputsToFormData(baseEl) {
         _saveNonArrayInputsToFormData(baseEl);
         _saveArrayTypeInputsToFormData(baseEl);
+        console.log("Raising NEW_FORM_DATA_SAVED with:", itsFormData);
         corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.NEW_FORM_DATA_SAVED, itsFormData);
 
         // Handle 'MultiText' controls
