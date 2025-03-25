@@ -80,6 +80,7 @@ href="#" onclick="corticon.tracer.tracerClickStage(${index}, this)">&nbsp;${stag
     }
 
     function _traceFormData(event) {
+        console.log("traceFormData - event:", event);
         const theData = event.theData;
         console.log("traceFormData - theData:", theData);
         const index = itsStagesTrace.length - 1;
