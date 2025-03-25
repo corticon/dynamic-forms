@@ -384,6 +384,7 @@ corticon.dynForm.StepsController = function () {
         // The first one will only retrieve elements of type input, that is <input type="...">, but not <textarea>, <button> and <select> elements.
         // let allFormEls = $('#dynUIContainerId :input').not('#dynUIContainerId :checkbox');
         let allFormEls = baseEl.find('.nonarrayTypeControl :input').not(':checkbox').not('.markerFileUploadExpense');
+        let formDataFieldName
         allFormEls.each(function (index, item) {
             console.log("Saving non-array data:", formDataFieldName, val);
             _saveOneFormData(formDataFieldName, val);
