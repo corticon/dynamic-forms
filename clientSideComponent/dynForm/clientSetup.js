@@ -78,6 +78,7 @@ function processUseKui() {
 }
 function setupInitialInputData() {
     const inDataEmpty = {};
+    const inDataCanonical = inDataEmpty;
     const inJobApplication = inDataEmpty;
     const inI18N = inDataEmpty;
     const inCountry = inDataEmpty;
