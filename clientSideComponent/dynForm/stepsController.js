@@ -236,6 +236,45 @@ corticon.dynForm.StepsController = function () {
     function handleFormCompletion() {
         clearRestartData(itsQuestionnaireName);
         corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.AFTER_DONE);
+
+        // Check if postType is 'REST' in itsDecisionServiceInput[0]
+        if (itsDecisionServiceInput[0]?.postType === 'REST') {
+            const postData = JSON.stringify(itsFormData); // Convert form data to JSON
+
+            // Define the JSONBin API endpoint
+            const jsonBinURL = "https://api.jsonbin.io/v3/b";
+
+            // Define the required headers
+            const headers = {
+                "Content-Type": "application/json",
+                "X-Master-Key": "$2b$10$54Aw8zhbTzfc.xMGSdKlLuv3i6XZ4Ge3967yoIYy2VpLRZGavyXJC", // Replace <API_KEY> with your JSONBin Master Key
+                "X-Access-Key": "$2a$10$jLfkS6dDTWwjBE207JKKLu3hxZPhETsFeEeRjD1Zdf1JcQDybTErO", // Replace <ACCESS_KEY> with your Access Key (optional)
+                "X-Bin-Private": "false", // Set to "true" for private bins
+                "X-Bin-Name": binName, // Use the extracted bin name
+                "X-Collection-Id": "67e30cc38a456b79667c7d30" // Replace <COLLECTION_ID> with your collection ID (optional)
+            };
+
+            // Send a REST POST request to JSONBin
+            fetch(jsonBinURL, {
+                method: "POST",
+                headers: headers,
+                body: postData
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Data successfully posted to JSONBin:", data);
+                })
+                .catch(error => {
+                    console.error("Error posting data to JSONBin:", error);
+                });
+        } else {
+            console.warn('postType is not "REST". Skipping REST POST.');
+        }
     }
 
     async function handleDecisionServiceStep(decisionServiceEngine, baseDynamicUIEl) {
