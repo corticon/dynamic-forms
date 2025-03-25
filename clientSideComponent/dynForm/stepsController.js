@@ -65,6 +65,7 @@ corticon.dynForm.StepsController = function () {
         itsFlagAllDone = false;
         itsPathToData = null;
         itsLabelPositionAtUILevel = "Above"; // Default
+        console.log("External Data:", externalData);
 
         // We do a deep Copy of externalData.  We need to do that to be able to start more than once
         // (if we don't copy, _resetDecisionServiceInput will erase the original externalData)
