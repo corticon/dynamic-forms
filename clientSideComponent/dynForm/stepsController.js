@@ -379,53 +379,65 @@ corticon.dynForm.StepsController = function () {
     }
 
     function _saveNonArrayInputsToFormData(baseEl) {
-        // With space in selector we get all descendants.
-        // There's a difference between $("#panel input") and $("#panel :input).
-        // The first one will only retrieve elements of type input, that is <input type="...">, but not <textarea>, <button> and <select> elements.
-        // let allFormEls = $('#dynUIContainerId :input').not('#dynUIContainerId :checkbox');
+        // Debugging: Check if baseEl is valid
+        if (!baseEl || baseEl.length === 0) {
+            console.error("Error: baseEl is null or empty in _saveNonArrayInputsToFormData");
+            return;
+        }
+
         let allFormEls = baseEl.find('.nonarrayTypeControl :input').not(':checkbox').not('.markerFileUploadExpense');
-        let formDataFieldName
+
+        // Debugging: Check the number of found elements
+        console.log("Found", allFormEls.length, "non-array input elements");
+
         allFormEls.each(function (index, item) {
-            _saveOneFormData(formDataFieldName, val);
             const oneInputEl = $(item);
-            const formDataFieldName = oneInputEl.data("fieldName");
+            let formDataFieldName = oneInputEl.data("fieldName");
+
+            // Debugging: Check if formDataFieldName is valid
+            if (!formDataFieldName) {
+                console.error("Error: fieldName is missing for an element:", item);
+                return; // Skip this element if fieldName is missing
+            }
+
             const val = oneInputEl.val();
             const type = oneInputEl.data("type");
-            console.log("Saving non-array data:", formDataFieldName, val);
+
+            // Debugging: Log the data before saving
+            console.log("Saving non-array data:", {
+                fieldName: formDataFieldName,
+                value: val,
+                type: type
+            });
 
             if (type !== undefined && type !== null && type === "decimal") {
                 const converted = Number(val);
-                if (isNaN(converted))
+                if (isNaN(converted)) {
                     alert("you didn't enter a number in the field");
-                else
+                } else {
                     _saveOneFormData(formDataFieldName, converted);
-            }
-            else if (type !== undefined && type !== null && type === "datetimetag" || type === "datetag") {
+                }
+            } else if (type !== undefined && type !== null && (type === "datetimetag" || type === "datetag")) {
                 if (val !== undefined && val !== null && val !== "") {
                     const theDate = new Date(val);
                     let theDateISOString;
-                    let theDateAsMsSinceEpoch;  // if one prefers to work with ms since epoch
+                    let theDateAsMsSinceEpoch;
                     if (type === "datetag") {
                         const tzOffsetMns = theDate.getTimezoneOffset();
-                        // Create a new Date object UTC timezone
                         const utcMs = theDate.getTime() + tzOffsetMns * 60 * 1000;
                         const utcDate = new Date(utcMs);
                         theDateISOString = utcDate.toISOString();
-                        theDateAsMsSinceEpoch = utcDate.getTime(); // it is possible to pass the date to Corticon DS as ms since epoch
-                    }
-                    else {
+                        theDateAsMsSinceEpoch = utcDate.getTime();
+                    } else {
                         theDateISOString = theDate.toISOString();
                         theDateAsMsSinceEpoch = theDate.getTime();
                     }
-
-                    // debugger;
                     _saveOneFormData(formDataFieldName, theDateISOString);
-                    // _saveOneFormData(formDataFieldName, theDateAsMsSinceEpoch);
                 }
-            }
-            else {
-                if (val !== undefined && val !== null && val !== "")
+            } else {
+                if (val !== undefined && val !== null && val !== "") {
                     _saveOneFormData(formDataFieldName, val);
+                }
             }
         });
 
