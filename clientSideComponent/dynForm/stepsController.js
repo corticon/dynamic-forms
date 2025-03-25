@@ -238,6 +238,7 @@ corticon.dynForm.StepsController = function () {
         _preparePayloadForNextStage(itsDecisionServiceInput[0].nextStageNumber);
         const restartData = JSON.stringify(itsDecisionServiceInput);
         let nextUI = await _askDecisionServiceForNextUIElementsAndRender(decisionServiceEngine, itsDecisionServiceInput, baseDynamicUIEl);
+        console.log("After DS call - itsFormData:", itsFormData);
         while (nextUI.noUiToRenderContinue !== undefined && nextUI.noUiToRenderContinue) {
             _preparePayloadForNextStage(nextUI.nextStageNumber);
             nextUI = await _askDecisionServiceForNextUIElementsAndRender(decisionServiceEngine, itsDecisionServiceInput, baseDynamicUIEl);
@@ -359,7 +360,7 @@ corticon.dynForm.StepsController = function () {
         return nextUI;
     }
     function _saveOneFormData(formDataFieldName, val) {
-        console.log("Saving to:", itsFormData, "path:", itsPathToData, "field:", formDataFieldName, "value:", val);
+        console.log("Saving to - path:", itsPathToData, "field:", formDataFieldName, "value:", val);
         if (val === undefined)
             return;
         if (itsPathToData !== undefined && itsPathToData !== null && itsPathToData !== "") {
