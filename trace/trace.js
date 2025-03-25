@@ -107,12 +107,19 @@ href="#" onclick="corticon.tracer.tracerClickStage(${index}, this)">&nbsp;${stag
 
     function _showSavedFormData(newValue) {
         console.log("showSavedFormData - newValue:", newValue);
-        if (newValue === null || newValue.length === 0)
+        if (newValue === null || newValue.length === 0) {
             newValue = "Form Data was not saved at that step";
+        } else {
+            try {
+                newValue = JSON.parse(newValue); // Parse the stringified JSON
+            } catch (e) {
+                console.error("Error parsing newValue:", e);
+                // Handle parsing error if needed
+            }
+        }
 
-        document.getElementById("formDataId").value = newValue;
+        document.getElementById("formDataId").value = JSON.stringify(newValue, null, 2); // Stringify again for display
     }
-
     return {
         setupTracing: setupTracing,
         switchToSavedStage: _switchToSavedStage
