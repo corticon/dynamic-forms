@@ -93,43 +93,26 @@ function processUseKui() {
 
 function setupInitialInputData() {
     const inDataEmpty = {};
-    const inDataCanonical = inDataEmpty;
-    const inDataReuseSubflow = {};
-    const inMulticontainer = inDataEmpty;
-    const inDataValidation = inDataEmpty;
-    const inJobApplication = inDataEmpty;
+       const inJobApplication = inDataEmpty;
     const inI18N = inDataEmpty;
-    const inKitchenSink = inDataEmpty;
     const inCountry = inDataEmpty;
     const inVehicleSelection = inDataEmpty;
     const inPropertyInsurance = inDataEmpty;
-    const inGardenPlantDisease = inDataEmpty;
-    const inT2DB = inDataEmpty;
     const inForeignRisk = inDataEmpty;
     const inHomeowners = inDataEmpty;
+    const inCrossings = inDataEmpty;
     
 
 
-    // Here is an example on how to pass initial data to the decision service before the first step
-    // const inDataClaim = {};
-    // inDataClaim.claim = {};
-    // inDataClaim.claim.policyType = 'Individual';
-
-    // Must correspond with the order of the DS inclusion
     allInputData.push(inDataCanonical);
-    allInputData.push(inDataReuseSubflow);
-    allInputData.push(inMulticontainer);
-    allInputData.push(inDataValidation);
-    allInputData.push(inJobApplication);
+ 
     allInputData.push(inI18N);
-    allInputData.push(inKitchenSink);
     allInputData.push(inCountry);
     allInputData.push(inVehicleSelection);
     allInputData.push(inPropertyInsurance);
-    allInputData.push(inGardenPlantDisease);
-    allInputData.push(inT2DB);
     allInputData.push(inForeignRisk);
     allInputData.push(inHomeowners);
+    allInputData.push(inCrossings);
     
 
     inputData = allInputData[0];
