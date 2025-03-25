@@ -66,7 +66,7 @@ corticon.dynForm.StepsController = function () {
 
     function setStateForStartFromBeginning(language, externalData) {
         _resetDecisionServiceInput(language);
-
+        console.log("Before initialization:", itsFormData);
         itsFormData = null;
         itsFlagAllDone = false;
         itsPathToData = null;
@@ -82,6 +82,7 @@ corticon.dynForm.StepsController = function () {
         } catch (error) {
             console.error("Error parsing externalData:", error);
             console.error("Invalid JSON data:", externalData);
+            console.log("After initialization:", itsFormData);
         }
     }
     async function _processBackgroundData(backgroundData) {
