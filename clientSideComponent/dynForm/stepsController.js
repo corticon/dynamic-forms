@@ -68,6 +68,7 @@ corticon.dynForm.StepsController = function () {
         _resetDecisionServiceInput(language);
         console.log("Before initialization:", itsFormData);
         itsFormData = null;
+        console.log("After initialization:", itsFormData); // Log after initialization
         itsFlagAllDone = false;
         itsPathToData = null;
         itsLabelPositionAtUILevel = "Above"; // Default
@@ -285,6 +286,7 @@ corticon.dynForm.StepsController = function () {
     }
 
     function _resetDecisionServiceInput(language) {
+        console.log("Inside _resetDecisionServiceInput - Before:", itsFormData);
         _preparePayloadForNextStage(0, language);
 
         for (const property in itsDecisionServiceInput[1]) // clear all previous form data if any
@@ -311,6 +313,7 @@ corticon.dynForm.StepsController = function () {
         }
 
         itsDecisionServiceInput[0] = nextPayload;
+        console.log("Inside _resetDecisionServiceInput - After:", itsFormData);
     }
 
     function _processLabelPositionSetting(newLabelPosition) {
