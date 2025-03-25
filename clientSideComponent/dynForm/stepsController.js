@@ -715,40 +715,69 @@ corticon.dynForm.StepsController = function () {
         processPrevStep: processPrevStep
     }
     function _saveEnteredInputsToFormData(baseEl) {
-        _saveNonArrayInputsToFormData(baseEl);
-        _saveArrayTypeInputsToFormData(baseEl);
-        console.log("Raising NEW_FORM_DATA_SAVED with:", itsFormData);
-        corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.NEW_FORM_DATA_SAVED, itsFormData);
-
-        // Handle 'MultiText' controls
-        let multiTextEls = baseEl.find('.multiTextInputContainer');
-
-        multiTextEls.each(function (index, item) {
-            const oneArrayEl = $(item);
-            let allFormEls = oneArrayEl.find(':input').not(':checkbox');
-            let formDataFieldName;
-            let outerArray = [];
-            let innerArray = [];
-            for (let i = 0; i < allFormEls.length; i++) {
-                const oneFormEl = allFormEls[i];
-                const oneInputEl = $(oneFormEl);
-                formDataFieldName = oneInputEl.data("fieldName");
-                const val = oneInputEl.val();
-                innerArray.push(val);
+        // With space in selector we get all descendants.
+        // There's a difference between $("#panel input") and $("#panel :input).
+        // The first one will only retrieve elements of type input, that is <input type="...">, but not <textarea>, <button> and <select> elements.
+        // let allFormEls = $('#dynUIContainerId :input').not('#dynUIContainerId :checkbox');
+        let allFormEls = baseEl.find('.nonarrayTypeControl :input').not(':checkbox').not('.markerFileUploadExpense');
+        allFormEls.each(function (index, item) {
+            const oneInputEl = $(item);
+            const formDataFieldName = oneInputEl.data("fieldName");
+            const val = oneInputEl.val();
+            const type = oneInputEl.data("type");
+            if (type !== undefined && type !== null && type === "decimal") {
+                const converted = Number(val);
+                if (isNaN(converted))
+                    alert("you didn't enter a number in the field");
+                else
+                    _saveOneFormData(formDataFieldName, converted);
             }
-            outerArray.push(innerArray);
+            else if (type !== undefined && type !== null && type === "datetimetag" || type === "datetag") {
+                if (val !== undefined && val !== null && val !== "") {
+                    const theDate = new Date(val);
+                    let theDateISOString;
+                    let theDateAsMsSinceEpoch;  // if one prefers to work with ms since epoch
+                    if (type === "datetag") {
+                        const tzOffsetMns = theDate.getTimezoneOffset();
+                        // Create a new Date object UTC timezone
+                        const utcMs = theDate.getTime() + tzOffsetMns * 60 * 1000;
+                        const utcDate = new Date(utcMs);
+                        theDateISOString = utcDate.toISOString();
+                        theDateAsMsSinceEpoch = utcDate.getTime(); // it is possible to pass the date to Corticon DS as ms since epoch
+                    }
+                    else {
+                        theDateISOString = theDate.toISOString();
+                        theDateAsMsSinceEpoch = theDate.getTime();
+                    }
 
-            if (outerArray.length !== 0) {
-                let uiControlType = $(this).find('input').data("uicontroltype"); if (uiControlType === 'MultiText') {
-                    const textFieldArray = ['textInput'];
-                    const convertedArray = _createEachTextEntity(outerArray, textFieldArray);
-                    _saveArrayElFormData(formDataFieldName, convertedArray, itsPathToData); // Pass itsPathToData
+                    // debugger;
+                    _saveOneFormData(formDataFieldName, theDateISOString);
+                    // _saveOneFormData(formDataFieldName, theDateAsMsSinceEpoch);
                 }
-                //  else
-                //        alert('This complex array type is not yet supported ' + uiControlType);
+            }
+            else {
+                if (val !== undefined && val !== null && val !== "")
+                    _saveOneFormData(formDataFieldName, val);
             }
         });
 
+        // allFormEls = $('#dynUIContainerId :checkbox');
+        allFormEls = baseEl.find('.nonarrayTypeControl :checkbox');
+        allFormEls.each(function (index, item) {
+            const oneInputEl = $(item);
+            const formDataFieldName = oneInputEl.data("fieldName");
+            const val = oneInputEl.is(':checked');
+            _saveOneFormData(formDataFieldName, val);
+        });
+
+        _saveFileUploadExpenses(baseEl);
+        corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.NEW_FORM_DATA_SAVED, itsFormData); // Moved event raising here
+    }
+
+    function _saveArrayTypeInputsToFormData(baseEl) {
+        _processAllSimpleArrayControls(baseEl);
+        _processAllComplexArrayControls(baseEl, itsPathToData);
+        corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.NEW_FORM_DATA_SAVED, itsFormData); // Moved event raising here
     }
 
 }
