@@ -208,7 +208,7 @@ module.exports={
                 "targetEntity": "Data.Observation",
                 "roleName": "observation",
                 "navigability": "FormData->observation",
-                "mandatory": true,
+                "mandatory": false,
                 "cardinality": "1"
             }],
             "transientAttributesDefinition": [],
@@ -1530,13 +1530,6 @@ module.exports={
                     "navigability": "UI->containers",
                     "mandatory": false,
                     "cardinality": "*"
-                },
-                {
-                    "targetEntity": "Data.FormData",
-                    "roleName": "formData",
-                    "navigability": "UI->formData",
-                    "mandatory": false,
-                    "cardinality": "1"
                 }
             ],
             "transientAttributesDefinition": [
@@ -1547,8 +1540,7 @@ module.exports={
             ],
             "associationsDefinition": [
                 "backgroundData",
-                "containers",
-                "formData"
+                "containers"
             ],
             "name": "UI",
             "attributesDefinition": [
