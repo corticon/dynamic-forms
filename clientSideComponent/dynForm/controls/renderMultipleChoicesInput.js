@@ -1,15 +1,26 @@
-import { addOptions } from './addOptions.js';
-import { addOptionsFromDataSource } from './addOptionsFromDataSource.js';
+function renderMultipleChoicesInput(oneUIControl, baseEl, labelPositionAtContainerLevel) {
+    const inputContainerEl = createInputContainer(baseEl);
+    appendLabel(oneUIControl, labelPositionAtContainerLevel, inputContainerEl);
 
-export function renderMultipleChoicesInput(oneUIControl, baseEl, labelPositionAtContainerLevel, completionFct) {
-    const inputContainerEl = $('<div class="multipleChoicesContainer"></div>');
-    baseEl.append(inputContainerEl);
+    let html3 = `<select id="${oneUIControl.id + getNextUniqueId()}"`;
+    if (oneUIControl.type === 'MultipleChoicesMultiSelect')
+        html3 += ' multiple';
 
-    if (oneUIControl.options) {
-        addOptions(oneUIControl.options, inputContainerEl, oneUIControl);
-    }
+    html3 += '></select>';
+    const multipleChoicesEl = $(html3);
+    if (oneUIControl.fieldName !== undefined && oneUIControl.fieldName !== null)
+        multipleChoicesEl.data("fieldName", oneUIControl.fieldName);
+    else
+        console.warn('Missing field name for ' + oneUIControl.id);
 
-    if (oneUIControl.dataSource) {
-        addOptionsFromDataSource(oneUIControl.dataSource, inputContainerEl, inputContainerEl, oneUIControl, completionFct);
-    }
+    inputContainerEl.append(multipleChoicesEl);
+
+    const completionFct = () => {
+        if (itsFlagRenderWithKui) {
+            multipleChoicesEl.kendoDropDownList();
+        }
+    };
+
+    addOptions(oneUIControl.option, oneUIControl.dataSource, multipleChoicesEl, inputContainerEl, oneUIControl, completionFct);
+    addValidationMsgFromDecisionService(oneUIControl, inputContainerEl);
 }
