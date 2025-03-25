@@ -68,6 +68,7 @@ corticon.dynForm.StepsController = function () {
         _resetDecisionServiceInput(language);
         console.log("Before initialization:", itsFormData);
         itsFormData = null;
+        console.log("After initialization - itsDecisionServiceInput[1]:", itsDecisionServiceInput[1]); // Log after initialization
         itsFlagAllDone = false;
         itsPathToData = null;
         itsLabelPositionAtUILevel = "Above"; // Default
@@ -75,9 +76,11 @@ corticon.dynForm.StepsController = function () {
         // Log the externalData to inspect its value
         console.log("External Data:", externalData);
         try {
-            // We do a deep Copy of externalData.
-            // We need to do that to be able to start more than once
-            // (if we don't copy, _resetDecisionServiceInput will erase the original externalData)
+            // Ensure externalData is an object, not an array
+            if (Array.isArray(externalData) && externalData.length === 0) {
+                externalData = {}; // Convert empty array to an empty object
+            }
+            // We do a deep copy of externalData.
             itsDecisionServiceInput[1] = JSON.parse(JSON.stringify(externalData));
         } catch (error) {
             console.error("Error parsing externalData:", error);
@@ -285,6 +288,9 @@ corticon.dynForm.StepsController = function () {
 
     function _resetDecisionServiceInput(language) {
         _preparePayloadForNextStage(0, language);
+
+        // Explicitly set the second element to an empty object
+        itsDecisionServiceInput[1] = {};
 
         for (const property in itsDecisionServiceInput[1]) // clear all previous form data if any
             delete itsDecisionServiceInput[1][property];
