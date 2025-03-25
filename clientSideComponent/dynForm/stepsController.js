@@ -363,6 +363,7 @@ corticon.dynForm.StepsController = function () {
         return nextUI;
     }
     function _saveOneFormData(formDataFieldName, val) {
+        console.log("Saving to:", itsFormData, formDataFieldName, val);
         if (val === undefined)
             return;
 
@@ -373,6 +374,7 @@ corticon.dynForm.StepsController = function () {
                 itsFormData[itsPathToData] = {};
 
             itsFormData[itsPathToData][formDataFieldName] = val;
+            console.log("Saved:", itsFormData); //
         }
     }
 
