@@ -6,42 +6,47 @@ let itsQuestionnaireKey = '0';
 let itsFlagRenderWithKui = false;
 const itsTracer = new Tracer();
 const itsStepsController = new corticon.dynForm.StepsController();
+
 function processSwitchSample(selectObject) {
     const index = selectObject.value;
     setDataForCurrentSample(index);
     saveStateToLocalStorage('CorticonSelectedSample', index);
 }
+
 function setDataForCurrentSample(index) {
     currentDecisionServiceEngine = window.corticonEngines[index];
     inputData = allInputData[index];
     itsQuestionnaireKey = index;
+    console.log("Selected Sample Index:", index);
+    console.log("Current Decision Service Engine:", currentDecisionServiceEngine);
+    console.log("Input Data:", inputData);
     if (index === "4" || index === "5") {
-        $('#languageSelectId').html('');
-        $('#languageSelectId').append('<option value="english">English</option>');
-        if (index === "4")
-            $('#languageSelectId').append('<option value="italian">Italiano</option>');
-        else
-            $('#languageSelectId').append('<option value="french">French</option>');
-        $("#languageContainerId").show();
+        // Additional logic for specific samples
+    } else {
+        // Default logic for other samples
     }
-    else
-        $("#languageContainerId").hide();
 }
+
 function processSwitchLanguage(selectObject) {
     itsCurrentLanguage = selectObject.value;
 }
+
 function processClickStart() {
     const baseDynamicUIEl = $('#dynUIContainerId');
+    console.log("Starting Dynamic UI with Input Data:", inputData);
     itsStepsController.startDynUI(baseDynamicUIEl, currentDecisionServiceEngine, inputData, itsCurrentLanguage, itsQuestionnaireKey, itsFlagRenderWithKui);
 }
+
 function processClickNext() {
     const baseDynamicUIEl = $('#dynUIContainerId');
     itsStepsController.processNextStep(baseDynamicUIEl, currentDecisionServiceEngine, itsCurrentLanguage);
 }
+
 function processClickPrev() {
     const baseDynamicUIEl = $('#dynUIContainerId');
     itsStepsController.processPrevStep(baseDynamicUIEl, currentDecisionServiceEngine, itsCurrentLanguage);
 }
+
 function saveStateToLocalStorage(key, value) {
     // save it in local storage for restore  on reload
     try {
@@ -50,6 +55,7 @@ function saveStateToLocalStorage(key, value) {
         // Some browser in private mode may throw exception when using local storage
     }
 }
+
 function processShowTrace() {
     const traceEl = $('.allTracesContainer');
     traceEl.show();
@@ -57,6 +63,7 @@ function processShowTrace() {
     $("#showTraceId").hide();
     saveStateToLocalStorage('CorticonShowDSTrace', true);
 }
+
 function processHideTrace() {
     const traceEl = $('.allTracesContainer');
     traceEl.hide();
@@ -64,18 +71,21 @@ function processHideTrace() {
     $("#hideTraceId").hide();
     saveStateToLocalStorage('CorticonShowDSTrace', false);
 }
+
 function processUseHtml() {
     $("#useHtmlId").hide();
     $("#useKuiId").show();
     saveStateToLocalStorage('CorticonUseKui', false);
     itsFlagRenderWithKui = false;
 }
+
 function processUseKui() {
     $("#useHtmlId").show();
     $("#useKuiId").hide();
     saveStateToLocalStorage('CorticonUseKui', true);
     itsFlagRenderWithKui = true;
 }
+
 function setupInitialInputData() {
     const inDataEmpty = {};
     const inDataCanonical = inDataEmpty;
@@ -99,6 +109,7 @@ function setupInitialInputData() {
     allInputData.push(inCrossings);
     inputData = allInputData[0];
 }
+
 function restoreUIState() {
     const show = window.localStorage.getItem('CorticonShowDSTrace');
     if (show !== null) {
@@ -121,6 +132,7 @@ function restoreUIState() {
         setDataForCurrentSample(selectedSample);
     }
 }
+
 $(document).ready(function () {
     currentDecisionServiceEngine = window.corticonEngines[0];
     setupInitialInputData();

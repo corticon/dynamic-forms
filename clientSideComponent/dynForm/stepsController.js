@@ -36,14 +36,24 @@ corticon.dynForm.StepsController = function () {
 
         const restartData = getRestartData(questionnaireName);
         if (restartData === null) {
-            setStateForStartFromBeginning(language, externalData);
+            if (externalData !== undefined) {
+                setStateForStartFromBeginning(language, externalData);
+            } else {
+                console.warn("No external data provided. Starting with default state.");
+                setStateForStartFromBeginning(language, []);
+            }
         } else {
             const dialog = confirm("Do you want to start from where you left last time?");
             if (dialog) {
                 setStateFromRestartData(questionnaireName, restartData);
             } else {
                 clearRestartData(questionnaireName);
-                setStateForStartFromBeginning(language, externalData);
+                if (externalData !== undefined) {
+                    setStateForStartFromBeginning(language, externalData);
+                } else {
+                    console.warn("No external data provided. Starting with default state.");
+                    setStateForStartFromBeginning(language, []);
+                }
             }
         }
 
