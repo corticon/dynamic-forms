@@ -207,8 +207,7 @@ module.exports={
             "associations": [{
                 "targetEntity": "Data.Observation",
                 "roleName": "observation",
-                "reverseRoleName": "formData",
-                "navigability": "Bidirectional",
+                "navigability": "FormData->observation",
                 "mandatory": true,
                 "cardinality": "1"
             }],
@@ -786,29 +785,16 @@ module.exports={
             "id": "Data.Inlet"
         },
         {
-            "associations": [
-                {
-                    "targetEntity": "Data.Crossing",
-                    "roleName": "crossing",
-                    "reverseRoleName": "observation",
-                    "navigability": "Bidirectional",
-                    "mandatory": true,
-                    "cardinality": "1"
-                },
-                {
-                    "targetEntity": "Data.FormData",
-                    "roleName": "formData",
-                    "reverseRoleName": "observation",
-                    "navigability": "Bidirectional",
-                    "mandatory": true,
-                    "cardinality": "1"
-                }
-            ],
+            "associations": [{
+                "targetEntity": "Data.Crossing",
+                "roleName": "crossing",
+                "reverseRoleName": "observation",
+                "navigability": "Bidirectional",
+                "mandatory": true,
+                "cardinality": "1"
+            }],
             "transientAttributesDefinition": [],
-            "associationsDefinition": [
-                "crossing",
-                "formData"
-            ],
+            "associationsDefinition": ["crossing"],
             "name": "Data.Observation",
             "attributesDefinition": [
                 "Date_Observed",
