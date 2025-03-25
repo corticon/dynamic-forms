@@ -66,22 +66,23 @@ corticon.dynForm.StepsController = function () {
 
     function setStateForStartFromBeginning(language, externalData) {
         _resetDecisionServiceInput(language);
-        console.log("Before initialization - externalData:", externalData, "itsDecisionServiceInput[1]:", itsDecisionServiceInput[1]); itsFormData = null;
+        console.log("Before initialization:", itsFormData);
+        itsFormData = null;
         itsFlagAllDone = false;
         itsPathToData = null;
         itsLabelPositionAtUILevel = "Above"; // Default
 
         // Log the externalData to inspect its value
-        console.log("After initialization - itsDecisionServiceInput[1]:", itsDecisionServiceInput[1]);
+        console.log("External Data:", externalData);
         try {
-            // We do a deep Copy of externalData.  We need to do that to be able to start more than once
+            // We do a deep Copy of externalData.
+            // We need to do that to be able to start more than once
             // (if we don't copy, _resetDecisionServiceInput will erase the original externalData)
             itsDecisionServiceInput[1] = JSON.parse(JSON.stringify(externalData));
         } catch (error) {
             console.error("Error parsing externalData:", error);
-            console.error("Invalid JSON data:", externalData);
-            console.log("After initialization:", itsFormData);
         }
+        console.log("After initialization:", itsFormData);
     }
     async function _processBackgroundData(backgroundData) {
         const url = backgroundData.url;
