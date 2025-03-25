@@ -386,12 +386,13 @@ corticon.dynForm.StepsController = function () {
         let allFormEls = baseEl.find('.nonarrayTypeControl :input').not(':checkbox').not('.markerFileUploadExpense');
         let formDataFieldName
         allFormEls.each(function (index, item) {
-            console.log("Saving non-array data:", formDataFieldName, val);
             _saveOneFormData(formDataFieldName, val);
             const oneInputEl = $(item);
             const formDataFieldName = oneInputEl.data("fieldName");
             const val = oneInputEl.val();
             const type = oneInputEl.data("type");
+            console.log("Saving non-array data:", formDataFieldName, val);
+
             if (type !== undefined && type !== null && type === "decimal") {
                 const converted = Number(val);
                 if (isNaN(converted))
