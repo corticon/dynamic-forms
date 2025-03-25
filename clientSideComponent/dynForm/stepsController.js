@@ -68,7 +68,6 @@ corticon.dynForm.StepsController = function () {
         _resetDecisionServiceInput(language);
         console.log("Before initialization:", itsFormData);
         itsFormData = null;
-        console.log("After initialization:", itsFormData); // Log after initialization
         itsFlagAllDone = false;
         itsPathToData = null;
         itsLabelPositionAtUILevel = "Above"; // Default
@@ -109,7 +108,7 @@ corticon.dynForm.StepsController = function () {
         const pathToValue6 = backgroundData.pathToValue6;
         const fieldName7 = backgroundData.fieldName7;
         const labelName7 = backgroundData.labelName7;
-        const pathToValue7 = backgroundData.pathToValue7;
+        const pathToValue7 = backgroundData.pathToVaylue7;
         const fieldName8 = backgroundData.fieldName8;
         const labelName8 = backgroundData.labelName8;
         const pathToValue8 = backgroundData.pathToValue8;
@@ -127,11 +126,6 @@ corticon.dynForm.StepsController = function () {
             let value;
             if (arrayToSet) {
                 value = data.map(item => item[labelName1]).join(', ');
-                console.log("Saving arrayToSet data:", {
-                    collectionName: collectionName,
-                    value: value,
-                    itsFormData: itsFormData // Log itsFormData before saving
-                });
             } else if (arrayToCollection) {
                 value = data.map(item => {
                     const newObj = {};
@@ -145,18 +139,8 @@ corticon.dynForm.StepsController = function () {
                     }
                     return newObj;
                 });
-                console.log("Saving arrayToCollection data:", {
-                    collectionName: collectionName,
-                    value: value,
-                    itsFormData: itsFormData // Log itsFormData before saving
-                });
             } else if (fieldName1 && labelName1 && pathToValue1) {  // Condition for single value extraction
                 value = JSONPath.JSONPath(pathToValue1, data)[0];
-                console.log("Saving single value data:", {
-                    fieldName: fieldName1,
-                    value: value,
-                    itsFormData: itsFormData // Log itsFormData before saving
-                });
                 _saveOneFormData(fieldName1, value); // Save the extracted value
             } else {
                 // Handle other cases or provide a default behavior if needed
@@ -260,7 +244,6 @@ corticon.dynForm.StepsController = function () {
             _preparePayloadForNextStage(nextUI.nextStageNumber);
             nextUI = await _askDecisionServiceForNextUIElementsAndRender(decisionServiceEngine, itsDecisionServiceInput, baseDynamicUIEl);
             corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.NEW_FORM_DATA_SAVED, itsFormData);
-            console.log("Raising NEW_FORM_DATA_SAVED with:", itsFormData);
             if (nextUI.done) break;
         }
         saveRestartData(itsQuestionnaireName, restartData);
@@ -301,7 +284,6 @@ corticon.dynForm.StepsController = function () {
     }
 
     function _resetDecisionServiceInput(language) {
-        console.log("Inside _resetDecisionServiceInput - Before:", itsFormData);
         _preparePayloadForNextStage(0, language);
 
         for (const property in itsDecisionServiceInput[1]) // clear all previous form data if any
@@ -328,7 +310,6 @@ corticon.dynForm.StepsController = function () {
         }
 
         itsDecisionServiceInput[0] = nextPayload;
-        console.log("Inside _resetDecisionServiceInput - After:", itsFormData);
     }
 
     function _processLabelPositionSetting(newLabelPosition) {
@@ -343,7 +324,7 @@ corticon.dynForm.StepsController = function () {
             return;
 
         const nextUI = result.payload[0];
-        console.log("_askDecisionServiceForNextUIElementsAndRender - nextUI:", nextUI);
+
         // Save context of where we need to save data the user enters so that rule modeler does not have to specify it at each step.
         if (nextUI.pathToData !== undefined && nextUI.pathToData !== null && nextUI.pathToData.length !== 0)
             itsPathToData = nextUI.pathToData;
@@ -380,7 +361,7 @@ corticon.dynForm.StepsController = function () {
         return nextUI;
     }
     function _saveOneFormData(formDataFieldName, val) {
-        console.log("Saving to - path:", itsPathToData, "field:", formDataFieldName, "value:", val); // Log before saving
+        console.log("Saving to - path:", itsPathToData, "field:", formDataFieldName, "value:", val);
         if (val === undefined)
             return;
         if (itsPathToData !== undefined && itsPathToData !== null && itsPathToData !== "") {
@@ -391,7 +372,7 @@ corticon.dynForm.StepsController = function () {
         } else {
             itsFormData[formDataFieldName] = val;
         }
-        console.log("Saved:", itsFormData); // Log after saving
+        console.log("Saved:", itsFormData);
     }
 
     function _saveNonArrayInputsToFormData(baseEl) {
@@ -402,8 +383,10 @@ corticon.dynForm.StepsController = function () {
         }
 
         let allFormEls = baseEl.find('.nonarrayTypeControl :input').not(':checkbox').not('.markerFileUploadExpense');
+
         // Debugging: Check the number of found elements
         console.log("Found", allFormEls.length, "non-array input elements");
+
         allFormEls.each(function (index, item) {
             const oneInputEl = $(item);
             let formDataFieldName = oneInputEl.data("fieldName");
@@ -421,8 +404,7 @@ corticon.dynForm.StepsController = function () {
             console.log("Saving non-array data:", {
                 fieldName: formDataFieldName,
                 value: val,
-                type: type,
-                itsFormData: itsFormData // Log itsFormData before saving
+                type: type
             });
 
             if (type !== undefined && type !== null && type === "decimal") {
@@ -462,11 +444,6 @@ corticon.dynForm.StepsController = function () {
             const oneInputEl = $(item);
             const formDataFieldName = oneInputEl.data("fieldName");
             const val = oneInputEl.is(':checked');
-            console.log("Saving checkbox data:", {
-                fieldName: formDataFieldName,
-                value: val,
-                itsFormData: itsFormData // Log itsFormData before saving
-            });
             _saveOneFormData(formDataFieldName, val);
         });
 
@@ -517,7 +494,7 @@ corticon.dynForm.StepsController = function () {
         _processAllComplexArrayControls(baseEl, itsPathToData); // Pass itsPathToData as an argument
     }
     function _processAllComplexArrayControls(baseEl, itsPathToData) {
-        let outerArray =;
+        let outerArray = [];
         let formDataFieldName;
         let uiControlType;
 
@@ -533,7 +510,7 @@ corticon.dynForm.StepsController = function () {
             uiControlType = $(this).parent().data("uicontroltype");
             let allFormEls = oneArrayEl.find(":input").not(":checkbox");
 
-            let innerArray =;
+            let innerArray = [];
             for (var i = 0; i < allFormEls.length; i++) {
                 const oneFormEl = allFormEls[i];
                 const oneInputEl = $(oneFormEl);
@@ -549,12 +526,10 @@ corticon.dynForm.StepsController = function () {
             if (uiControlType === "MultiExpenses") {
                 const expenseFieldArray = ["expenseCode", "amount", "currency"];
                 const convertedArray = _createEachExpenseEntity(outerArray, expenseFieldArray);
-                console.log("Saving MultiExpenses data:", formDataFieldName, convertedArray, itsFormData); // Log itsFormData before saving
                 _saveArrayElFormData(formDataFieldName, convertedArray, itsPathToData);
             } else if (uiControlType === "MultiText") {
                 const textFieldArray = ["textInput"];
                 const convertedArray = _createEachTextEntity(outerArray, textFieldArray);
-                console.log("Saving MultiText data:", formDataFieldName, convertedArray, itsFormData); // Log itsFormData before saving
                 _saveArrayElFormData(formDataFieldName, convertedArray, itsPathToData);
             } else {
                 alert("This complex array type is not yet supported " + uiControlType);
@@ -572,7 +547,7 @@ corticon.dynForm.StepsController = function () {
             const valuesForOneControl = oneControlData['values'];
             if (uiControlType === 'Text' || uiControlType === 'Number' || uiControlType === 'DateTime') {
                 const convertedArray = _createEachItemEntity(valuesForOneControl, uiControlType);
-                console.log("Saving array data:", formDataFieldName, convertedArray, itsFormData); // Log itsFormData before saving
+                console.log("Saving array data:", formDataFieldName, convertedArray);
                 _saveArrayElFormData(formDataFieldName, convertedArray);
             } else
                 alert('This simple array type is not yet supported ' + uiControlType);
@@ -779,6 +754,5 @@ corticon.dynForm.StepsController = function () {
         _processAllComplexArrayControls(baseEl, itsPathToData);
         corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.NEW_FORM_DATA_SAVED, itsFormData); // Moved event raising here
     }
-
 }
 
