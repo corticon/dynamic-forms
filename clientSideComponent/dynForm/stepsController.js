@@ -66,15 +66,13 @@ corticon.dynForm.StepsController = function () {
 
     function setStateForStartFromBeginning(language, externalData) {
         _resetDecisionServiceInput(language);
-        console.log("Before initialization:", itsFormData);
-        itsFormData = null;
+        console.log("Before initialization - externalData:", externalData, "itsDecisionServiceInput[1]:", itsDecisionServiceInput[1]); itsFormData = null;
         itsFlagAllDone = false;
         itsPathToData = null;
         itsLabelPositionAtUILevel = "Above"; // Default
 
         // Log the externalData to inspect its value
-        console.log("External Data:", externalData);
-
+        console.log("After initialization - itsDecisionServiceInput[1]:", itsDecisionServiceInput[1]);
         try {
             // We do a deep Copy of externalData.  We need to do that to be able to start more than once
             // (if we don't copy, _resetDecisionServiceInput will erase the original externalData)
@@ -162,9 +160,11 @@ corticon.dynForm.StepsController = function () {
     function setStateFromRestartData(questionnaireName, restartData) {
         itsLabelPositionAtUILevel = "Above"; // Default
         itsPathToData = getPathToData(questionnaireName);
+        console.log("setStateFromRestartData - restartData:", restartData, "itsDecisionServiceInput[1]:", itsDecisionServiceInput[1]);
         setStateFromStepData(restartData);
         itsHistory.setRestartHistory(getRestartHistory(questionnaireName));
         itsHistory.getPreviousStageData(); // we remove from stack the most recent as we are going to execute it again and push it.
+
     }
 
     function getRestartHistory(decisionServiceName) {
