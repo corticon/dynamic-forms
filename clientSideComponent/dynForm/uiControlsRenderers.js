@@ -1,8 +1,6 @@
 corticon.util.namespace("corticon.dynForm");
 
 corticon.dynForm.UIControlsRenderer = function () {
-    // TODO:
-    // Number field as integer vs decimal -> new field type?
 
     let itsFlagRenderWithKui = false;
 
