@@ -28,6 +28,15 @@ corticon.dynForm.StepsController = function () {
     const itsHistory = new corticon.dynForm.History();
     const itsUIControlsRenderer = new corticon.dynForm.UIControlsRenderer();
 
+    /**
+     * Starts the dynamic UI process by initializing the state and rendering the first step.
+     * @param {Object} baseDynamicUIEl - The base element where the UI will be rendered.
+     * @param {Object} decisionServiceEngine - The decision service engine to execute rules.
+     * @param {Object} externalData - External data to initialize the form.
+     * @param {String} language - The language for the UI.
+     * @param {String} questionnaireName - The name of the questionnaire.
+     * @param {Boolean} useKui - Whether to use Kendo UI for rendering.
+     */
     async function startDynUI(baseDynamicUIEl, decisionServiceEngine, externalData, language, questionnaireName, useKui) {
         itsFlagRenderWithKui = useKui;
         itsQuestionnaireName = questionnaireName;
@@ -64,6 +73,11 @@ corticon.dynForm.StepsController = function () {
         corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.AFTER_START, { historyEmpty: itsHistory.isHistoryEmpty() });
     }
 
+    /**
+     * Initializes the state for starting the form from the beginning.
+     * @param {String} language - The language for the UI.
+     * @param {Object} externalData - External data to initialize the form.
+     */
     function setStateForStartFromBeginning(language, externalData) {
         _resetDecisionServiceInput(language);
         console.log("Before initialization:", itsFormData);
@@ -87,6 +101,11 @@ corticon.dynForm.StepsController = function () {
         }
         console.log("After initialization:", itsFormData);
     }
+
+    /**
+     * Processes background data by fetching it from a URL and saving it to the form data.
+     * @param {Object} backgroundData - The background data configuration.
+     */
     async function _processBackgroundData(backgroundData) {
         const url = backgroundData.url;
         const arrayToSet = backgroundData.arrayToSet;
@@ -161,6 +180,7 @@ corticon.dynForm.StepsController = function () {
             // Handle errors appropriately
         }
     }
+
     function setStateFromRestartData(questionnaireName, restartData) {
         itsLabelPositionAtUILevel = "Above"; // Default
         itsPathToData = getPathToData(questionnaireName);
@@ -214,6 +234,11 @@ corticon.dynForm.StepsController = function () {
         }
     }
 
+    /**
+     * Validates the form by checking required fields and their values.
+     * @param {Object} baseDynamicUIEl - The base element containing the form inputs.
+     * @returns {Boolean} - Returns true if the form is valid, false otherwise.
+     */
     function validateForm(baseDynamicUIEl) {
         const containers = baseDynamicUIEl.find('.inputContainer');
         let isValid = true;
@@ -264,6 +289,9 @@ corticon.dynForm.StepsController = function () {
         return isValid;
     }
 
+    /**
+     * Handles the completion of the form by performing final actions (e.g., sending data to a REST API).
+     */
     function handleFormCompletion() {
         clearRestartData(itsQuestionnaireName);
         corticon.dynForm.raiseEvent(corticon.dynForm.customEvents.AFTER_DONE);
