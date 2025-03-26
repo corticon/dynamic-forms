@@ -1,4 +1,3 @@
-
 corticon.util.namespace("corticon.dynForm");
 
 corticon.dynForm.UIControlsRenderer = function () {
@@ -7,41 +6,53 @@ corticon.dynForm.UIControlsRenderer = function () {
 
     let itsFlagRenderWithKui = false;
 
-    // Render all Containers in base element (baseEl: A Jquery object - typically from a div element)
-    // This is the main public entry point
+    /**
+     * Main entry point for rendering all containers and their UI controls.
+     * Clears the base element and renders all containers and their controls.
+     * @param {Array} containers - Array of container objects to render.
+     * @param {Object} baseEl - The base element (jQuery object) where the UI will be rendered.
+     * @param {String} labelPositionAtUILevel - Default label position for controls.
+     * @param {String} language - Language for rendering (e.g., for localization).
+     * @param {Boolean} useKui - Flag to determine if Kendo UI should be used.
+     */
     function renderUI(containers, baseEl, labelPositionAtUILevel, language, useKui) {
         itsFlagRenderWithKui = useKui;
 
-        /* Without JQuery one could create all dynamic elements just using the DOM API.  For example:
-        var contEl = document.createElement('div');
-        contEl.setAttribute('id', containers[0].id);
-        contEl.appendChild(document.createTextNode(containers[0].title));
-        document.getElementById('theDynamicUIContainerId').appendChild(contEl);
-        */
-        // Start with clean component - that is without any UI Controls from previous steps
+        // Clear the base element to remove any previous UI controls
         baseEl.empty();
 
+        // Apply styling based on whether Kendo UI is used
         if (itsFlagRenderWithKui) {
             baseEl.addClass('k-content');
-        }
-        else {
+        } else {
             baseEl.addClass('dynUIContainerColors');
         }
 
-        for (let i = 0; i < containers.length; i++)
+        // Render each container
+        for (let i = 0; i < containers.length; i++) {
             renderUIForOneContainer(containers[i], baseEl, labelPositionAtUILevel, language);
+        }
 
+        // Set focus to the first input element, if available
         const allFormEls = $(baseEl).find(':input');
-        if (allFormEls !== null && allFormEls.length > 0)
+        if (allFormEls !== null && allFormEls.length > 0) {
             allFormEls[0].focus();
+        }
     }
 
-    // Render all Controls in container element
+    /**
+     * Renders a single container and its UI controls.
+     * @param {Object} container - The container object to render.
+     * @param {Object} baseEl - The base element (jQuery object) where the container will be rendered.
+     * @param {String} labelPositionAtUILevel - Default label position for controls.
+     * @param {String} language - Language for rendering (e.g., for localization).
+     */
     function renderUIForOneContainer(container, baseEl, labelPositionAtUILevel, language) {
+        // Create the container element
         let html = '<div';
-        if (itsFlagRenderWithKui)
+        if (itsFlagRenderWithKui) {
             html += ' class="k-content"';
-
+        }
         html += ' id="' + container.id + '"  title="' + container.title + '"><h3>' + container.title + '</h3></div>';
         baseEl.append(html);
 
@@ -51,44 +62,153 @@ corticon.dynForm.UIControlsRenderer = function () {
             return;
         }
 
-        for (var i = 0; i < uiControls.length; i++) {
+        // Render each UI control in the container
+        for (let i = 0; i < uiControls.length; i++) {
             const oneUIControl = uiControls[i];
-            if (oneUIControl.type === 'Text')
+            if (oneUIControl.type === 'Text') {
                 renderTextInput(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'TextArea')
+            } else if (oneUIControl.type === 'TextArea') {
                 renderTextAreaInput(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'DateTime')
+            } else if (oneUIControl.type === 'DateTime') {
                 renderDateTimeInput(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'YesNo' || oneUIControl.type === 'YesNoBoolean')
+            } else if (oneUIControl.type === 'YesNo' || oneUIControl.type === 'YesNoBoolean') {
                 renderYesNoInput(oneUIControl, baseEl, labelPositionAtUILevel, language, oneUIControl.type);
-            else if (oneUIControl.type === 'ReadOnlyText')
+            } else if (oneUIControl.type === 'ReadOnlyText') {
                 renderReadOnlyText(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'Number')
+            } else if (oneUIControl.type === 'Number') {
                 renderNumberInput(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'SingleChoice')
+            } else if (oneUIControl.type === 'SingleChoice') {
                 renderSingleChoiceInput(oneUIControl, baseEl);
-            else if (oneUIControl.type === 'MultipleChoices' || oneUIControl.type === 'MultipleChoicesMultiSelect')
+            } else if (oneUIControl.type === 'MultipleChoices' || oneUIControl.type === 'MultipleChoicesMultiSelect') {
                 renderMultipleChoicesInput(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'MultiExpenses')
+            } else if (oneUIControl.type === 'MultiExpenses') {
                 renderExpenseInput(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'FileUpload')
+            } else if (oneUIControl.type === 'FileUpload') {
                 renderFileUploadInput(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'FileUploadExpenses')
+            } else if (oneUIControl.type === 'FileUploadExpenses') {
                 renderFileUploadExpenseInput(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'QRCode')
+            } else if (oneUIControl.type === 'QRCode') {
                 renderQRCode(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'GeoCoordinates')
+            } else if (oneUIControl.type === 'GeoCoordinates') {
                 renderGeoCoordinates(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'Rating')
+            } else if (oneUIControl.type === 'Rating') {
                 renderRating(oneUIControl, baseEl, labelPositionAtUILevel);
-            else if (oneUIControl.type === 'MultiText') {
+            } else if (oneUIControl.type === 'MultiText') {
                 renderMultiTextInput(oneUIControl, baseEl, labelPositionAtUILevel);
-            }
-            else
+            } else {
                 alert('This ui control is not yet supported: ' + oneUIControl.type);
+            }
         }
 
+        // Render any validation message for the container
         renderContainerValidationMessage(container.validationMsg, baseEl);
+    }
+
+    /**
+     * Renders a text input control.
+     * @param {Object} oneUIControl - The UI control object to render.
+     * @param {Object} baseEl - The base element (jQuery object) where the control will be rendered.
+     * @param {String} labelPositionAtContainerLevel - Default label position for the control.
+     */
+    function renderTextInput(oneUIControl, baseEl, labelPositionAtContainerLevel) {
+        renderInputThatSupportsArrayType(oneUIControl, baseEl, labelPositionAtContainerLevel);
+    }
+
+    /**
+     * Renders a number input control.
+     * @param {Object} oneUIControl - The UI control object to render.
+     * @param {Object} baseEl - The base element (jQuery object) where the control will be rendered.
+     * @param {String} labelPositionAtContainerLevel - Default label position for the control.
+     */
+    function renderNumberInput(oneUIControl, baseEl, labelPositionAtContainerLevel) {
+        renderInputThatSupportsArrayType(oneUIControl, baseEl, labelPositionAtContainerLevel);
+    }
+
+    /**
+     * Renders a DateTime input control.
+     * @param {Object} oneUIControl - The UI control object to render.
+     * @param {Object} baseEl - The base element (jQuery object) where the control will be rendered.
+     * @param {String} labelPositionAtContainerLevel - Default label position for the control.
+     */
+    function renderDateTimeInput(oneUIControl, baseEl, labelPositionAtContainerLevel) {
+        renderInputThatSupportsArrayType(oneUIControl, baseEl, labelPositionAtContainerLevel);
+    }
+
+    /**
+     * Renders a Yes/No input control.
+     * @param {Object} oneUIControl - The UI control object to render.
+     * @param {Object} baseEl - The base element (jQuery object) where the control will be rendered.
+     * @param {String} labelPositionAtContainerLevel - Default label position for the control.
+     * @param {String} language - Language for rendering (e.g., for localization).
+     * @param {String} type - The type of Yes/No control (e.g., 'YesNo' or 'YesNoBoolean').
+     */
+    function renderYesNoInput(oneUIControl, baseEl, labelPositionAtContainerLevel, language, type) {
+        const inputContainerEl = createInputContainer(baseEl);
+
+        let yes = 'Yes'; let no = 'No';
+        if (language !== undefined && language !== null) {
+            if (language.toLowerCase() === 'italian') {
+                yes = 'Si';
+            }
+        }
+
+        appendLabel(oneUIControl, labelPositionAtContainerLevel, inputContainerEl);
+
+        let yesValue; let noValue;
+        if (type === 'YesNo') {
+            yesValue = 'yes';
+            noValue = 'no';
+        }
+        else if (type === 'YesNoBoolean') {
+            yesValue = 'T';
+            noValue = 'F';
+        }
+
+        const html3 = `<select "id": ${oneUIControl.id}>
+                        <option value="${yesValue}">${yes}</option>
+                        <option value="${noValue}">${no}</option>
+                </select>`;
+        const yesNoEl = $(html3);
+
+        if (oneUIControl.fieldName !== undefined && oneUIControl.fieldName !== null)
+            yesNoEl.data("fieldName", oneUIControl.fieldName);
+        else
+            alert('Missing field name for ' + oneUIControl.id);
+
+        inputContainerEl.append(yesNoEl);
+
+        if (itsFlagRenderWithKui)
+            yesNoEl.kendoDropDownList();
+    }
+
+    /**
+     * Renders a read-only text control.
+     * @param {Object} oneUIControl - The UI control object to render.
+     * @param {Object} baseEl - The base element (jQuery object) where the control will be rendered.
+     * @param {String} labelPositionAtContainerLevel - Default label position for the control.
+     */
+    function renderReadOnlyText(oneUIControl, baseEl, labelPositionAtContainerLevel) {
+        const inputContainerEl = createInputContainer(baseEl);
+
+        appendLabel(oneUIControl, labelPositionAtContainerLevel, inputContainerEl);
+
+        if (oneUIControl.value !== undefined && oneUIControl.value !== null && oneUIControl.value.length !== 0) {
+            const html3 = '<div class="readOnlyText">' + oneUIControl.value + '</div>';
+            inputContainerEl.append($(html3));
+        }
+        else
+            alert("missing value attribute for renderReadOnlyText id: " + oneUIControl.id);
+    }
+
+    // Additional functions for rendering other control types...
+
+    /**
+     * Creates a unique ID for input elements.
+     * @returns {String} - A unique ID string.
+     */
+    function getNextUniqueId() {
+        nextUniqueInputId++;
+        return "_" + nextUniqueInputId;
     }
 
     // Begin expense
@@ -323,23 +443,32 @@ corticon.dynForm.UIControlsRenderer = function () {
             qrCodeEl.html = oneUIControl.value;
     }
 
-    function renderTextInput(oneUIControl, baseEl, labelPositionAtContainerLevel) {
-        renderInputThatSupportsArrayType(oneUIControl, baseEl, labelPositionAtContainerLevel);
-    }
-
     function createOneTextInput(oneUIControl, labelPositionAtContainerLevel, inputContainerEl, addBreak = false) {
         const theAttributes = { "type": "text", "id": oneUIControl.id + getNextUniqueId() };
-        if (oneUIControl.tooltip !== undefined && oneUIControl.tooltip !== null)
+
+        // Add tooltip if available
+        if (oneUIControl.tooltip !== undefined && oneUIControl.tooltip !== null) {
             theAttributes["title"] = oneUIControl.tooltip;
+        }
 
+        // Create the input element
         const textInputEl = $('<input/>').attr(theAttributes);
-        textInputEl.appendTo(inputContainerEl);
-        if (oneUIControl.fieldName !== undefined && oneUIControl.fieldName !== null)
-            textInputEl.data("fieldName", oneUIControl.fieldName);
-        else
-            alert('Missing field name for ' + oneUIControl.id);
 
-        // there may be a value (default value)
+        // Add the required attribute if the control is marked as required
+        if (oneUIControl.required === true) {
+            textInputEl.attr('data-required', true);
+        }
+
+        textInputEl.appendTo(inputContainerEl);
+
+        // Set the fieldName for the input element
+        if (oneUIControl.fieldName !== undefined && oneUIControl.fieldName !== null) {
+            textInputEl.data("fieldName", oneUIControl.fieldName);
+        } else {
+            alert('Missing field name for ' + oneUIControl.id);
+        }
+
+        // Set the default value if available
         if (oneUIControl.value !== undefined && oneUIControl.value !== null) {
             textInputEl.val(oneUIControl.value);
         }
@@ -348,13 +477,13 @@ corticon.dynForm.UIControlsRenderer = function () {
             const breakEl = $('<div>');
             breakEl.append(textInputEl);
             inputContainerEl.append(breakEl);
-        }
-        else {
+        } else {
             inputContainerEl.append(textInputEl);
         }
 
-        if (itsFlagRenderWithKui)
+        if (itsFlagRenderWithKui) {
             textInputEl.kendoTextBox();
+        }
     }
 
     function renderTextAreaInput(oneUIControl, baseEl, labelPositionAtContainerLevel) {
@@ -509,10 +638,6 @@ corticon.dynForm.UIControlsRenderer = function () {
         return addContainerEl;
     }
 
-    function renderDateTimeInput(oneUIControl, baseEl, labelPositionAtContainerLevel) {
-        renderInputThatSupportsArrayType(oneUIControl, baseEl, labelPositionAtContainerLevel);
-    }
-
     function renderInputThatSupportsArrayType(oneUIControl, baseEl, labelPositionAtContainerLevel) {
         const arrayTypeControl = isArrayType(oneUIControl);
         const inputContainerEl = createInputContainer(baseEl, arrayTypeControl, false);
@@ -594,60 +719,57 @@ corticon.dynForm.UIControlsRenderer = function () {
         }
     }
 
-    function renderNumberInput(oneUIControl, baseEl, labelPositionAtContainerLevel) {
-        renderInputThatSupportsArrayType(oneUIControl, baseEl, labelPositionAtContainerLevel);
-    }
-
-    function renderReadOnlyText(oneUIControl, baseEl, labelPositionAtContainerLevel) {
+    function renderGeoCoordinates(oneUIControl, baseEl, labelPositionAtContainerLevel) {
         const inputContainerEl = createInputContainer(baseEl);
 
         appendLabel(oneUIControl, labelPositionAtContainerLevel, inputContainerEl);
 
-        if (oneUIControl.value !== undefined && oneUIControl.value !== null && oneUIControl.value.length !== 0) {
-            const html3 = '<div class="readOnlyText">' + oneUIControl.value + '</div>';
-            inputContainerEl.append($(html3));
+        const theAttributes = { "type": "text", "id": oneUIControl.id + getNextUniqueId() };
+        const textInputEl = $('<input/>').attr(theAttributes);
+        textInputEl.appendTo(inputContainerEl);
+        if (oneUIControl.fieldName !== undefined && oneUIControl.fieldName !== null) {
+            textInputEl.data("fieldName", oneUIControl.fieldName);
+            textInputEl.data("type", "geoCoordinates");
         }
-        else
-            alert("missing value attribute for renderReadOnlyText id: " + oneUIControl.id);
-    }
-
-    function renderYesNoInput(oneUIControl, baseEl, labelPositionAtContainerLevel, language, type) {
-        const inputContainerEl = createInputContainer(baseEl);
-
-        let yes = 'Yes'; let no = 'No';
-        if (language !== undefined && language !== null) {
-            if (language.toLowerCase() === 'italian') {
-                yes = 'Si';
-            }
-        }
-
-        appendLabel(oneUIControl, labelPositionAtContainerLevel, inputContainerEl);
-
-        let yesValue; let noValue;
-        if (type === 'YesNo') {
-            yesValue = 'yes';
-            noValue = 'no';
-        }
-        else if (type === 'YesNoBoolean') {
-            yesValue = 'T';
-            noValue = 'F';
-        }
-
-        const html3 = `<select "id": ${oneUIControl.id}>
-                        <option value="${yesValue}">${yes}</option>
-                        <option value="${noValue}">${no}</option>
-                </select>`;
-        const yesNoEl = $(html3);
-
-        if (oneUIControl.fieldName !== undefined && oneUIControl.fieldName !== null)
-            yesNoEl.data("fieldName", oneUIControl.fieldName);
         else
             alert('Missing field name for ' + oneUIControl.id);
 
-        inputContainerEl.append(yesNoEl);
+        if (oneUIControl.value !== undefined && oneUIControl.value !== null) {
+            textInputEl.val(oneUIControl.value);
+        }
 
-        if (itsFlagRenderWithKui)
-            yesNoEl.kendoDropDownList();
+        if (itsFlagRenderWithKui) {
+            textInputEl.kendoTextBox();
+        }
+    }
+
+    function renderRating(oneUIControl, baseEl, labelPositionAtContainerLevel) {
+        const inputContainerEl = createInputContainer(baseEl);
+
+        appendLabel(oneUIControl, labelPositionAtContainerLevel, inputContainerEl);
+
+        const theAttributes = { "type": "number", "id": oneUIControl.id + getNextUniqueId(), "min": 1, "max": 5 };
+        const textInputEl = $('<input/>').attr(theAttributes);
+        textInputEl.appendTo(inputContainerEl);
+        if (oneUIControl.fieldName !== undefined && oneUIControl.fieldName !== null) {
+            textInputEl.data("fieldName", oneUIControl.fieldName);
+            textInputEl.data("type", "rating");
+        }
+        else
+            alert('Missing field name for ' + oneUIControl.id);
+
+        if (oneUIControl.value !== undefined && oneUIControl.value !== null) {
+            textInputEl.val(oneUIControl.value);
+        }
+
+        if (itsFlagRenderWithKui) {
+            textInputEl.kendoNumericTextBox({
+                min: 1,
+                max: 5,
+                required: true,
+                value: typeof oneUIControl.value === 'number' ? oneUIControl.value : undefined
+            });
+        }
     }
 
     function renderMultipleChoicesInput(oneUIControl, baseEl, labelPositionAtContainerLevel) {

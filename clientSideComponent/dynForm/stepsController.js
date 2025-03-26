@@ -217,19 +217,50 @@ corticon.dynForm.StepsController = function () {
     function validateForm(baseDynamicUIEl) {
         const containers = baseDynamicUIEl.find('.inputContainer');
         let isValid = true;
+
         containers.each(function (index, container) {
-            const requiredInputs = $(container).find('.required-input');
-            requiredInputs.each(function (index, item) {
+            const inputs = $(container).find(':input'); // Find all input elements within the container
+
+            inputs.each(function (index, item) {
                 const inputEl = $(item);
-                if (inputEl.val() === '') {
-                    const errorMessage = $('<span class="error-message">This field is required</span>');
-                    inputEl.after(errorMessage);
-                    isValid = false;
-                    return false; // Exit the loop if a required field is empty
+                const isRequired = inputEl.data('required'); // Check if the field is marked as required
+                const value = inputEl.val(); // Get the value of the input field
+                const type = inputEl.data('type'); // Get the type of the input field
+
+                console.log("Validating field:", inputEl.data('fieldName'), "Required:", isRequired, "Value:", value);
+
+                if (isRequired) {
+                    // Validate based on the type of the control
+                    if (!value || value.trim() === '') {
+                        // If the value is empty, mark as invalid
+                        const errorMessage = $('<span class="error-message">This field is required</span>');
+
+                        // Remove any existing error message to avoid duplicates
+                        inputEl.next('.error-message').remove();
+
+                        // Append the error message
+                        inputEl.after(errorMessage);
+
+                        isValid = false;
+                    } else if (type === 'Number' && isNaN(value)) {
+                        // Additional validation for numeric fields
+                        const errorMessage = $('<span class="error-message">Please enter a valid number</span>');
+
+                        // Remove any existing error message to avoid duplicates
+                        inputEl.next('.error-message').remove();
+
+                        // Append the error message
+                        inputEl.after(errorMessage);
+
+                        isValid = false;
+                    } else {
+                        // Remove the error message if the field is valid
+                        inputEl.next('.error-message').remove();
+                    }
                 }
             });
-            if (!isValid) return false; // Exit the outer loop if invalid
         });
+
         return isValid;
     }
 
