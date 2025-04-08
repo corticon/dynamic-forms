@@ -52,11 +52,9 @@ To help you build dynamic forms quickly, we provide a **form accelerator templat
 3.  **Preconfigured JavaScript Files**: These files act as the glue between the Decision Service and the frontend, translating rule vocabulary into actual HTML input types and behaviors.
     * The Javascript files in the template are designed to read the output of the Corticon.js decision service, and render the HTML accordingly.
     * To connect your own Corticon.js Decision Service, replace the example decision service with your own generated Javascript bundle.
-* **Example Rule:** To add a new field, add a new rule to the Corticon.js Studio project that adds a new item to the UI definition vocabulary.
-* For more detailed documentation, please refer to [link to documentation].
+* For furhter documentation, please refer to [UI Control Documentation](docs/README.md)
 
 ---
-
 ## Key Features of Corticon.js Dynamic Forms
 
 1. **Rules-Driven Design**: Define business rules in Corticon.js Studio to dynamically control the form's behavior.
