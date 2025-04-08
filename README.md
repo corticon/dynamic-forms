@@ -39,18 +39,16 @@ For example, in an insurance quoting form, Corticon.js ensures:
 - **Seamless User Experience**: Avoids unnecessary server calls for dynamic behavior, reducing the risk of user abandonment.
 - **Data-Driven Decisions**: Dynamically evaluates user-provided data, pre-existing data (e.g., from a CRM), and live data from external endpoints to determine the next steps.
 - **Separation of Logic and Rendering**: Maintains a clear distinction between the decision service logic (e.g., determining the content of prompts) and the rendering logic (e.g., how a dropdown looks and behaves).
-
 ---
-
 ## Getting Started
 
 To help you build dynamic forms quickly, we provide a **form accelerator template** that includes:
 1.  **Base Corticon.js Rule Vocabulary**: A predefined vocabulary of UI definition components that can be rendered out of the box.
     * Import this vocabulary into Corticon.js Studio to define your form logic.
-2.  **Test Driver HTML Page (`test-driver.html`)**: A testing environment for form developers to experiment with and validate their forms.
-    * Download or clone the form accelerator template from [link to template].
+2.  **[Form Playground](https://corticon.github.io/dynamic-forms/)**: A testing environment for form developers to experiment with and validate their forms.
+    * Download or clone the form accelerator template from [clientSideComponent](clientSideComponent) folder
     * Open `test-driver.html` in your browser to preview the form.
-    * Edit the Corticon.js rules in Corticon.js studio, and see the changes reflected in the html page.
+    * Edit the [Corticon.js rules](jsStudio-rule-projects) in Corticon.js studio, and see the changes reflected in the html page.
 3.  **Preconfigured JavaScript Files**: These files act as the glue between the Decision Service and the frontend, translating rule vocabulary into actual HTML input types and behaviors.
     * The Javascript files in the template are designed to read the output of the Corticon.js decision service, and render the HTML accordingly.
     * To connect your own Corticon.js Decision Service, replace the example decision service with your own generated Javascript bundle.
