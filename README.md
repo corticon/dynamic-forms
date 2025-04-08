@@ -45,9 +45,17 @@ For example, in an insurance quoting form, Corticon.js ensures:
 ## Getting Started
 
 To help you build dynamic forms quickly, we provide a **form accelerator template** that includes:
-1. **Base Corticon.js Rule Vocabulary**: A predefined vocabulary of UI definition components that can be rendered out of the box.
-2. **Test Driver HTML Page**: A testing environment for form developers to experiment with and validate their forms.
-3. **Preconfigured JavaScript Files**: These files act as the glue between the Decision Service and the frontend, translating rule vocabulary into actual HTML input types and behaviors.
+1.  **Base Corticon.js Rule Vocabulary**: A predefined vocabulary of UI definition components that can be rendered out of the box.
+    * Import this vocabulary into Corticon.js Studio to define your form logic.
+2.  **Test Driver HTML Page (`test-driver.html`)**: A testing environment for form developers to experiment with and validate their forms.
+    * Download or clone the form accelerator template from [link to template].
+    * Open `test-driver.html` in your browser to preview the form.
+    * Edit the Corticon.js rules in Corticon.js studio, and see the changes reflected in the html page.
+3.  **Preconfigured JavaScript Files**: These files act as the glue between the Decision Service and the frontend, translating rule vocabulary into actual HTML input types and behaviors.
+    * The Javascript files in the template are designed to read the output of the Corticon.js decision service, and render the HTML accordingly.
+    * To connect your own Corticon.js Decision Service, replace the example decision service with your own generated Javascript bundle.
+* **Example Rule:** To add a new field, add a new rule to the Corticon.js Studio project that adds a new item to the UI definition vocabulary.
+* For more detailed documentation, please refer to [link to documentation].
 
 ---
 
