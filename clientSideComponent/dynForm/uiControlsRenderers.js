@@ -976,29 +976,34 @@ corticon.dynForm.UIControlsRenderer = function () {
     }
 
     function appendLabel(oneUIControl, labelPositionAtContainerLevel, inputContainerEl) {
-        if (oneUIControl.label !== undefined && oneUIControl.label !== null) {
-            let html2;
-            const labelPosition = getLabelPositionForControl(oneUIControl, labelPositionAtContainerLevel);
-            if (labelPosition === 'Above') {
-                html2 = '<div class="inputLabelAbove">' + oneUIControl.label + '</div>';
-            } else {
-                html2 = '<span class="inputLabelSide">' + oneUIControl.label + '</span>';
+        const labelPosition = getLabelPositionForControl(oneUIControl, labelPositionAtContainerLevel);
 
-            }
+        // Create the label element
+        const labelEl = $('<label>').text(oneUIControl.label);
 
-            // Apply emphasis styling if emphasize is true
-            if (oneUIControl.emphasize === true) {
-                html2 = $(html2).css({
-                    'font-weight': 'bold',
-                    'color': 'red'
-                });
-            } else {
-                html2 = $(html2); // Ensure html2 is a jQuery object
-            }
+        // Add the "info" icon if the tooltip is specified
+        if (oneUIControl.tooltip) {
+            const infoIcon = $('<span>')
+                .addClass('info-icon') // Add a class for styling
+                .text('ⓘ') // The "info" icon
+                .attr('title', oneUIControl.tooltip); // Set the tooltip text as the title attribute
 
-            inputContainerEl.append(html2);
+            // Append the info icon to the label
+            labelEl.append('&nbsp;').append(infoIcon);
+        }
+
+        // Add the label to the input container based on the label position
+        if (labelPosition === 'Above') {
+            const labelWrapper = $('<div>').addClass('inputLabelAbove');
+            labelWrapper.append(labelEl);
+            inputContainerEl.append(labelWrapper);
+        } else if (labelPosition === 'Side') {
+            const labelWrapper = $('<span>').addClass('inputLabelSide');
+            labelWrapper.append(labelEl);
+            inputContainerEl.append(labelWrapper);
         }
     }
+
     function isArrayType(oneUIControl) {
         if (oneUIControl.multiple !== undefined && oneUIControl.multiple !== null && oneUIControl.multiple)
             return true;

@@ -2,7 +2,7 @@
 
 Creating dynamic forms can be a complex and time-consuming process, even for experienced developers. However, with Corticon.js, dynamic forms can be created efficiently, leveraging contributions from both developers and non-developers. The framework-agnostic design pattern provided by Corticon.js ensures maximum reusability of form logic, reducing development time and effort.
 
-Try a Corticon.js rules-driven dynamic form with the [test driver on Codepen](https://codepen.io/SethMeldon/pen/wvOGvra).
+Try Corticon.js rules-driven dynamic forms with the [Form Playground](https://corticon.github.io/dynamic-forms/).
 
 ---
 
