@@ -1,685 +1,620 @@
 
-<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
-
-- [Defining the Dynamic Form Business Rules in Corticon.js Studio](#defining-the-dynamic-form-business-rules-in-corticonjs-studio)
-  - [Dynamic Form Vocabulary Elements and Usage](#dynamic-form-vocabulary-elements-and-usage)
-    - [UI](#ui)
-      - [pathToData](#pathtodata)
-      - [noUItoRender](#nouitorender)
-      - [done](#done)
-      - [nextStageNumber](#nextstagenumber)
-    - [currentStageNumber](#currentstagenumber)
-      - [language](#language)
-    - [Container](#container)
-      - [validationMsg](#validationmsg)
-      - [description](#description)
-      - [id](#id)
-      - [title](#title)
-    - [UIControl](#uicontrol)
-      - [type](#type)
-        - [ReadOnlyText](#readonlytext)
-        - [TextArea](#textarea)
-        - [Text](#text)
-        - [Number](#number)
-        - [DateTime](#datetime)
-        - [SingleChoice](#singlechoice)
-        - [MultipleChoices](#multiplechoices)
-        - [MultipleChoicesMultiSelect](#multiplechoicesmultiselect)
-        - [MultiText](#multitext)
-        - [YesNo](#yesno)
-        - [YesNoBoolean](#yesnoboolean)
-        - [FileUpload](#fileupload)
-        - [MultiExpenses](#multiexpenses)
-      - [fieldName](#fieldname)
-      - [id](#id-1)
-      - [dataSource](#datasource)
-      - [emphasize](#emphasize)
-      - [max](#max)
-      - [min](#min)
-      - [minDT](#mindt)
-      - [maxDT](#maxdt)
-      - [value](#value)
-      - [labelPosition](#labelposition)
-      - [sortOptions](#sortoptions)
-    - [DataSourceOptions](#datasourceoptions)
-      - [dataTextField](#datatextfield)
-      - [dataValueField](#datavaluefield)
-      - [pathToOptionsArray](#pathtooptionsarray)
-    - [Option](#option)
-      - [displayName](#displayname)
-      - [value](#value-1)
-    - [BackgroundData](#backgrounddata)
-      - [arrayToCollection](#arraytocollection)
-      - [arrayToSet](#arraytoset)
-      - [collectionName](#collectionname)
-      - [fieldName1…fieldName10](#fieldname1fieldname10)
-      - [labelName1… labelName10](#labelname1-labelname10)
-      - [pathToData1...pathToData10](#pathtodata1pathtodata10)
-      - [url](#url)
-
-<!-- TOC end -->
-
 # Defining the Dynamic Form Business Rules in Corticon.js Studio
 
-In Corticon Studio, rules are authored from a "Rule Vocabulary" which translates to a JSON definition when the rules are generated into javascript. There are two aspects involved in the vocabulary for dynamic forms - elements specific to how the form knows what to render, when, and what data to accrue from the end user, and elements specific to the underlying purpose of the form (e.g. a loan applicant's inputs about their needed loan, or insurance claimants' details about a car accident).
+This document is intended for rule authors using Corticon.js Studio to define the logic and behavior of dynamic forms.
 
-There are six vocabulary entities defined currently for the UI definition component when modeling rules. The are: `UI`, `BackgroundData`, `Container`, `DataSourceOptions`, `Option`, `UI`, and `UIControl`. UI is always the root element. Here is the description of these elements:
+In Corticon Studio, rules are authored from a "Rule Vocabulary," which translates to a JSON definition when the rules are compiled into a JavaScript Decision Service. The vocabulary for dynamic forms involves two main parts:
+
+1.  **UI Definition Component:** Elements defining *how* the form renders, *when* specific controls appear, and *what* data structure will store the user's input.
+2.  **Form Purpose Component:** Elements specific to the *underlying purpose* of the form (e.g., a loan applicant's details, insurance claim information). These are defined separately based on the specific form's needs.
+
+This document details the six vocabulary entities currently defined for the UI definition component: `UI`, `BackgroundData`, `Container`, `DataSourceOptions`, `Option`, and `UIControl`. `UI` is always the root element.
+
+---
 
 ## Dynamic Form Vocabulary Elements and Usage
 
 ### UI
 
-#### pathToData
+The root element for defining the overall state and flow of the dynamic form.
 
-Data Type: *Any alphanumeric string will be accepted, but
-in order to use user-selected responses to dynamically change form behavior in
-future steps, this should be set to an entity in the vocabulary that will
-accrue the data*
+**Attributes:**
 
-Description: We define which data we want to store by
-specifying in the initial stage of the rules which vocabulary entity should
-‘store’ the data accrued throughout the form. The stored data can then be
-passed along to other workflow steps once the form is complete, or used to
-define a conditional rule at a later stage in the form. This is in effect the
-bridge between the form behavior component of the vocabulary and the underlying
-purpose part of the vocabulary.
+* **`pathToData`**
+    * Data Type: *String* (Should map to a root-level entity name in your form's purpose vocabulary)
+    * Description: Defines the primary data object where information entered by the user will be stored. This attribute acts as the crucial bridge between the UI definition component and the form's specific data model. By setting `pathToData` (typically in the first stage), you specify which vocabulary entity (e.g., `LoanApplication`, `InsuranceClaim`) will accrue the data collected via `UIControl` elements that have a corresponding `fieldName`. This collected data can then be used in later form stages or passed to subsequent processes.
+    * Example: Setting `UI.pathToData = 'household'` in the rules results in accrued data structured like:
+        ```json
+        // Decision Service Input/Output Snippet
+        [
+          {"currentStageNumber": 0, "pathToData": "household"},
+          // ... other UI data ...
+          {
+            "household": {
+              "countyfips": "29095",
+              "desiredQualityLevel": "3",
+              "desiredMetalLevel": "Bronze"
+            }
+          }
+        ]
+        ```
+        *(Note: The `household` entity and its attributes like `countyfips` must be defined in your specific form's purpose vocabulary.)*
 
-Example: when the decision service response to the CSC looks
-like:
+* **`noUItoRender`**
+    * Data Type: *Boolean*
+    * Description: Set to `true` for stages where no UI needs to be rendered, but background processing (like calculations or data augmentation via other rulesheets) should occur. Defaults to `false` if not specified.
+  
+     ![Rule Example](images/noUItoRender.png)
 
-```
-[{"currentStageNumber": 0,"pathToData": "household"}]
-```
+* **`done`**
+    * Data Type: *Boolean*
+    * Description: Set to `true` by the rules to signal the end of the dynamic form flow. The Client Side Component (CSC) – the JavaScript code rendering the form – typically uses this flag to trigger final data submission or transition to the next part of the application.
+    
+      ![Rule Example](images/UIdone.png)
 
-Then data will be stored under an association called
-Household, resulting in the accrued data for user responses being structured
-like:
+* **`nextStageNumber`**
+    * Data Type: *Integer*
+    * Where to specify: **Action** row of a rulesheet.
+    * Description: Set by the rules to indicate which stage the form should proceed to next. If this is the final stage, leave this null and set `UI.done = true`.
+  
+      ![Rule Example](images/nextStageNumber.png)
 
-```
-[{"currentStageNumber": 0,"pathToData": "household"    },{"household": {"countyfips": "29095","desiredQualityLevel": "3","desiredMetalLevel": "Bronze"}}]
-```
+* **`currentStageNumber`**
+    * Data Type: *Integer*
+    * Where to specify: Used in the **Filter** panel (Advanced View) of a rulesheet to determine if a rule applies to the current stage.
+    * Description: The CSC sends this value in the input payload to the Decision Service, indicating which stage's rules should be evaluated. It typically gets this value from the `UI.nextStageNumber` returned in the previous step.
 
-All of the entities/associations/attributes accrued under
-the pathToData entity are specific to the requirements of a given form, and
-thus differ from form to form.
+       ![Rule Example](images/currentStageNumber.png) 
 
-#### noUItoRender
+* **`language`**
+    * Data Type: *String*
+    * Description: Defines the language context. The CSC can pass an initial language, but rules can override this (e.g., `UI.language = 'italian'`) to change language dynamically during the form flow. Used primarily for rendering localized text in controls like `YesNo`.
 
-![](images/noUItoRender.png)
-
-Data Type: Boolean
-
-Description: Set to ‘T’ for any stages where no UI needs to
-be rendered, but some action (a decision/calculation/augmentation of separate
-rulesheet) needs to be executed. Does not need to be set to ‘F’ when this is
-not the case.
-
-#### done
-
-![](images/UIdone.png)
-
-Data Type: Boolean
-
-Description: Upon receiving a done instruction from the
-decision service (a notification of the end of the flow) via `UI.done=T`, it is
-expected the collected data will be passed to another function or process;
-typically an event will be raised with a pointer to the JSON data collected
-during the flow.
-
-#### nextStageNumber
-
-![](images/nextStageNumber.png)
-
-
-Data Type: Integer
-
-Where to specify: **Action**
-row of rulesheet
-
-Description: The decision service sets the attribute
-`UI.nextStageNumber` to specify the next step in the flow, unless it is the last
-stage, in which case this field is left null and done is set to ‘true’
-
-### currentStageNumber
-
-![](images/currentStageNumber.png)
-
-
-Data Type: Integer
-
-Where to specify: **Filter**
-panel of rulesheet, in advanced view
-
-Description: When the client side rendering component is
-ready for the next step in the flow, it invokes the decision service by setting
-`UI.currentStageNumber` to `UI.nextStageNumber` in the input payload of the
-decision service.
-
-#### language
-
-Data Type: String
-
-Description: On start, the rendered can accept the language
-from the UI but a decision service may switch the language based on some rules
+---
 
 ### Container
 
+Represents a logical grouping or panel within a form stage, containing UI controls.
+
 Referenced in the rules as: `UI.containers`
 
-Description: For all steps in which something is being
-presented to the user (versus just a calculation/decision made in the
-background), the decision service will specify the list of UI controls to
-render from the decision service JSON payload at the `UI.containers` element.
-This is an array of all the containers to render for this stage. The container
-can be viewed as a panel containing various labels and input fields. The
-container has various attributes, for example a title.
+Description: For all steps presenting UI to the user, the Decision Service specifies a list of containers via the `UI.containers` collection. Each container can have attributes like a title and holds one or more `UIControl` elements.
 
-#### validationMsg
+**Attributes:**
 
-Data Type: string
+* **`id`**
+    * Data Type: *String* (Must be unique within the current stage)
+    * Description: Required unique identifier for the container.
 
-Description: Creates a container wide validation message
+* **`title`**
+    * Data Type: *String*
+    * Description: Text rendered as the header (e.g., `<h3>`) for the container.
+      ![Rule Example](images/createContainer.png)
 
-#### description
+* **`validationMsg`**
+    * Data Type: *String*
+    * Description: Optional text displayed as a validation message associated with the entire container.
 
-Data Type: String
+* **`description`**
+    * Data Type: *String*
+    * Description: An optional descriptive string, not rendered by default but useful for rule troubleshooting or documentation.
 
-Description: An optional string that doesn’t impact behavior
-of the form. It is mostly useful for troubleshooting.
-
-#### id
-
-Data Type: Any unique String
-
-Description: Required if any container is being rendered.
-
-#### title
-
-Data Type: String
-
-Description: Renders the h3 header on `Container` entity
-![](images/createContainer.png)
+---
 
 ### UIControl
 
+Represents an individual form element (input field, text display, button, etc.).
+
 Referenced in the rules as: `UI.containers.uiControls`
 
-Description: Each UI control element has multiple
-attributes. The most important one is the type attribute as it allows the
-client-side component to know what kind of control to render and which
-necessary attributes to access based on the type. See table below for full
-scope of available out of the box options. 
+Description: Each container holds a collection of `UIControl` elements. The `type` attribute is crucial, determining which kind of control is rendered and what other attributes are relevant.
 
-#### type
-
-Description: The specific type of UI Control. Each of these `UIControl` types are created using similar
-syntax, though the fields required will vary depending on the type of data
-being solicited from the end user (if any). In the out of the box test driver, the following UI Controls / specifications are defined:
+**Supported `type` values and Syntax:**
 
 ##### ReadOnlyText
 
-Read only HTML text
+*Description:* Renders non-editable HTML text.
+*Rendered:* ![Read Only Text Rendered](images/readOnlyText_render.png) 
+<details>
+<summary>Rule Syntax</summary>
 
-![](images/readOnlyText_render.png)
+```javascript
+// Example: Display static text
+UI.containers.uiControls = UIControl.new [
+  type='ReadOnlyText', 
+  id='crtl0_1', 
+  value = 'This is sample read-only text.'
+]
+````
 
-<details open>
-  <summary>Rule Syntax</summary> 
-  
-  `UI.containers.uiControls =
-  UIControl.new[type='ReadOnlyText', id='crtl0_1', value = ‘sample’]`
-  ![](images/readOnlyText.png)
+![Rule Screenshot](docs/images/readOnlyText.png) *(Ensure image path '' is correct)*
 
-  </details>
+</details>
 
 ##### TextArea
 
-Multilne text input
+*Description:* Renders a multi-line text input field.
 
-![](images/text_area_rendered.png)
+*Rendered:* ![Text Area Rendered](images/text_area_rendered.png)
+<details>
+<summary>Rule Syntax</summary>
 
-<details open>
-  <summary>Rule Syntax</summary> 
+```javascript
+// Example: A comment box with size and length constraints
+UI.containers.uiControls += UIControl.new [
+  type='TextArea',
+  id='crtl7_1', 
+  fieldName='comments', // Links to vocabulary field 'comments'
+  label = 'Enter your comments',
+  labelPosition='Above', 
+  cols=80, 
+  rows=3, 
+  min=5, // Min character length
+  max=200 // Max character length
+]
+```
+![Rule Screenshot](images/text_area_rules.png) 
 
-`UI.containers.uiControls += UIControl.new[type='TextArea',
-id='crtl7_1', fieldName='Step7Field1', label = 'Enter your comments',
-labelPosition='Above', cols=80, rows=3, min =5, max = 20]`
-
-![](../images/text_area_rules.png)
-
-  </details>
+</details>
 
 ##### Text
 
-single line text input
+*Description:* Renders a single-line text input field.
 
-![](images/text_rendered.png)
+*Rendered:* 
 
-<details open>
-  <summary>Rule Syntax</summary> 
+![Text Input Rendered](images/text_rendered.png) 
+<details>
+<summary>Rule Syntax</summary>
 
-`UI.containers.uiControls+=UIControl.new[ type = 'Text', label = 'Street Address', fieldName = 'streetAddress', id = '2', value= '123 Main St']`
+```javascript
+// Example: Street address with a default value
+UI.containers.uiControls += UIControl.new [ 
+  type = 'Text', 
+  label = 'Street Address', 
+  fieldName = 'streetAddress', // Links to vocabulary field 'streetAddress'
+  id = 'addr_st', 
+  value= '123 Main St' // Default value
+]
+```
 
- ![](images/text_rule.png)
-
-  </details>
+![Rule Screenshot](images/text_rule.png) 
+</details>
 
 ##### Number
 
-single number input
+*Description:* Renders an input field specifically for numeric entry.
+*Rendered:* ![Number Input Rendered]
+![alt text](images/number_rendered.png)
+<details>
+<summary>Rule Syntax</summary>
 
-![](images/number_rendered.png)
+```javascript
+// Example: Age input
+UI.containers.uiControls += UIControl.new [
+  type='Number',
+  fieldName='age', // Links to vocabulary field 'age'
+  id='q_age', 
+  label = 'Enter your age',
+  min = 18, // Optional minimum value
+  max = 120  // Optional maximum value
+]
+```
+![Rule Screenshot](images/number_rules.png)
 
-<details open>
-  <summary>Rule Syntax</summary> 
-
-`UI.containers.uiControls+=UIControl.new [type='Number',
-fieldName='age',id='q_1', label = ‘enter your age’]`
-
-![](images/number_rules.png)
-
-
-  </details>
+</details>
 
 ##### DateTime
 
-date time or a date input (based on attribute UIControl.showTime)
-![](images/date_time_rendered.png)
+*Description:* Renders a date or date-time picker input. Use `showTime=true` for date and time, otherwise it's date only.
+*Rendered:* ![Rule Screenshot](images/date_time_rendered.png)
+<details>
+<summary>Rule Syntax</summary>
 
-<details open>
-  <summary>Rule Syntax</summary> 
-  
-  `UI.containers.uiControls+=UIControl.new[type='DateTime', id=cellValue, label=cell Value, fieldName='valueAsDateTime']`
-![](images/date_time_rules.png)
+```javascript
+// Example: Date of Birth (Date only)
+UI.containers.uiControls += UIControl.new [
+  type='DateTime', 
+  id='dob_id', 
+  label='Date of Birth', 
+  fieldName='dob', // Links to vocabulary field 'dob'
+  showTime = false, // Explicitly date only
+  maxDT = '2007-04-10' // Example max date
+]
 
-  
-  </details>
+// Example: Appointment Time (Date and Time)
+UI.containers.uiControls += UIControl.new [
+  type='DateTime', 
+  id='appt_id', 
+  label='Appointment Time', 
+  fieldName='appointmentDateTime', // Links to vocabulary field 'appointmentDateTime'
+  showTime = true, // Include time picker
+  minDT = '2025-04-11' // Example min date
+]
+```
+
+![Rule Screenshot](images/number_rendered.png)
+</details>
 
 ##### SingleChoice
 
- Single choice input rendered as a checkbox
+*Description:* Renders a single choice input, typically as a checkbox.
+*Rendered:* ![Single Choice Checkbox](images/singlechoice-rendered.png) 
 
-![](images/singlechoice.png)
+<details>
+<summary>Rule Syntax</summary>
 
-<details open>
-  <summary>Rule Syntax</summary> 
-  
-`UI.containers.uiControls +=
-UIControl.new[type='SingleChoice', label=’Check the box if you want',
-id='crtl4_1', fieldName='checkboxIsChecked']` 
+```javascript
+// Example: Opt-in checkbox
+UI.containers.uiControls += UIControl.new [
+  type='SingleChoice', 
+  label='Check the box to agree to terms',
+  id='crtl4_1', 
+  fieldName='agreedToTerms' // Links to boolean vocabulary field 'agreedToTerms'
+]
+```
+![Rule Screenshot](images/singlechoice.png) 
 
-![](images/singlechoice.png)
-
-  </details>
+</details>
 
 ##### MultipleChoices
 
-multi-choice input. The user can only selects one of the choice - typically rendered as a dropdown
+*Description:* Renders a multi-choice input, typically as a dropdown list. The user can select only one option. Options can be defined directly in rules or fetched from a REST endpoint.
 
-![](images/multiple_choices_rendered.png)
+*Rendered:* 
 
-<details open>
-  <summary>Rule Syntax With Options Defined by Rules</summary>
+![Multiple Choices Rendered](images/multiple_choices_rendered.png)
+ 
+ <details>
+<summary>Rule Syntax (Options Defined by Rules)</summary>
 
-`UI.containers.uiControls+=UIControl.new [type = 'MultipleChoices', fieldName='sex', id='q_2', label = ‘Please select the sex of the patient’]`
+```javascript
+// Define the control
+UI.containers.uiControls += UIControl.new [
+  type = 'MultipleChoices',
+  fieldName='sex', // Links to vocabulary field 'sex'
+  id='q_sex',
+  label = 'Please select the sex of the patient'
+]
 
-`UI.containers.uiControls.option += Option.new [displayName = 'Male', value = 'M]`
-
-`UI.containers.uiControls.option += Option.new [displayName = 'Female', value = 'F']  ] `
-
-</details>
-
-<details open>
-  <summary>Rule Syntax With Options Defined by REST datasource</summary>
-
-(in rulesheet 1/2):
-
-`UI.containers.uiControls+= UIControl.new[type='MultipleChoices', id='crtl2_1', fieldName='make',dataSource ='https://api.npoint.io/d487567c8a34a506350e', label='Please select the make of vehicle']
-`
-
-(in rulesheet 2/2, with arrow connector in ruleflow from 1 to 2):
-
-`UI.containers.uiControls.dataSourceOptions = DataSourceOptions.new
-[dataValueField = 'brand', dataTextField = 'brand' ]`
+// Add options directly
+UI.containers.uiControls.option += Option.new [displayName = 'Male', value = 'M']
+UI.containers.uiControls.option += Option.new [displayName = 'Female', value = 'F']
+```
 
 </details>
+<details>
+<summary>Rule Syntax (Options Defined by REST Datasource)</summary>
 
+**Rule Sheet 1: Define Control and DataSource URL**
+
+```javascript
+UI.containers.uiControls += UIControl.new [
+  type='MultipleChoices',
+  id='crtl2_1',
+  fieldName='make', // Links to vocabulary field 'make'
+  dataSource ='[https://api.npoint.io/d487567c8a34a506350e](https://api.npoint.io/d487567c8a34a506350e)', // URL providing options
+  label='Please select the make of vehicle'
+]
+```
+
+*(Ensure a ruleflow connector links this sheet to Rule Sheet 2 if DataSourceOptions are needed)*
+
+**Rule Sheet 2: Define DataSource Options (Optional - only if endpoint keys are not 'value' and 'displayName')**
+
+```javascript
+UI.containers.uiControls.dataSourceOptions = DataSourceOptions.new [
+  dataValueField = 'brand', // Key in JSON for the option's value
+  dataTextField = 'brand'   // Key in JSON for the option's display text
+]
+```
+
+</details>
 
 ##### MultipleChoicesMultiSelect
 
-Renders a multi-choice input. The user can select 1 to all of the choice.
+*Description:* Renders a multi-choice input where the user can select multiple options. Often rendered as a multi-select listbox or checkboxes.
 
-![](images/MultipleChoicesMultiSelect_rendered.png)
+*Rendered:* 
 
-<details open>
-  <summary>Rule Syntax</summary>
+![MultiSelect Rendered](images/MultipleChoicesMultiSelect_rendered.png)
 
-`UI.containers.uiControls +=
-UIControl.new[type='MultipleChoicesMultiSelect', label='Question 2',
-id='crtl5_2', fieldName='selections']UI.containers.uiControls.option += Option.new[value='choice1', displayName='choice 1']UI.containers.uiControls.option += Option.new[value='choice2', displayName='choice 2']UI.containers.uiControls.option += Option.new[value='choice3', displayName='choice 3']`
+<details>
+<summary>Rule Syntax</summary>
 
-![](images/MultipleChoicesMultiSelect_rule.png)
+```javascript
+// Define the control
+UI.containers.uiControls += UIControl.new [
+  type='MultipleChoicesMultiSelect', 
+  label='Select applicable symptoms',
+  id='crtl5_2', 
+  fieldName='symptoms' // Links to collection vocabulary field 'symptoms'
+]
 
+// Add options
+UI.containers.uiControls.option += Option.new [value='headache', displayName='Headache']
+UI.containers.uiControls.option += Option.new [value='fever', displayName='Fever']
+UI.containers.uiControls.option += Option.new [value='cough', displayName='Cough']
+```
+
+![Rule Screenshot](images/MultipleChoicesMultiSelect_rule.png)
 
 </details>
 
 ##### MultiText
 
-for entering a variable number of strings of text. User can hit plus button to add indeterminate number of string entries
+*Description:* Allows the user to enter a variable number of single-line text strings. The renderer typically provides an "Add" button (+) to allow users to create more input fields dynamically.
 
-<details open>
-  <summary>Rule Syntax</summary> 
+<details>
+<summary>Rule Syntax</summary>
 
-`UI.containers.uiControls+=UIControl.new[id='multiDrugs', fieldName = 'drugToCover', type = 'MultiText']
-`
-  </details>
+```javascript
+// Example: Entering multiple drug names
+UI.containers.uiControls += UIControl.new [
+  id='multiDrugs', 
+  fieldName = 'drugToCover', // Links to collection vocabulary field 'drugToCover'
+  type = 'MultiText',
+  label = 'Enter medications to cover' 
+]
+```
 
-##### YesNo
-
-binary yes - no choice. This is a short cut to creating a multi choices control with yes and no values, with the literal string ‘yes’ or ‘no’ stored as the value
-
-![](images/yes-no_rendered.png)
-
-<details open>
-  <summary>Rule Syntax</summary> 
-
-`UI.containers.uiControls += UIControl.new[type='YesNo',
-label=’ 'Answer yes or no’,  id='crtl1_3', fieldName='response’]`
-![](images/yes_no_rule.png)
-
-  </details>
-
-##### YesNoBoolean
-
-same as above, but the value stored as T for yes instead of the literal string yes, and F for no.
-
-<details open>
-  <summary>Rule Syntax</summary> 
-  
-`  UI.containers.uiControls+=UIControl.new [type =
-'YesNoBoolean', fieldName='onHTN_meds', id='q_3', label = 'Are you on
-medication for Hypertension?'] `
-
-  </details>
-
-##### FileUpload
-
-Button to browse desktop for a file to upload
-![](images/file_upload_rendered.png)
-
-<details open>
-  <summary>Rule Syntax</summary> 
-
-`UI.containers.uiControls += UIControl.new[type='FileUpload',
-label='Enter justification document', id='crtl6_1', fieldName='Step6Field1'] `
-
-![](images/file-upload-expense.png)
-
-  </details>
-
-##### MultiExpenses
-
-Variable number of input fields (the number of fields chosen by the user filling the form). Intended for logging multiple expenses’ currency, value, and category.
-![](Rule Author's Guide/images/multiexpense rendered.png)
-
-<details open>
-  <summary>Rule Syntax</summary> 
-
-`UI.containers.uiControls +=
-UIControl.new[type='MultiExpenses', label='Enter all the expenses', id='crtl8_1',  fieldName='Step8Field1']`
-
-`UI.containers.uiControls.option += Option.new[value='hotelCode', displayName='Hotel']`
-
-`UI.containers.uiControls.option += Option.new[value='carRentalCode', displayName='Car Rental']`
-
-`UI.containers.uiControls.option += Option.new[value='airfareCode', displayName='Airfare']`
-
-![](images//multiexpense%20rule.png)
 
 </details>
 
-#### fieldName
+##### YesNo
 
-Description: The UI control specifies where to store the
-data in the field UIControl.fieldName. For example, if we want to store the value
-of a person’s date of birth in a field called dob, within a JSON object called
-Person, we would first need to set (either in this stage or a preceding one)
-the `UI.pathToData = 'Person'` and then we could define the UI Control’s
-`fieldName` to be ‘dob’. This would hold the value selected for the `dob` in the
-JSON object as follows:
+*Description:* Renders a binary choice, typically as a dropdown or radio buttons ('Yes'/'No'). Stores the literal string `'yes'` or `'no'` as the value.
+*Rendered:* ![Yes/No Rendered](images/yes-no_rendered.png)
 
+<details>
+<summary>Rule Syntax</summary>
+
+```javascript
+// Example: Simple Yes/No question
+UI.containers.uiControls += UIControl.new [
+  type='YesNo',
+  label='Do you smoke?', 
+  id='crtl1_3', 
+  fieldName='smokerResponse' // Links to vocabulary field 'smokerResponse'
+]
 ```
-"Person":{
-"dob":"MM/DD/YYYY"
-}
+
+![Rule Screenshot](images/yes_no_rule.png) 
+
+</details>
+
+##### YesNoBoolean
+
+*Description:* Similar to `YesNo`, but stores a Boolean value (`true` for Yes, `false` for No) instead of strings.
+*Rendered:* (Similar to YesNo)
+
+<details>
+<summary>Rule Syntax</summary>
+
+```javascript
+// Example: Boolean question
+UI.containers.uiControls += UIControl.new [
+  type = 'YesNoBoolean', 
+  fieldName='onHTN_meds', // Links to boolean vocabulary field 'onHTN_meds'
+  id='q_htn_meds', 
+  label = 'Are you on medication for Hypertension?'
+]
 ```
+</details>
 
-#### id
+##### FileUpload
 
-Data Type: Any unique String
+*Description:* Renders a button allowing the user to browse their local system and select a file for upload. The actual upload mechanism is handled by the CSC.
+*Rendered:* ![File Upload Rendered](images/file_upload_rendered.png) 
 
-Description: Unique identifier (within the context of one
-container) for the UI control.
+<details>
+<summary>Rule Syntax</summary>
 
-Example:
-` UI.containers.uiControls += UIControl.new [id =
-'dietary_restrictions', type = 'MultipleChoices', label =  'Do you have any dietary restrictions?',
-fieldName = 'has_dietary_restrictions']`
+```javascript
+// Example: Uploading a document
+UI.containers.uiControls += UIControl.new [
+  type='FileUpload',
+  label='Upload justification document:', 
+  id='crtl6_1', 
+  fieldName='justificationDoc' // Links to vocabulary field 'justificationDoc'
+]
+```
+</details>
 
-#### dataSource
+##### MultiExpenses
 
-Data Type: URL pointing to JSON formatted data
+*Description:* A complex control designed for entering multiple expense items, each potentially having fields like category (dropdown), amount (number), and currency (dropdown). Allows users to add multiple expense entries dynamically.
 
-Description: Specifies the datasource to populate
-`MultipleChoices` dropdown options from. Value field at the JSON endpoint must
-have the key value, display name must have the value displayName. If not the
-case for either of these, these can be overridden by specifying a child entity
-`DataSourceOptions`.
+*Rendered:* 
 
-![](images/datasource.png)![](../images/readOnlyText.png)
+![Multi Expense Rendered](images/multiple_choices_rendered.png) 
 
+<details>
+<summary>Rule Syntax</summary>
 
+```javascript
+// Define the control
+UI.containers.uiControls += UIControl.new [
+  type='MultiExpenses', 
+  label='Enter all expenses:', 
+  id='crtl8_1', 
+  fieldName='expenses' // Links to collection vocabulary field 'expenses'
+]
 
-#### emphasize
+// Define options for the expense category dropdown within the control
+UI.containers.uiControls.option += Option.new [value='hotelCode', displayName='Hotel']
+UI.containers.uiControls.option += Option.new [value='carRentalCode', displayName='Car Rental']
+UI.containers.uiControls.option += Option.new [value='airfareCode', displayName='Airfare']
+```
+![Rule Screenshot](images/multiple_expenses_rules.png) 
 
-Datatype: Boolean
+</details>
 
-Renders the label of the UI control in bold and colored red. 
+**(End of UIControl Types)**
 
-#### max
+-----
 
-Data Type: Integer
+**Common `UIControl` Attributes:**
 
-Description: Optionally give the rendering component for
-this UI Control a numeric maximum
+  * **`type`**
 
-#### min
+      * Data Type: *String*
+      * Description: (Covered above) The specific type of UI Control to render. Determines required/optional attributes.
 
-Data Type: Integer
+  * **`fieldName`**
 
-Description: Optionally give the rendering component for
-this UI Control a minimum numeric value end user can enter
+      * Data Type: *String*
+      * Description: Crucial attribute that links the value entered/selected in this UI control to a specific attribute within the data entity defined by `UI.pathToData`. For example, if `UI.pathToData` is `'Person'` and a `UIControl` has `fieldName = 'dob'`, the selected date will be stored in the data model as `Person.dob`. Ensure the `fieldName` matches an attribute defined in your form's purpose vocabulary under the `pathToData` entity.
 
+  * **`id`**
 
-#### minDT
+      * Data Type: *String* (Must be unique within the current container)
+      * Description: Unique identifier for this specific UI control instance.
 
-Data Type: Date
+  * **`label`**
 
-Description: Optionally give the rendering component for
-this UI Control a minimum date value end user can enter
+      * Data Type: *String*
+      * Description: The text displayed as the label for the UI control.
 
-#### maxDT
+  * **`value`**
 
-Data Type: Date
+      * Data Type: *String*, *Number*, *Boolean* (depends on control type)
+      * Description: For input controls (`Text`, `Number`, `DateTime`, etc.), this provides a default value. For `ReadOnlyText`, this contains the actual text string to display.
 
-Description: Optionally give the rendering component for
-this UI Control a maximum date value end user can enter
+  * **`labelPosition`**
 
-#### value
+      * Data Type: *String* (`'Above'`, `'Side'`)
+      * Description: Optionally instructs the CSC where to place the `label` relative to the control. Default rendering depends on the CSC implementation.
 
-Data Type: String
+  * **`dataSource`**
 
-Description: For all control types besides `ReadOnlyText`,
-optionally give the rendering component for this UI Control a placeholder
-default value. For `ReadOnlyText`, this field contains the actual read only text
-string to be rendered.
+      * Data Type: *URL* (String pointing to a JSON REST endpoint)
+      * Description: Used with `MultipleChoices` or `MultipleChoicesMultiSelect` to specify a URL from which to dynamically fetch the list of options. By default, the CSC expects the JSON endpoint to return an array of objects, each having `value` and `displayName` keys. Use `DataSourceOptions` to configure different key names or paths within the JSON response.
+      * ![Rule Example](images/datasource.png) 
+  
+  * **`emphasize`**
 
-![](images/readOnlyText.png)
+      * Datatype: *Boolean*
+      * Description: If set to `true`, instructs the CSC to render the `label` with emphasis (e.g., bold, different color). Actual rendering depends on CSC styling.
 
+  * **`min` / `max`**
 
-#### labelPosition
+      * Data Type: *Number*
+      * Description: Used with `Number` or `TextArea` controls to specify minimum/maximum numeric values or character lengths.
 
-Data Type: `‘Above’`, `‘Side’`
+  * **`minDT` / `maxDT`**
 
-Description: Optionally instruct the rendering component
-where to place the label for this UI Control
+      * Data Type: *Date* (String in 'YYYY-MM-DD' format or compatible with Date constructor)
+      * Description: Used with `DateTime` controls to specify the minimum/maximum selectable date.
 
-#### sortOptions
+  * **`sortOptions`**
 
-Data Type: `‘A to Z’`, `‘Z to A’`
+      * Data Type: *String* (`'A to Z'`, `'Z to A'`)
+      * Description: Optionally instructs the CSC to sort the list of options (defined via `Option` or `dataSource`) for `MultipleChoices` or `MultipleChoicesMultiSelect` controls.
 
-Description: Optionally instruct the rendering component how
-to sort the list of options applied to this UI Control
+  * **`tooltip`**
+
+      * Data Type: *String*
+      * Description: Optional text to display as a tooltip when the user hovers over the UI control.
+
+  * **(Other Attributes):** Attributes like `rows`, `cols` (for `TextArea`), `showTime` (for `DateTime`) are specific to certain control types.
+
+-----
 
 ### DataSourceOptions
 
-Referenced in the rules as:
-`UI.containers.uiControls.dataSourceOptions`
+Provides configuration options when using `UIControl.dataSource` to fetch choices from a REST endpoint, especially if the endpoint's JSON structure doesn't match the default expectation (array of `{value: ..., displayName: ...}`).
 
-When using the MultipleChoices UI Control, the actual
-choices can be populated from a JSON endpoint or be specified by the rule
-modeler. For the first option, the rule modeler must specify a URL on the field
-UIControl.dataSource. The default client renderer will look for the options at
-that endpoint under the value and displayName field. So if the endpoint looks
-like this, then you’re good to go:
+Referenced in the rules as: `UI.containers.uiControls.dataSourceOptions`
 
-```
-[{"displayName":"start", "value": "2015-01-01 00:00:00T-0500"},
-{"displayName": "end", "value": "2015-12-31 23:59:59T-0500"}]
-```
-If the JSON data has different keys, the client renderer
-must be told which field is going to serve as the value field and which as the
-displayName field—these can be, and often are, the same. These are specified
-with the `DataSourceOptions` entity.
+**Attributes:**
 
-#### dataTextField
+  * **`dataTextField`**
 
-Description: Optionally define the key name to use as the
-display name for this option from dropdown, if its name isn’t `displayName`.
-Oftentimes this will be the same as the `dataValueField` field.
+      * Data Type: *String*
+      * Description: Specifies the name of the key in the fetched JSON objects that should be used as the **display text** for each option in the dropdown/list. Use this if the key is not named `displayName`.
+      * ![Rule Example](images/dataTextField.png) 
+  
+  * **`dataValueField`**
 
-![](images/dataTextField.png)
+      * Data Type: *String*
+      * Description: Specifies the name of the key in the fetched JSON objects that should be used as the **actual value** stored when an option is selected. Use this if the key is not named `value`.
 
-#### dataValueField
+  * **`pathToOptionsArray`**
 
-Description: Optionally define the name of the key whose
-value should be stored should end user select this option from dropdown, if its
-name isn’t value. Oftentimes this will be the same as the `dataTextField` field.
-![](Rule Author's Guide/images/dataValueField.png)
-
-#### pathToOptionsArray
-
-Description: Optionally define where in a JSON endpoint is
-the array of options to populate a dropdown list with by using JSONPath syntax.
-Example: `UI.containers.uiControls.dataSourceOptions.pathToOptionsArray='$.[?(@.brand==
-\'' + AutoQuote.vehicle_make + '\' )]'`
-
-![](images/pathToOptionsArray.png)
-
+      * Data Type: *String* (JSONPath syntax)
+      * Description: Specifies the path within the fetched JSON response where the array of option objects is located, if it's not at the root level. Uses JSONPath syntax.
+      * Example: `$.results[*]` to get all items within a `results` array.
+      * Example: `$.[?(@.brand == '` + AutoQuote.vehicle\_make + `')]` to filter options based on other data.
+      * ![Rule Example](images/pathToOptionsArray_rules.png) 
+-----
 
 ### Option
 
+Used to define individual choices directly within the rules for `MultipleChoices`, `MultipleChoicesMultiSelect`, or `MultiExpenses` controls.
+
 Referenced in the rules as: `UI.containers.uiControls.option`
 
-Description: When the rule modeler is defining the list of
-dropdown options, they can do so with the `Option` entity.
+**Attributes:**
 
-#### displayName
+  * **`displayName`**
 
-Description: The displayed option within a multiple-choice
-dropdown. When selected, it is stored as the corresponding value under the
-attribute assigned `UIControl.fieldName`
+      * Data Type: *String*
+      * Description: The text displayed to the user for this option in the list/dropdown.
 
-#### value
+  * **`value`**
 
-Description: The value stored in the `pathToData.fieldName`
-when user selects corresponding `displayName`.
+      * Data Type: *String*, *Number*, etc.
+      * Description: The actual value that gets stored in the data model (at `pathToData.fieldName`) when the user selects this option.
+
+-----
 
 ### BackgroundData
 
+Used to retrieve data from an external REST JSON endpoint and directly populate the form's data model (`pathToData`) *without* presenting choices to the user. Useful for pre-filling data or enriching the model based on initial input.
+
 Referenced in the rules as: `UI.backgroundData`
 
-Used to retrieve data from an external REST JSON endpoint in
-cases where the data is being assigned directly to the accrued data, versus
-when the external data is referenced and presented as options to the end user
-as in the case of the `MultipleChoices` control. It can be used to assign an
-individual attribute of the `pathToData` entity from a specific key/value pair,
-to create a comma separated string from all of the values for a given key in a
-JSON array, or create child associations upon the `pathToData` entity that
-mirrors the structure of the endpoint JSON array.
+**Attributes:**
 
-#### arrayToCollection
+  * **`url`**
 
-Boolean. When true, CSC will create child entities upon the
-`pathToData` entity. For example, with a `pathToData` set to ‘plan’ and a rule
-defined as:
+      * Data Type: *URL* (String)
+      * Description: The URL of the JSON REST endpoint to fetch data from.
 
-`UI.backgroundData=BackgroundData.newUnique[url=(URL TO A
-REST ENDPOINT HERE), arrayToCollection = true,
-fieldName1=’benefit’, labelName1=’type’, collectionName='benefit']`
+  * **`fieldNameN`** (e.g., `fieldName1`, `fieldName2`, ...)
 
-If the specified URL is structured like:
-```
-[{
-    "type": "Routine Dental
-Services (Adult)"},
- {"type": "Basic Dental Care -
-Child" }]
-```
+      * Data Type: *String*
+      * Description: The name of the attribute (within the `pathToData` entity or a specified `collectionName`) where the fetched data corresponding to `labelNameN` should be stored.
 
-Then the CSC will store the data as:
+  * **`labelNameN`** (e.g., `labelName1`, `labelName2`, ...)
 
-```
-[{
-  "plan": [
-    {"benefit": "a"},
-    {"benefit": "b"}
-  ]
-}]
-```
+      * Data Type: *String*
+      * Description: The name of the key in the fetched JSON whose value should be extracted and stored under `fieldNameN`.
 
-#### arrayToSet
+  * **`pathToDataN`** (e.g., `pathToData1`, `pathToData2`, ...)
 
-Similar to above, but if arrayToSet were true instead of arrayToCollection,
-then the above scenario would result in data stored like:
+      * Data Type: *String* (JSONPath syntax)
+      * Description: Optional JSONPath expression to locate the `labelNameN` within the fetched JSON structure, if it's not at the root level of the object being processed.
 
-```
-[{
-  "plan": [
-    {"benefit": "a, b"},
- ]
-}]
-```
+  * **`arrayToCollection`**
 
-#### collectionName
+      * Data Type: *Boolean*
+      * Description: If the endpoint returns an array of objects and this is `true`, the CSC will create a collection of child entities under the `pathToData` entity (or a sub-entity specified by `collectionName`). Each object in the fetched array becomes a separate entity instance in the collection.
+      * Requires `collectionName` to be specified.
+      * Requires `fieldNameN`/`labelNameN` pairs to map keys from the JSON objects to attributes in the new collection entities.
+      * Example: Fetching `[{ "type": "A"}, {"type": "B"}]` with `pathToData='plan'`, `arrayToCollection=true`, `collectionName='benefits'`, `fieldName1='benefitType'`, `labelName1='type'` would result in data like: `plan.benefits = [ {benefitType: 'A'}, {benefitType: 'B'} ]`.
 
-Name of the child array under the `pathToData` that will be
-created when using `arrayToCollection`
+  * **`arrayToSet`**
 
-#### fieldName1…fieldName10
+      * Data Type: *Boolean*
+      * Description: If the endpoint returns an array of objects and this is `true`, the CSC will extract values for a specific key (defined by `labelName1`) from *all* objects in the array and store them as a single, comma-separated string in the attribute specified by `fieldName1` under the `pathToData` entity.
+      * Example: Fetching `[{ "type": "A"}, {"type": "B"}]` with `pathToData='plan'`, `arrayToSet=true`, `fieldName1='benefitList'`, `labelName1='type'` would result in data like: `plan.benefitList = 'A, B'`.
 
-Name of attribute under which to ‘store’ the data retrieve
-from the labelName specified for the endpoint, with the matching number
-(`fieldName1` = `labelName1` etc).
+  * **`collectionName`**
 
-#### labelName1… labelName10
+      * Data Type: *String*
+      * Description: Required when `arrayToCollection` is `true`. Specifies the name of the collection attribute (which must exist in your vocabulary under the `pathToData` entity) that will hold the newly created child entities.
 
-Name of JSON key from which to get value to store under fieldName
-with corresponding number (`fieldName1` = `labelName1` etc).
+<!-- end list -->
 
-#### pathToData1...pathToData10
-
-JSON path to the desired labelName of the same number (`labelName1`=`pathToData1` etc).
-
-#### url
-
-URL of the JSON endpoint data is being retrieved from
