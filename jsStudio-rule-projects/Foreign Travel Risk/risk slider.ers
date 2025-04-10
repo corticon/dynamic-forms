@@ -1,0 +1,2249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.corticon.rulesemf.assetmodel:RulesheetAsset xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.corticon.rulesemf.asg="http:///com/corticon/rulesemf/asg.ecore" xmlns:com.corticon.rulesemf.assetmodel="http:///com/corticon/rulesemf/assetmodel.ecore" xmlns:com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable="http:///com/corticon/rulesemf/viewrulemodel/rulesheet/decisiontable.ecore" majorVersionNumber="2" minorServiceNumber="2" buildNumber="8020" updateStamp="_BkKX3cdREe6ino4cUQ4MzQ" externalChecksum="2722078124:507989954:2146616488" studioType="Javascript">
+  <languageCode>en_US</languageCode>
+  <ruleset vocabularyUpdateStamp="_Xd45oMdQEe6ino4cUQ4MzQ" vocabulary="Vocabulary.ecore#/">
+    <rule>
+      <condition/>
+      <condition/>
+      <condition/>
+      <condition/>
+      <action/>
+    </rule>
+    <rule>
+      <condition/>
+      <condition/>
+      <condition/>
+      <condition>
+        <opaqueExpression expression="Applicant.occupation = 'Diving' or Applicant.occupation = 'Security e.g.bodyguard'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.occupation = 'Diving' or Applicant.occupation = 'Security e.g.bodyguard'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="occupation" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.occupation">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Applicant.occupation" rhs="{'Diving', 'Security e.g.bodyguard'}"/>
+      </condition>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Central African Republic' or Country.name = 'Israel' or Country.name = 'Venezuela'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Central African Republic' or Country.name = 'Israel' or Country.name = 'Venezuela'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="{'Central African Republic', 'Israel', 'Venezuela'}"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Other Areas'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'Other Areas'"/>
+      </condition>
+      <condition/>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Central African Republic'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Central African Republic'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Central African Republic'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Bangui'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Bangui'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'Bangui'"/>
+      </condition>
+      <condition/>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Colombia' or Country.name = 'Congo' or Country.name = 'Eritrea' or Country.name = 'Ethiopia' or Country.name = 'Georgia' or Country.name = 'Guinea Bissau' or Country.name = 'Indonesia' or Country.name = 'Mali' or Country.name = 'Western Sahara'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Colombia' or Country.name = 'Congo' or Country.name = 'Eritrea' or Country.name = 'Ethiopia' or Country.name = 'Georgia' or Country.name = 'Guinea Bissau' or Country.name = 'Indonesia' or Country.name = 'Mali' or Country.name = 'Western Sahara'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="{'Colombia', 'Congo', 'Eritrea', 'Ethiopia', 'Georgia', 'Guinea Bissau', 'Indonesia', 'Mali', 'Western Sahara'}"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Other Areas'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'Other Areas'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'India' or Country.name = 'Mauritania' or Country.name = 'Thailand'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'India' or Country.name = 'Mauritania' or Country.name = 'Thailand'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="{'India', 'Mauritania', 'Thailand'}"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="not (subregions.name = 'Other Areas') or subregions.name = null">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="not ( subregions.name = 'Other Areas' ) or subregions.name = null" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="not 'Other Areas'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Israel' or Country.name = 'Turkey' or Country.name = 'Venezuela' or Country.name = 'Western Sahara'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Israel' or Country.name = 'Turkey' or Country.name = 'Venezuela' or Country.name = 'Western Sahara'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="{'Israel', 'Turkey', 'Venezuela', 'Western Sahara'}"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="not (subregions.name = 'Other Areas') or subregions.name = null">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="not ( subregions.name = 'Other Areas' ) or subregions.name = null" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="not 'Other Areas'"/>
+      </condition>
+      <condition/>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Panama'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Panama'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Panama'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Darien Province'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Darien Province'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'Darien Province'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Senegal'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Senegal'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Senegal'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'South-western Casamance region'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'South-western Casamance region'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'South-western Casamance region'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Afghanistan' or Country.name = 'Egypt' or Country.name = 'Guinea' or Country.name = 'Iraq' or Country.name = 'Liberia' or Country.name = 'Libya' or Country.name = 'Niger' or Country.name = 'Nigeria' or Country.name = 'Pakistan' or Country.name = 'Sierra Leone' or Country.name = 'Somalia' or Country.name = 'South Sudan' or Country.name = 'Syria' or Country.name = 'Ukraine' or Country.name = 'Yemen'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Afghanistan' or Country.name = 'Egypt' or Country.name = 'Guinea' or Country.name = 'Iraq' or Country.name = 'Liberia' or Country.name = 'Libya' or Country.name = 'Niger' or Country.name = 'Nigeria' or Country.name = 'Pakistan' or Country.name = 'Sierra Leone' or Country.name = 'Somalia' or Country.name = 'South Sudan' or Country.name = 'Syria' or Country.name = 'Ukraine' or Country.name = 'Yemen'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="{'Afghanistan', 'Egypt', 'Guinea', 'Iraq', 'Liberia', 'Libya', 'Niger', 'Nigeria', 'Pakistan', 'Sierra Leone', 'Somalia', 'South Sudan', 'Syria', 'Ukraine', 'Yemen'}"/>
+      </condition>
+      <condition/>
+      <condition/>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Burundi' or Country.name = 'Democratic Republic of the Congo' or Country.name = 'Iran' or Country.name = 'South Sudan' or Country.name = 'Sudan' or Country.name = 'Uganda'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Burundi' or Country.name = 'Democratic Republic of the Congo' or Country.name = 'Iran' or Country.name = 'South Sudan' or Country.name = 'Sudan' or Country.name = 'Uganda'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="{'Burundi', 'Democratic Republic of the Congo', 'Iran', 'South Sudan', 'Sudan', 'Uganda'}"/>
+      </condition>
+      <condition/>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Algeria' or Country.name = 'Angola' or Country.name = 'Armenia' or Country.name = 'Azerbaijan' or Country.name = 'Bangladesh' or Country.name = 'Benin' or Country.name = 'Bhutan' or Country.name = 'Bolivia' or Country.name = 'Botswana' or Country.name = 'Burkina Faso' or Country.name = 'Burma/Myanmar' or Country.name = 'Cambodia' or Country.name = 'Cameroon' or Country.name = 'Djibouti' or Country.name = 'Ecuador' or Country.name = 'Equatorial Guinea' or Country.name = 'Gabon' or Country.name = 'Gambia' or Country.name = 'Ghana' or Country.name = 'Guatemala' or Country.name = 'Guyana' or Country.name = 'Honduras' or Country.name = 'Jordan' or Country.name = 'Kenya' or Country.name = 'Kyrgyzstan' or Country.name = 'Laos' or Country.name = 'Lebanon' or Country.name = 'Lesotho' or Country.name = 'Madagascar' or Country.name = 'Malawi' or Country.name = 'Mongolia' or Country.name = 'Morocco' or Country.name = 'Mozambique' or Country.name = 'Namibia' or Country.name = 'Nepal' or Country.name = 'Nicaragua' or Country.name = 'North Korea' or Country.name = 'Papua New Guinea' or Country.name = 'Paraguay' or Country.name = 'Peru' or Country.name = 'Philippines' or Country.name = 'Russia' or Country.name = 'Rwanda' or Country.name = 'Saudi Arabia' or Country.name = 'Sri Lanka' or Country.name = 'Suriname' or Country.name = 'Swaziland' or Country.name = 'Tajikistan' or Country.name = 'Tanzania' or Country.name = 'Timor-Leste' or Country.name = 'Togo' or Country.name = 'Turkmenistan' or Country.name = 'Uzbekistan'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Algeria' or Country.name = 'Angola' or Country.name = 'Armenia' or Country.name = 'Azerbaijan' or Country.name = 'Bangladesh' or Country.name = 'Benin' or Country.name = 'Bhutan' or Country.name = 'Bolivia' or Country.name = 'Botswana' or Country.name = 'Burkina Faso' or Country.name = 'Burma/Myanmar' or Country.name = 'Cambodia' or Country.name = 'Cameroon' or Country.name = 'Djibouti' or Country.name = 'Ecuador' or Country.name = 'Equatorial Guinea' or Country.name = 'Gabon' or Country.name = 'Gambia' or Country.name = 'Ghana' or Country.name = 'Guatemala' or Country.name = 'Guyana' or Country.name = 'Honduras' or Country.name = 'Jordan' or Country.name = 'Kenya' or Country.name = 'Kyrgyzstan' or Country.name = 'Laos' or Country.name = 'Lebanon' or Country.name = 'Lesotho' or Country.name = 'Madagascar' or Country.name = 'Malawi' or Country.name = 'Mongolia' or Country.name = 'Morocco' or Country.name = 'Mozambique' or Country.name = 'Namibia' or Country.name = 'Nepal' or Country.name = 'Nicaragua' or Country.name = 'North Korea' or Country.name = 'Papua New Guinea' or Country.name = 'Paraguay' or Country.name = 'Peru' or Country.name = 'Philippines' or Country.name = 'Russia' or Country.name = 'Rwanda' or Country.name = 'Saudi Arabia' or Country.name = 'Sri Lanka' or Country.name = 'Suriname' or Country.name = 'Swaziland' or Country.name = 'Tajikistan' or Country.name = 'Tanzania' or Country.name = 'Timor-Leste' or Country.name = 'Togo' or Country.name = 'Turkmenistan' or Country.name = 'Uzbekistan'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="{'Algeria', 'Angola', 'Armenia', 'Azerbaijan', 'Bangladesh', 'Benin', 'Bhutan', 'Bolivia', 'Botswana', 'Burkina Faso', 'Burma/Myanmar', 'Cambodia', 'Cameroon', 'Djibouti', 'Ecuador', 'Equatorial Guinea', 'Gabon', 'Gambia', 'Ghana', 'Guatemala', 'Guyana', 'Honduras', 'Jordan', 'Kenya', 'Kyrgyzstan', 'Laos', 'Lebanon', 'Lesotho', 'Madagascar', 'Malawi', 'Mongolia', 'Morocco', 'Mozambique', 'Namibia', 'Nepal', 'Nicaragua', 'North Korea', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Russia', 'Rwanda', 'Saudi Arabia', 'Sri Lanka', 'Suriname', 'Swaziland', 'Tajikistan', 'Tanzania', 'Timor-Leste', 'Togo', 'Turkmenistan', 'Uzbekistan'}"/>
+      </condition>
+      <condition/>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Chad'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Chad'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Chad'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'N\'Djamena'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'N\'Djamena'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'N\'Djamena'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Chad'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Chad'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Chad'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Other Areas'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'Other Areas'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration &lt;= 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration &lt;= 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="&lt;= 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Colombia'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Colombia'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Colombia'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Cartagena' or subregions.name = 'San Andres Island'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Cartagena' or subregions.name = 'San Andres Island'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="{'Cartagena', 'San Andres Island'}"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Congo'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Congo'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Congo'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Brazzaville' or subregions.name = 'Pointe-Noire'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Brazzaville' or subregions.name = 'Pointe-Noire'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="{'Brazzaville', 'Pointe-Noire'}"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Eritrea'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Eritrea'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Eritrea'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Asmara'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Asmara'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'Asmara'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Ethiopia'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Ethiopia'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Ethiopia'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Addis Ababa'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Addis Ababa'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'Addis Ababa'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Georgia'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Georgia'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Georgia'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'T\bilisi'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'T\bilisi'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'T\bilisi'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Guinea Bissau'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Guinea Bissau'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Guinea Bissau'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Bissau'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Bissau'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'Bissau'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Indonesia'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Indonesia'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Indonesia'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="not (subregions.name = 'Other Areas') or subregions.name = null">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="not ( subregions.name = 'Other Areas' ) or subregions.name = null" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="not 'Other Areas'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Mali'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Mali'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="'Mali'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Bamako'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Bamako'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'Bamako'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition>
+        <opaqueExpression expression="Country.name = 'Mauritania' or Country.name = 'Senegal' or Country.name = 'Turkey'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Mauritania' or Country.name = 'Senegal' or Country.name = 'Turkey'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="Country.name" rhs="{'Mauritania', 'Senegal', 'Turkey'}"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.name = 'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Other Areas'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.name" rhs="'Other Areas'"/>
+      </condition>
+      <condition>
+        <opaqueExpression expression="subregions.duration > 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+        <viewExpressions lhs="subregions.duration" rhs="> 42"/>
+      </condition>
+      <condition/>
+      <action>
+        <opaqueExpression expression="Applicant.riskSlider = 'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+            </referencedTermList>
+          </parserOutput>
+        </opaqueExpression>
+      </action>
+    </rule>
+    <rule>
+      <condition/>
+      <condition/>
+      <condition/>
+      <condition/>
+      <action/>
+    </rule>
+    <filter precondition="true" logicalVariables="#//@ruleset/@logicalVariables.0">
+      <opaqueExpression expression="UI.currentStageNumber=3">
+        <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="UI.currentStageNumber = 3" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+          <referencedTermList>
+            <terms text="currentStageNumber" datatype="Integer" termtype="ATTRIBUTE" fulltext="UI.currentStageNumber">
+              <parentTerm text="UI" datatype="UI" termtype="ENTITY" fulltext="UI" variable="#//@ruleset/@logicalVariables.0"/>
+            </terms>
+          </referencedTermList>
+        </parserOutput>
+      </opaqueExpression>
+    </filter>
+    <logicalVariable entity="Vocabulary.ecore#//UI" filters="#//@ruleset/@filters.0">
+      <referencedAttributes attribute="Vocabulary.ecore#//UI/currentStageNumber"/>
+      <referencedAttributes attribute="Vocabulary.ecore#//UI/noUiToRenderContinue"/>
+      <referencedAttributes attribute="Vocabulary.ecore#//UI/nextStageNumber"/>
+      <referencedAttributes attribute="Vocabulary.ecore#//UI/stageOnExit"/>
+    </logicalVariable>
+    <logicalVariable entity="Vocabulary.ecore#//Applicant">
+      <referencedAttributes attribute="Vocabulary.ecore#//Applicant/riskSlider"/>
+      <referencedAttributes attribute="Vocabulary.ecore#//Applicant/occupation"/>
+    </logicalVariable>
+    <logicalVariable entity="Vocabulary.ecore#//Country">
+      <extension explicit="true" association="true" entity="Vocabulary.ecore#//SubRegion" traversedAssocRole="Vocabulary.ecore#//Country/subRegion">
+        <alias value="subregions"/>
+      </extension>
+      <referencedAttributes attribute="Vocabulary.ecore#//Country/name"/>
+    </logicalVariable>
+  </ruleset>
+  <rulesheetViewList xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:DecisionTable" advanced="true" sashWeightAdvancedView="22" sashWeightScope="52" sashWeightConditionsActions="43" sashWeightConditionsIf="36">
+    <actionSection rowCount="50" columnWidthFactor="0.5">
+      <actionItemList rowHeight="102">
+        <valueSetCell/>
+        <expressionCell external="Applicant.riskSlider">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider" datatype="String" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </expressionCell>
+      </actionItemList>
+    </actionSection>
+    <scopeSection>
+      <rootNode>
+        <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeEntity" logicalVariable="#//@ruleset/@logicalVariables.0">
+          <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeFolder">
+            <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeFilter" expression="UI.currentStageNumber=3" filter="#//@ruleset/@filters.0"/>
+          </children>
+          <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeAttribute" referencedAttribute="#//@ruleset/@logicalVariables.0/@referencedAttributes.0"/>
+          <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeAttribute" referencedAttribute="#//@ruleset/@logicalVariables.0/@referencedAttributes.1"/>
+          <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeAttribute" referencedAttribute="#//@ruleset/@logicalVariables.0/@referencedAttributes.2"/>
+          <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeAttribute" referencedAttribute="#//@ruleset/@logicalVariables.0/@referencedAttributes.3"/>
+        </children>
+        <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeEntity" expanded="true" logicalVariable="#//@ruleset/@logicalVariables.1">
+          <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeAttribute" referencedAttribute="#//@ruleset/@logicalVariables.1/@referencedAttributes.0"/>
+          <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeAttribute" referencedAttribute="#//@ruleset/@logicalVariables.1/@referencedAttributes.1"/>
+        </children>
+        <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeEntity" expanded="true" logicalVariable="#//@ruleset/@logicalVariables.2">
+          <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeAttribute" referencedAttribute="#//@ruleset/@logicalVariables.2/@referencedAttributes.0"/>
+          <children xsi:type="com.corticon.rulesemf.viewrulemodel.rulesheet.decisiontable:ScopeAssociation" logicalVariable="#//@ruleset/@logicalVariables.2/@extension.0"/>
+        </children>
+      </rootNode>
+    </scopeSection>
+    <filterSection rowCount="50">
+      <filterItemList filter="#//@ruleset/@filters.0">
+        <expressionCell external="UI.currentStageNumber=3">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="UI.currentStageNumber = 3" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="currentStageNumber" datatype="Integer" termtype="ATTRIBUTE" fulltext="UI.currentStageNumber">
+                <parentTerm text="UI" datatype="UI" termtype="ENTITY" fulltext="UI" variable="#//@ruleset/@logicalVariables.0"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </expressionCell>
+      </filterItemList>
+    </filterSection>
+    <ruleStatementSection rowCount="50" columnWidthReference="50" columnWidthPostSeverity="75" columnWidthAlias="100" columnWidthID="50" columnWidthText="1000" columnWidthRuleName="100" columnWidthRuleLink="100" columnWidthSourceName="100" columnWidthSourceLink="100" columnWidthCategory="100" columnWidthComments="400"/>
+    <conditionSection rowCount="51" columnWidthFactor="0.5">
+      <conditionItemList>
+        <valueSetCell/>
+        <expressionCell external="Country.name">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name" datatype="String" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </expressionCell>
+      </conditionItemList>
+      <conditionItemList rowHeight="26">
+        <valueSetCell/>
+        <expressionCell external="subregions.name">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name" datatype="String" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </expressionCell>
+      </conditionItemList>
+      <conditionItemList>
+        <valueSetCell/>
+        <expressionCell external="subregions.duration">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration" datatype="Integer" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </expressionCell>
+      </conditionItemList>
+      <conditionItemList rowHeight="16">
+        <valueSetCell/>
+        <expressionCell external="Applicant.occupation">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.occupation" datatype="String" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="occupation" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.occupation">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </expressionCell>
+      </conditionItemList>
+    </conditionSection>
+    <ruleSection columnCount="104">
+      <ruleColumnList ruleId="0" columnWidth="100" pRule="#//@ruleset/@rules.0">
+        <conditionValueSetCellList/>
+        <conditionValueSetCellList/>
+        <conditionValueSetCellList/>
+        <conditionValueSetCellList/>
+        <actionValueSetCellList/>
+      </ruleColumnList>
+      <ruleColumnList ruleId="1" columnWidth="100" pRule="#//@ruleset/@rules.1">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="{'Diving', 'Security e.g.bodyguard'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.occupation = 'Diving' or Applicant.occupation = 'Security e.g.bodyguard'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="occupation" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.occupation">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant" variable="#//@ruleset/@logicalVariables.1"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <actionValueSetCellList valueSet="'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="2" columnWidth="100" pRule="#//@ruleset/@rules.2">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="{'Central African Republic', 'Israel', 'Venezuela'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Central African Republic' or Country.name = 'Israel' or Country.name = 'Venezuela'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Other Areas'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="3" columnWidth="100" pRule="#//@ruleset/@rules.3">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Central African Republic'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Central African Republic'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'Bangui'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Bangui'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="4" columnWidth="100" pRule="#//@ruleset/@rules.4">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="{'Colombia', 'Congo', 'Eritrea', 'Ethiopia', 'Georgia', 'Guinea Bissau', 'Indonesia', 'Mali', 'Western Sahara'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Colombia' or Country.name = 'Congo' or Country.name = 'Eritrea' or Country.name = 'Ethiopia' or Country.name = 'Georgia' or Country.name = 'Guinea Bissau' or Country.name = 'Indonesia' or Country.name = 'Mali' or Country.name = 'Western Sahara'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Other Areas'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="5" columnWidth="100" pRule="#//@ruleset/@rules.5">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="{'India', 'Mauritania', 'Thailand'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'India' or Country.name = 'Mauritania' or Country.name = 'Thailand'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="not 'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="not ( subregions.name = 'Other Areas' ) or subregions.name = null" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="6" columnWidth="100" pRule="#//@ruleset/@rules.6">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="{'Israel', 'Turkey', 'Venezuela', 'Western Sahara'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Israel' or Country.name = 'Turkey' or Country.name = 'Venezuela' or Country.name = 'Western Sahara'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="not 'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="not ( subregions.name = 'Other Areas' ) or subregions.name = null" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="7" columnWidth="100" pRule="#//@ruleset/@rules.7">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Panama'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Panama'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'Darien Province'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Darien Province'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="8" columnWidth="100" pRule="#//@ruleset/@rules.8">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Senegal'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Senegal'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'South-western Casamance region'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'South-western Casamance region'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="9" columnWidth="100" pRule="#//@ruleset/@rules.9">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="{'Afghanistan', 'Egypt', 'Guinea', 'Iraq', 'Liberia', 'Libya', 'Niger', 'Nigeria', 'Pakistan', 'Sierra Leone', 'Somalia', 'South Sudan', 'Syria', 'Ukraine', 'Yemen'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Afghanistan' or Country.name = 'Egypt' or Country.name = 'Guinea' or Country.name = 'Iraq' or Country.name = 'Liberia' or Country.name = 'Libya' or Country.name = 'Niger' or Country.name = 'Nigeria' or Country.name = 'Pakistan' or Country.name = 'Sierra Leone' or Country.name = 'Somalia' or Country.name = 'South Sudan' or Country.name = 'Syria' or Country.name = 'Ukraine' or Country.name = 'Yemen'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="10" columnWidth="100" pRule="#//@ruleset/@rules.10">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="{'Burundi', 'Democratic Republic of the Congo', 'Iran', 'South Sudan', 'Sudan', 'Uganda'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Burundi' or Country.name = 'Democratic Republic of the Congo' or Country.name = 'Iran' or Country.name = 'South Sudan' or Country.name = 'Sudan' or Country.name = 'Uganda'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'high'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'high'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="11" columnWidth="100" pRule="#//@ruleset/@rules.11">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="{'Algeria', 'Angola', 'Armenia', 'Azerbaijan', 'Bangladesh', 'Benin', 'Bhutan', 'Bolivia', 'Botswana', 'Burkina Faso', 'Burma/Myanmar', 'Cambodia', 'Cameroon', 'Djibouti', 'Ecuador', 'Equatorial Guinea', 'Gabon', 'Gambia', 'Ghana', 'Guatemala', 'Guyana', 'Honduras', 'Jordan', 'Kenya', 'Kyrgyzstan', 'Laos', 'Lebanon', 'Lesotho', 'Madagascar', 'Malawi', 'Mongolia', 'Morocco', 'Mozambique', 'Namibia', 'Nepal', 'Nicaragua', 'North Korea', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Russia', 'Rwanda', 'Saudi Arabia', 'Sri Lanka', 'Suriname', 'Swaziland', 'Tajikistan', 'Tanzania', 'Timor-Leste', 'Togo', 'Turkmenistan', 'Uzbekistan'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Algeria' or Country.name = 'Angola' or Country.name = 'Armenia' or Country.name = 'Azerbaijan' or Country.name = 'Bangladesh' or Country.name = 'Benin' or Country.name = 'Bhutan' or Country.name = 'Bolivia' or Country.name = 'Botswana' or Country.name = 'Burkina Faso' or Country.name = 'Burma/Myanmar' or Country.name = 'Cambodia' or Country.name = 'Cameroon' or Country.name = 'Djibouti' or Country.name = 'Ecuador' or Country.name = 'Equatorial Guinea' or Country.name = 'Gabon' or Country.name = 'Gambia' or Country.name = 'Ghana' or Country.name = 'Guatemala' or Country.name = 'Guyana' or Country.name = 'Honduras' or Country.name = 'Jordan' or Country.name = 'Kenya' or Country.name = 'Kyrgyzstan' or Country.name = 'Laos' or Country.name = 'Lebanon' or Country.name = 'Lesotho' or Country.name = 'Madagascar' or Country.name = 'Malawi' or Country.name = 'Mongolia' or Country.name = 'Morocco' or Country.name = 'Mozambique' or Country.name = 'Namibia' or Country.name = 'Nepal' or Country.name = 'Nicaragua' or Country.name = 'North Korea' or Country.name = 'Papua New Guinea' or Country.name = 'Paraguay' or Country.name = 'Peru' or Country.name = 'Philippines' or Country.name = 'Russia' or Country.name = 'Rwanda' or Country.name = 'Saudi Arabia' or Country.name = 'Sri Lanka' or Country.name = 'Suriname' or Country.name = 'Swaziland' or Country.name = 'Tajikistan' or Country.name = 'Tanzania' or Country.name = 'Timor-Leste' or Country.name = 'Togo' or Country.name = 'Turkmenistan' or Country.name = 'Uzbekistan'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="12" columnWidth="100" pRule="#//@ruleset/@rules.12">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Chad'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Chad'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'N\'Djamena'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'N\'Djamena'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="13" columnWidth="100" pRule="#//@ruleset/@rules.13">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Chad'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Chad'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Other Areas'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="&lt;= 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration &lt;= 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="14" columnWidth="100" pRule="#//@ruleset/@rules.14">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Colombia'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Colombia'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="{'Cartagena', 'San Andres Island'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Cartagena' or subregions.name = 'San Andres Island'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="15" columnWidth="100" pRule="#//@ruleset/@rules.15">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Congo'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Congo'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="{'Brazzaville', 'Pointe-Noire'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Brazzaville' or subregions.name = 'Pointe-Noire'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="16" columnWidth="100" pRule="#//@ruleset/@rules.16">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Eritrea'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Eritrea'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'Asmara'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Asmara'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="17" columnWidth="100" pRule="#//@ruleset/@rules.17">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Ethiopia'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Ethiopia'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'Addis Ababa'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Addis Ababa'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="18" columnWidth="100" pRule="#//@ruleset/@rules.18">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Georgia'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Georgia'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'T\bilisi'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'T\bilisi'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="19" columnWidth="100" pRule="#//@ruleset/@rules.19">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Guinea Bissau'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Guinea Bissau'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'Bissau'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Bissau'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="20" columnWidth="100" pRule="#//@ruleset/@rules.20">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Indonesia'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Indonesia'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="not 'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="not ( subregions.name = 'Other Areas' ) or subregions.name = null" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="21" columnWidth="100" pRule="#//@ruleset/@rules.21">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="'Mali'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Mali'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'Bamako'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Bamako'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="22" columnWidth="100" pRule="#//@ruleset/@rules.22">
+        <overrideValueSetCell valueSet=""/>
+        <conditionValueSetCellList valueSet="{'Mauritania', 'Senegal', 'Turkey'}">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Country.name = 'Mauritania' or Country.name = 'Senegal' or Country.name = 'Turkey'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="Country.name">
+                <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="'Other Areas'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.name = 'Other Areas'" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="name" datatype="String" termtype="ATTRIBUTE" fulltext="subregions.name">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="> 42">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="subregions.duration > 42" datatype="Boolean" expressiontype="EXPRESSION" enumeration="false" cellValue="false">
+            <referencedTermList>
+              <terms text="duration" datatype="Integer" termtype="ATTRIBUTE" fulltext="subregions.duration">
+                <parentTerm text="subregions" datatype="SubRegion" termtype="ENTITY" fulltext="subregions" variable="#//@ruleset/@logicalVariables.2/@extension.0">
+                  <parentTerm text="Country" datatype="Country" termtype="ENTITY" fulltext="Country" variable="#//@ruleset/@logicalVariables.2"/>
+                </parentTerm>
+              </terms>
+            </referencedTermList>
+          </parserOutput>
+        </conditionValueSetCellList>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList valueSet="'medium'">
+          <parserOutput xsi:type="com.corticon.rulesemf.asg:Expression" text="Applicant.riskSlider = 'medium'" datatype="String" expressiontype="ASSIGNMENT" enumeration="false" cellValue="false">
+            <modifiedTermList>
+              <terms text="riskSlider" datatype="String" termtype="ATTRIBUTE" fulltext="Applicant.riskSlider">
+                <parentTerm text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+              </terms>
+            </modifiedTermList>
+            <referencedTermList>
+              <terms text="Applicant" datatype="Applicant" termtype="ENTITY" fulltext="Applicant"/>
+            </referencedTermList>
+          </parserOutput>
+        </actionValueSetCellList>
+      </ruleColumnList>
+      <ruleColumnList ruleId="23" columnWidth="100" pRule="#//@ruleset/@rules.23">
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="-"/>
+        <conditionValueSetCellList valueSet="-"/>
+        <actionValueSetCellList/>
+      </ruleColumnList>
+    </ruleSection>
+  </rulesheetViewList>
+</com.corticon.rulesemf.assetmodel:RulesheetAsset>

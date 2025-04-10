@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.corticon.rulesemf.assetmodel:RuletestAsset xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.corticon.rulesemf.assetmodel="http:///com/corticon/rulesemf/assetmodel.ecore" xmlns:com.corticon.rulesemf.viewtestmodel.ruletest.tabfolder="http:///com/corticon/rulesemf/viewtestmodel/ruletest/tabfolder.ecore" xmlns:com.corticon.rulesemf.viewtestmodel.testsheet.treeset="http:///com/corticon/rulesemf/viewtestmodel/testsheet/treeset.ecore" majorVersionNumber="2" minorServiceNumber="2" buildNumber="8020" updateStamp="_qeGFQcd-Ee6ino4cUQ4MzQ" externalChecksum="2722078124:507989954" studioType="Javascript">
+  <testsheetAssets majorVersionNumber="2" minorServiceNumber="2" buildNumber="8020" updateStamp="_oqBD4MdPEe6by-EmQVmEEQ" externalChecksum="2722078124:507989954" studioType="Java">
+    <testsheet ruleActivityUpdateStamp="_oqBD4cdPEe6by-EmQVmEEQ" ruleActivity="../ForeignRisk.erf#//@ruleflow" locale="">
+      <input/>
+      <output/>
+      <expectedOutput/>
+    </testsheet>
+    <testsheetViewList xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestTreeSet">
+      <inputRoot>
+        <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestEntity" nodeID="1" manuallyCreated="true" eClass="../Vocabulary.ecore#//UI">
+          <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" manuallyCreated="true" value="0" eAttribute="../Vocabulary.ecore#//UI/currentStageNumber"/>
+          <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" manuallyCreated="true" value="applicant" eAttribute="../Vocabulary.ecore#//UI/pathToData"/>
+          <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" manuallyCreated="true" value="english" eAttribute="../Vocabulary.ecore#//UI/language"/>
+        </children>
+      </inputRoot>
+      <outputRoot newOrModified="true">
+        <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestEntity" nodeID="1" newOrModified="true" eClass="../Vocabulary.ecore#//UI">
+          <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" value="0" eAttribute="../Vocabulary.ecore#//UI/currentStageNumber"/>
+          <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="1" eAttribute="../Vocabulary.ecore#//UI/stageOnExit"/>
+          <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="applicant" eAttribute="../Vocabulary.ecore#//UI/pathToData"/>
+          <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" value="english" eAttribute="../Vocabulary.ecore#//UI/language"/>
+          <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="1" newOrModified="true" eReference="../Vocabulary.ecore#//UI/containers" eClass="../Vocabulary.ecore#//Container">
+            <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Applicant Residency" eAttribute="../Vocabulary.ecore#//Container/id"/>
+            <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="1" newOrModified="true" eReference="../Vocabulary.ecore#//Container/uiControls" eClass="../Vocabulary.ecore#//UIControl">
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="countryOfResidence" eAttribute="../Vocabulary.ecore#//UIControl/fieldName"/>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Country of Residence" eAttribute="../Vocabulary.ecore#//UIControl/id"/>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Country of Residence" eAttribute="../Vocabulary.ecore#//UIControl/label"/>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="MultipleChoices" eAttribute="../Vocabulary.ecore#//UIControl/type"/>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="1" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Albania" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Albania" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="2" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Algeria" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Algeria" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="3" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="American Samoa" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="American Samoa" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="4" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Andorra" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Andorra" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="5" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Angola" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Angola" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="6" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Anguilla" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Anguilla" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="7" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Antigua &amp; Barbuda" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Antigua &amp; Barbuda" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="8" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Argentina" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Argentina" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="9" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Armenia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Armenia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="10" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Aruba" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Aruba" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="11" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Australia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Australia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="12" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Afghanistan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Afghanistan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="13" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Austria" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Austria" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="14" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Azerbaijan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Azerbaijan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="15" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bahamas" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bahamas" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="16" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bahrain" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bahrain" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="17" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bangladesh" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bangladesh" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="18" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Barbados" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Barbados" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="19" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Belarus" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Belarus" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="20" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Belgium" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Belgium" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="21" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Belize" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Belize" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="22" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Benin" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Benin" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="23" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bermuda" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bermuda" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="24" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bhutan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bhutan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="25" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bolivia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bolivia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="26" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bosnia &amp; Herzegovina" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bosnia &amp; Herzegovina" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="27" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Botswana" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Botswana" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="28" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Brazil" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Brazil" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="29" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="British Virgin Islands" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="British Virgin Islands" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="30" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Brunei" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Brunei" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="31" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bulgaria" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Bulgaria" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="32" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Burkina Faso" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Burkina Faso" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="33" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Burma/Myanmar" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Burma/Myanmar" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="34" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Burundi" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Burundi" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="35" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cambodia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cambodia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="36" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cameroon" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cameroon" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="37" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Canada" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Canada" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="38" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cape Verde" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cape Verde" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="39" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cayman Islands" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cayman Islands" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="40" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Central African Republic" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Central African Republic" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="41" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Chad" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Chad" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="42" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Chile" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Chile" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="43" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="China" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="China" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="44" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Colombia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Colombia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="45" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Commonwealth of Puerto Rico" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Commonwealth of Puerto Rico" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="46" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Commonwealth of the Northern Mariana Islands" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Commonwealth of the Northern Mariana Islands" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="47" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Comoros" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Comoros" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="48" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Congo" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Congo" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="49" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cook Islands" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cook Islands" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="50" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Costa Rica" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Costa Rica" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="51" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Croatia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Croatia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="52" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cuba" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cuba" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="53" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cyprus" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Cyprus" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="54" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Czech Republic" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Czech Republic" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="55" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Democratic Republic of the Congo" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Democratic Republic of the Congo" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="56" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Denmark" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Denmark" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="57" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Djibouti" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Djibouti" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="58" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Dominica" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Dominica" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="59" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Dominican Republic" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Dominican Republic" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="60" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ecuador" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ecuador" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="61" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Egypt" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Egypt" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="62" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="El Salvador" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="El Salvador" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="63" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Equatorial Guinea" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Equatorial Guinea" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="64" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Eritrea" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Eritrea" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="65" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Estonia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Estonia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="66" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ethiopia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ethiopia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="67" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Falkland Islands" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Falkland Islands" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="68" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Federated States of Micronesia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Federated States of Micronesia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="69" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Fiji" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Fiji" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="70" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Finland" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Finland" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="71" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="France" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="France" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="72" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="French Guiana" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="French Guiana" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="73" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="French Polynesia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="French Polynesia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="74" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Gabon" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Gabon" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="75" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Gambia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Gambia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="76" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Georgia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Georgia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="77" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Germany" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Germany" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="78" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ghana" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ghana" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="79" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Greece" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Greece" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="80" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Greenland" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Greenland" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="81" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Grenada" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Grenada" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="82" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Guadeloupe" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Guadeloupe" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="83" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Guatemala" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Guatemala" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="84" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Guinea" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Guinea" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="85" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Guinea Bissau" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Guinea Bissau" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="86" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Guyana" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Guyana" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="87" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Haiti" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Haiti" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="88" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Honduras" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Honduras" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="89" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Hong Kong" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Hong Kong" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="90" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Hungary" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Hungary" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="91" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Iceland" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Iceland" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="92" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="India" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="India" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="93" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Indonesia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Indonesia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="94" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Iran" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Iran" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="95" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Iraq" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Iraq" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="96" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ireland" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ireland" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="97" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Israel" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Israel" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="98" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Italy" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Italy" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="99" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ivory Coast" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ivory Coast" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="100" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Jamaica" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Jamaica" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="101" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Japan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Japan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="102" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Jordan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Jordan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="103" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kazakhstan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kazakhstan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="104" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kenya" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kenya" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="105" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kiribati" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kiribati" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="106" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="North Korea" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="North Korea" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="107" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="South Korea" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="South Korea" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="108" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kosovo" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kosovo" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="109" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kuwait" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kuwait" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="110" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kyrgyzstan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Kyrgyzstan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="111" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Laos" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Laos" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="112" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Latvia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Latvia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="113" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Lebanon" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Lebanon" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="114" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Lesotho" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Lesotho" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="115" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Liberia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Liberia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="116" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Libya" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Libya" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="117" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Liechtenstein" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Liechtenstein" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="118" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Lithuania" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Lithuania" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="119" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Luxembourg" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Luxembourg" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="120" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Macau" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Macau" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="121" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Macedonia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Macedonia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="122" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Madagascar" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Madagascar" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="123" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Malawi" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Malawi" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="124" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Malaysia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Malaysia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="125" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Maldives" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Maldives" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="126" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mali" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mali" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="127" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Malta" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Malta" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="128" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Marshall Islands" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Marshall Islands" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="129" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mauritania" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mauritania" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="130" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mauritius" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mauritius" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="131" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mexico" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mexico" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="132" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Moldova" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Moldova" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="133" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Monaco" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Monaco" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="134" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mongolia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mongolia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="135" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Montenegro" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Montenegro" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="136" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Montserrat" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Montserrat" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="137" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Morocco" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Morocco" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="138" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mozambique" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Mozambique" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="139" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Namibia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Namibia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="140" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Nauru" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Nauru" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="141" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Nepal" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Nepal" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="142" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Netherlands" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Netherlands" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="143" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Netherlands Antilles" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Netherlands Antilles" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="144" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="New Caledonia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="New Caledonia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="145" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="New Zealand" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="New Zealand" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="146" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Nicaragua" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Nicaragua" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="147" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Niger" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Niger" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="148" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Nigeria" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Nigeria" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="149" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Niue" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Niue" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="150" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Norway" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Norway" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="151" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Oman" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Oman" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="152" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Pakistan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Pakistan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="153" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Palau" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Palau" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="154" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Panama" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Panama" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="155" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Papua New Guinea" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Papua New Guinea" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="156" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Paraguay" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Paraguay" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="157" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Peru" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Peru" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="158" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Philippines" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Philippines" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="159" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Poland" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Poland" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="160" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Portugal" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Portugal" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="161" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Qatar" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Qatar" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="162" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Romania" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Romania" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="163" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Russia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Russia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="164" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Rwanda" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Rwanda" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="165" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Samoa" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Samoa" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="166" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="San Marino" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="San Marino" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="167" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sao Tome &amp; Principe" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sao Tome &amp; Principe" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="168" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Saudi Arabia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Saudi Arabia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="169" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Senegal" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Senegal" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="170" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Serbia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Serbia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="171" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Seychelles" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Seychelles" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="172" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sierra Leone" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sierra Leone" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="173" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Singapore" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Singapore" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="174" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sint Maarten" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sint Maarten" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="175" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Slovakia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Slovakia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="176" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Slovenia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Slovenia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="177" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Solomon Islands" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Solomon Islands" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="178" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Somalia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Somalia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="179" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="South Africa" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="South Africa" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="180" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="South Sudan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="South Sudan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="181" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Spain" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Spain" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="182" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sri Lanka" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sri Lanka" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="183" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="St. Kitts &amp; Nevis" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="St. Kitts &amp; Nevis" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="184" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="St. Lucia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="St. Lucia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="185" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="St. Vincent &amp; Grenadines" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="St. Vincent &amp; Grenadines" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="186" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="State of the Vatican City" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="State of the Vatican City" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="187" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sudan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sudan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="188" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Suriname" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Suriname" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="189" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Swaziland" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Swaziland" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="190" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sweden" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Sweden" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="191" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Switzerland" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Switzerland" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="192" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Syria" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Syria" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="193" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Taiwan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Taiwan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="194" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Tajikistan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Tajikistan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="195" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Tanzania" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Tanzania" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="196" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Thailand" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Thailand" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="197" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Timor-Leste" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Timor-Leste" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="198" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Togo" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Togo" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="199" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Tonga" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Tonga" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="200" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Trinidad &amp; Tobago" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Trinidad &amp; Tobago" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="201" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Tunisia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Tunisia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="202" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Turkey" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Turkey" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="203" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Turkmenistan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Turkmenistan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="204" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Turks/Caicos" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Turks/Caicos" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="205" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Tuvalu" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Tuvalu" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="206" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Uganda" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Uganda" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="207" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ukraine" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Ukraine" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="208" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="United Arab Emirates" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="United Arab Emirates" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="209" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="United Kingdom" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="United Kingdom" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="210" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="United States of America" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="United States of America" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="211" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="United States Virgin Islands" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="United States Virgin Islands" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="212" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Uruguay" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Uruguay" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="213" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Uzbekistan" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Uzbekistan" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="214" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Vanuatu" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Vanuatu" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="215" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Venezuela" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Venezuela" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="216" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Vietnam" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Vietnam" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="217" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Western Sahara" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Western Sahara" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="218" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Yemen" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Yemen" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="219" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Zimbabwe" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Zimbabwe" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+              <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAssociationImbedded" nodeID="220" newOrModified="true" eReference="../Vocabulary.ecore#//UIControl/option" eClass="../Vocabulary.ecore#//Option">
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Zambia" eAttribute="../Vocabulary.ecore#//Option/displayName"/>
+                <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Zambia" eAttribute="../Vocabulary.ecore#//Option/value"/>
+              </children>
+            </children>
+            <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="Applicant Residency" eAttribute="../Vocabulary.ecore#//Container/title"/>
+          </children>
+          <children xsi:type="com.corticon.rulesemf.viewtestmodel.testsheet.treeset:TestAttribute" newOrModified="true" value="1" eAttribute="../Vocabulary.ecore#//UI/nextStageNumber"/>
+        </children>
+      </outputRoot>
+      <outputMessageSection rowCount="20" columnWidthSeverity="100" columnWidthMessage="600"/>
+      <expectedRoot/>
+      <expectedMessageSection rowCount="20" columnWidthSeverity="100" columnWidthMessage="600"/>
+      <outputRuleTraceSection/>
+    </testsheetViewList>
+  </testsheetAssets>
+  <ruletest vocabularyUpdateStamp="_cOxCIcdlEe6ino4cUQ4MzQ" testsheets="#//@testsheetAssets.0/@testsheet" vocabulary="../Vocabulary.ecore#/"/>
+  <ruletestViewList xsi:type="com.corticon.rulesemf.viewtestmodel.ruletest.tabfolder:TestTabFolder">
+    <testTabList name="untitled_1"/>
+  </ruletestViewList>
+</com.corticon.rulesemf.assetmodel:RuletestAsset>
