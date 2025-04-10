@@ -125,7 +125,7 @@ UI.containers.uiControls = UIControl.new [
 ]
 ````
 
-![Rule Screenshot](docs/images/readOnlyText.png) *(Ensure image path '' is correct)*
+![Rule Screenshot](docs/images/readOnlyText.png) 
 
 </details>
 
