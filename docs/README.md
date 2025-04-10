@@ -80,6 +80,8 @@ Referenced in the rules as: `UI.containers`
 
 Description: For all steps presenting UI to the user, the Decision Service specifies a list of containers via the `UI.containers` collection. Each container can have attributes like a title and holds one or more `UIControl` elements.
 
+![Rule Example](images/container.png)
+
 **Attributes:**
 
 * **`id`**
