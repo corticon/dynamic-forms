@@ -1,12 +1,11 @@
-
 # Defining the Dynamic Form Business Rules in Corticon.js Studio
 
 This document is intended for rule authors using Corticon.js Studio to define the logic and behavior of dynamic forms.
 
 In Corticon Studio, rules are authored from a "Rule Vocabulary," which translates to a JSON definition when the rules are compiled into a JavaScript Decision Service. The vocabulary for dynamic forms involves two main parts:
 
-1.  **UI Definition Component:** Elements defining *how* the form renders, *when* specific controls appear, and *what* data structure will store the user's input.
-2.  **Form Purpose Component:** Elements specific to the *underlying purpose* of the form (e.g., a loan applicant's details, insurance claim information). These are defined separately based on the specific form's needs.
+1. **UI Definition Component:** Elements defining *how* the form renders, *when* specific controls appear, and *what* data structure will store the user's input.
+2. **Form Purpose Component:** Elements specific to the *underlying purpose* of the form (e.g., a loan applicant's details, insurance claim information). These are defined separately based on the specific form's needs.
 
 This document details the six vocabulary entities currently defined for the UI definition component: `UI`, `BackgroundData`, `Container`, `DataSourceOptions`, `Option`, and `UIControl`. `UI` is always the root element.
 
@@ -20,55 +19,51 @@ The root element for defining the overall state and flow of the dynamic form.
 
 **Attributes:**
 
-* **`pathToData`**
-    * Data Type: *String* (Should map to a root-level entity name in your form's purpose vocabulary)
-    * Description: Defines the primary data object where information entered by the user will be stored. This attribute acts as the crucial bridge between the UI definition component and the form's specific data model. By setting `pathToData` (typically in the first stage), you specify which vocabulary entity (e.g., `LoanApplication`, `InsuranceClaim`) will accrue the data collected via `UIControl` elements that have a corresponding `fieldName`. This collected data can then be used in later form stages or passed to subsequent processes.
-    * Example: Setting `UI.pathToData = 'household'` in the rules results in accrued data structured like:
-        ```json
-        // Decision Service Input/Output Snippet
-        [
-          {"currentStageNumber": 0, "pathToData": "household"},
-          // ... other UI data ...
-          {
-            "household": {
-              "countyfips": "29095",
-              "desiredQualityLevel": "3",
-              "desiredMetalLevel": "Bronze"
-            }
-          }
-        ]
-        ```
-        *(Note: The `household` entity and its attributes like `countyfips` must be defined in your specific form's purpose vocabulary.)*
+- **`pathToData`**
+  - Data Type: *String* (Should map to a root-level entity name in your form's purpose vocabulary)
+  - Description: Defines the primary data object where information entered by the user will be stored. This attribute acts as the crucial bridge between the UI definition component and the form's specific data model. By setting `pathToData` (typically in the first stage), you specify which vocabulary entity (e.g., `LoanApplication`, `InsuranceClaim`) will accrue the data collected via `UIControl` elements that have a corresponding `fieldName`. This collected data can then be used in later form stages or passed to subsequent processes.
+  - Example: Setting `UI.pathToData = 'household'` in the rules results in accrued data structured like:
+    ```json
+    // Decision Service Input/Output Snippet
+    [
+      {"currentStageNumber": 0, "pathToData": "household"},
+      // ... other UI data ...
+      {
+        "household": {
+          "countyfips": "29095",
+          "desiredQualityLevel": "3",
+          "desiredMetalLevel": "Bronze"
+        }
+      }
+    ]
+    ```
+    *(Note: The `household` entity and its attributes like `countyfips` must be defined in your specific form's purpose vocabulary.)*
 
-* **`noUItoRender`**
-    * Data Type: *Boolean*
-    * Description: Set to `true` for stages where no UI needs to be rendered, but background processing (like calculations or data augmentation via other rulesheets) should occur. Defaults to `false` if not specified.
-  
-     ![Rule Example](images/noUItoRender.png)
+- **`noUItoRender`**
+  - Data Type: *Boolean*
+  - Description: Set to `true` for stages where no UI needs to be rendered, but background processing (like calculations or data augmentation via other rulesheets) should occur. Defaults to `false` if not specified.
+  - ![Rule Example](images/noUItoRender.png)
 
-* **`done`**
-    * Data Type: *Boolean*
-    * Description: Set to `true` by the rules to signal the end of the dynamic form flow. The Client Side Component (CSC) – the JavaScript code rendering the form – typically uses this flag to trigger final data submission or transition to the next part of the application.
-    
-      ![Rule Example](images/UIdone.png)
+- **`done`**
+  - Data Type: *Boolean*
+  - Description: Set to `true` by the rules to signal the end of the dynamic form flow. The Client Side Component (CSC) – the JavaScript code rendering the form – typically uses this flag to trigger final data submission or transition to the next part of the application.
+  - ![Rule Example](images/UIdone.png)
 
-* **`nextStageNumber`**
-    * Data Type: *Integer*
-    * Where to specify: **Action** row of a rulesheet.
-    * Description: Set by the rules to indicate which stage the form should proceed to next. If this is the final stage, leave this null and set `UI.done = true`.
-  
-      ![Rule Example](images/nextStageNumber.png)
+- **`nextStageNumber`**
+  - Data Type: *Integer*
+  - Where to specify: **Action** row of a rulesheet.
+  - Description: Set by the rules to indicate which stage the form should proceed to next. If this is the final stage, leave this null and set `UI.done = true`.
+  - ![Rule Example](images/nextStageNumber.png)
 
-* **`currentStageNumber`**
-    * Data Type: *Integer*
-    * Where to specify: Used in the **Filter** panel (Advanced View) of a rulesheet to determine if a rule applies to the current stage.
-    * Description: The CSC sends this value in the input payload to the Decision Service, indicating which stage's rules should be evaluated. It typically gets this value from the `UI.nextStageNumber` returned in the previous step.
+- **`currentStageNumber`**
+  - Data Type: *Integer*
+  - Where to specify: Used in the **Filter** panel (Advanced View) of a rulesheet to determine if a rule applies to the current stage.
+  - Description: The CSC sends this value in the input payload to the Decision Service, indicating which stage's rules should be evaluated. It typically gets this value from the `UI.nextStageNumber` returned in the previous step.
+  - ![Rule Example](images/currentStageNumber.png)
 
-       ![Rule Example](images/currentStageNumber.png) 
-
-* **`language`**
-    * Data Type: *String*
-    * Description: Defines the language context. The CSC can pass an initial language, but rules can override this (e.g., `UI.language = 'italian'`) to change language dynamically during the form flow. Used primarily for rendering localized text in controls like `YesNo`.
+- **`language`**
+  - Data Type: *String*
+  - Description: Defines the language context. The CSC can pass an initial language, but rules can override this (e.g., `UI.language = 'italian'`) to change language dynamically during the form flow. Used primarily for rendering localized text in controls like `YesNo`.
 
 ---
 
@@ -78,28 +73,28 @@ Represents a logical grouping or panel within a form stage, containing UI contro
 
 Referenced in the rules as: `UI.containers`
 
-Description: For all steps presenting UI to the user, the Decision Service specifies a list of containers via the `UI.containers` collection. Each container can have attributes like a title and holds one or more `UIControl` elements.
+**Description:** For all steps presenting UI to the user, the Decision Service specifies a list of containers via the `UI.containers` collection. Each container can have attributes like a title and holds one or more `UIControl` elements.
 
 ![Rule Example](images/container.png)
 
 **Attributes:**
 
-* **`id`**
-    * Data Type: *String* (Must be unique within the current stage)
-    * Description: Required unique identifier for the container.
+- **`id`**
+  - Data Type: *String* (Must be unique within the current stage)
+  - Description: Required unique identifier for the container.
 
-* **`title`**
-    * Data Type: *String*
-    * Description: Text rendered as the header (e.g., `<h3>`) for the container.
-      ![Rule Example](images/createContainer.png)
+- **`title`**
+  - Data Type: *String*
+  - Description: Text rendered as the header (e.g., `<h3>`) for the container.
+  - ![Rule Example](images/createContainer.png)
 
-* **`validationMsg`**
-    * Data Type: *String*
-    * Description: Optional text displayed as a validation message associated with the entire container.
+- **`validationMsg`**
+  - Data Type: *String*
+  - Description: Optional text displayed as a validation message associated with the entire container.
 
-* **`description`**
-    * Data Type: *String*
-    * Description: An optional descriptive string, not rendered by default but useful for rule troubleshooting or documentation.
+- **`description`**
+  - Data Type: *String*
+  - Description: An optional descriptive string, not rendered by default but useful for rule troubleshooting or documentation.
 
 ---
 
@@ -109,14 +104,15 @@ Represents an individual form element (input field, text display, button, etc.).
 
 Referenced in the rules as: `UI.containers.uiControls`
 
-Description: Each container holds a collection of `UIControl` elements. The `type` attribute is crucial, determining which kind of control is rendered and what other attributes are relevant.
+**Description:** Each container holds a collection of `UIControl` elements. The `type` attribute is crucial, determining which kind of control is rendered and what other attributes are relevant.
 
 **Supported `type` values and Syntax:**
 
-##### ReadOnlyText
+#### ReadOnlyText
 
-*Description:* Renders non-editable HTML text.
-*Rendered:* ![Read Only Text Rendered](images/readOnlyText_render.png) 
+- *Description:* Renders non-editable HTML text.
+- *Rendered:* ![Read Only Text Rendered](images/readOnlyText_render.png)
+
 <details>
 <summary>Rule Syntax</summary>
 
