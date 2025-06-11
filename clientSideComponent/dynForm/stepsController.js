@@ -1234,8 +1234,7 @@ corticon.dynForm.StepsController = function () {
         };
         console.log("[handleFormCompletion] Final payload for backend:", JSON.stringify(payloadForBackend, null, 2)); // Log payload before sending
 
-        // --- Submit to Google Cloud Function ---
-        const gcfFunctionUrl = "https://gh-submission-w33r42dm7q-ul.a.run.app"; // Your function URL
+        const gcfFunctionUrl = "Your function URL"; // Your function URL
 
         try {
             console.log("[handleFormCompletion] Sending fetch request to GCF...");
