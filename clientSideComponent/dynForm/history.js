@@ -1,18 +1,18 @@
-corticon.util.namespace( "corticon.dynForm" );
+corticon.util.namespace("corticon.dynForm");
 
 corticon.dynForm.History = function () {
     let itsHistory = [];
 
     function setupHistory() {
-        corticon.dynForm.addCustomEventHandler( corticon.dynForm.customEvents.AFTER_UI_STEP_RENDERED, storeDecisionServiceInputs2);
+        corticon.dynForm.addCustomEventHandler(corticon.dynForm.customEvents.AFTER_UI_STEP_RENDERED, storeDecisionServiceInputs2);
     }
 
-    function storeDecisionServiceInputs2 ( event ) {
+    function storeDecisionServiceInputs2(event) {
         const theData = event.theData;
         // We do a deep Copy of the input.  We need it otherwise we get a reference to current input
         const input = JSON.parse(JSON.stringify(theData.input));
         const stage = theData.stage;
-        if ( stage === 0 ) // Take care of restart the form after all done (By convention on stage 0 we are restarting)
+        if (stage === 0) // Take care of restart the form after all done (By convention on stage 0 we are restarting)
             itsHistory = [];
 
         const index = itsHistory.length;
@@ -32,18 +32,18 @@ corticon.dynForm.History = function () {
         // previous stage.
 
         let currentStage;
-        if ( itsHistory.length === 1 ) // Trying to do previous when on the very first step.
+        if (itsHistory.length === 1) // Trying to do previous when on the very first step.
             currentStage = itsHistory[0];
         else
             currentStage = itsHistory.pop();
 
-        if ( currentStage === undefined ) {
+        if (currentStage === undefined) {
             console.log('Internal error in history.getPreviousStageData: there should be a current stage');
             return;
         }
 
         const prevStage = itsHistory.pop();
-        if ( prevStage === undefined ) {
+        if (prevStage === undefined) {
             console.log('error in history.getPreviousStageData: there should be a previous stage');
             return;
         }
@@ -51,11 +51,11 @@ corticon.dynForm.History = function () {
         return prevStage;
     }
 
-    function getRestartHistory () {
+    function getRestartHistory() {
         return JSON.stringify(itsHistory);
     }
 
-    function setRestartHistory (savedHistory) {
+    function setRestartHistory(savedHistory) {
         itsHistory = JSON.parse(savedHistory);
     }
 

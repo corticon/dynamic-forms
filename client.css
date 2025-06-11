@@ -1,70 +1,192 @@
+/* Font import */
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,900);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,500);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
 body {
-    /*background-color: black;*/
-    background-color: #5351510d;
+    background-color: #f4f4f4;
     color: #535151;
-    font-family: 'Source Sans Pro', sans-serif
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 15px;
 }
 
 .sampleTitle {
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     font-weight: 900;
     text-align: center;
-    padding-top: 0.5rem;
-    padding-bottom: 0.3rem;
+    padding-bottom: 20px;
+    color: #2c3e50;
     font-style: normal;
 }
 
-.commandVerticalSpacer {
-    height: 1rem;
+/* --- Main Responsive Page Layout --- */
+.page-container {
+    display: flex;
+    align-items: flex-start;
+    /* Aligns sidebar and main content to the top */
+    gap: 25px;
+    /* Space between sidebar and main content */
 }
 
+.sidebar {
+    flex: 0 0 280px;
+    /* Fixed width for the sidebar */
+    position: sticky;
+    /* Makes the sidebar stay in view on scroll */
+    top: 20px;
+}
+
+.main-content {
+    flex: 1;
+    /* Main content area grows to fill remaining space */
+    min-width: 0;
+    /* Important for flexbox to prevent overflow */
+}
+
+/* --- Sidebar Component Styling --- */
 .commandBar {
-    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    /* Stacks control groups vertically */
+    gap: 25px;
 }
 
+.commandItem .sampleSelectLabel {
+    display: block;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 8px;
+}
 
+.sampleSelect {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: 'Ubuntu', sans-serif !important;
+}
+
+.buttonGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
 .commandButton {
-    border-color: blue;
-    padding: 15px 25px;
-    box-sizing: border-box;
-    background-color: transparent;
+    background: #27AE60;
+    color: white;
+    font-weight: 500;
+    border: 0 none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 10px 15px;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
 
-    /*font-size: 1rem;*/
-    border-radius: 5px;
+.commandButton:hover,
+.commandButton:focus {
+    background: #219150;
+    /* Darker green on hover */
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #219150;
+}
+
+.commandButton a.command {
+    color: white !important;
+    text-decoration: none;
 }
 
 .commandButtonHidden {
     display: none;
 }
 
-.showTraceContainer {
-    padding-top: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.3rem;
+/* --- Progress Bar --- */
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    counter-reset: step;
+    position: relative;
+    width: 100%;
+    padding-top: 20px;
 }
 
-.useHtmlKuiContainer {
-    padding-top: 1rem;
+#progressbar li {
+    list-style-type: none;
+    color: #D2D2D2;
+    text-transform: capitalize;
+    font-size: 16px;
+    width: 25%;
+    float: left;
+    position: relative;
+    text-align: center;
 }
 
-.sampleSelectLabel {
-    font-size: 0.9rem;
+#progressbar li.active {
+    color: #27AE60;
 }
 
-.sampleSelect {
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
-    background-color: lightblue;
-    border-radius: 5px;
-    width: 9rem;
+#progressbar li:before,
+#progressbar li.active:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 50px;
+    line-height: 50px;
+    display: block;
+    font-size: 18px;
+    color: #fff;
+    background: #D2D2D2;
+    border-radius: 100%;
+    margin: 0 auto 10px auto;
+    font-family: 'FontAwesome';
+    z-index: 1;
+    position: relative;
 }
 
-a.command:hover,
-a.command:visited,
-a.command:link,
-a.command:active {
-    text-decoration: none;
-    color: black;
+#progressbar li.active:before {
+    background: #27AE60;
+}
+
+#progressbar li:after,
+#progressbar li.active:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #D2D2D2;
+    position: absolute;
+    left: -50%;
+    top: 25px;
+    z-index: 0;
+}
+
+#progressbar li:first-child:after {
+    content: none;
+}
+
+#progressbar li.active:after {
+    background: #27AE60;
+}
+
+
+/* --- Responsive Media Query --- */
+@media (max-width: 900px) {
+    .page-container {
+        flex-direction: column;
+        /* Stack sidebar on top of main content */
+    }
+
+    .sidebar {
+        position: static;
+        /* Un-stick the sidebar on mobile */
+        width: 100%;
+        flex-basis: auto;
+    }
 }
